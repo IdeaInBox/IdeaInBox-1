@@ -73,7 +73,7 @@
     	<td><span th:text="${colaborador.id}"></span></td>
       <td><span th:text="${colaborador.nome}"></span></td>
       <td><span th:text="${colaborador.cpf}"></span></td>
-      <td><span th:text="${colaborador.cargo}"></span></td>
+      <td><span th:text="${colaborador.cargo.nome}"></span></td>
       <td><span th:text="${colaborador.login}"></span></td>
       <td><span th:text="${colaborador.email}"></span></td>
       <td><a th:href="${(#mvc.url('CC#deletarColaborador').arg(0, colaborador.id)).build()}"><i class="fas fa-trash-alt"></i></a></td>
