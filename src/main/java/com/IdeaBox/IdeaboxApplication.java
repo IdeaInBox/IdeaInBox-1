@@ -32,7 +32,7 @@ public class IdeaboxApplication implements CommandLineRunner {
 		Cargo cargo1 = new Cargo(1,"Administrador");
 		Cargo cargo2 = new Cargo(2,"Gerente");
 		
-		Administrador adm = new Administrador(1, "Administrador", "13254743040", cargo1, "admin", "123", "admin@senac.com.br");
+		Administrador adm = new Administrador(1, "Administrador", "13254743040", cargo1, "admin", "1234567", "admin@senac.com.br");
 		cargo1.getColaborador().add(adm);
 		
 		this.crg.saveAll(Arrays.asList(cargo1, cargo2));
