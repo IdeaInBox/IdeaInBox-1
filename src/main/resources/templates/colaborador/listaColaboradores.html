@@ -76,10 +76,7 @@
   <tbody>
     <tr th:each="colaborador : ${colaboradores}" >
     	<td><span th:text="${colaborador.id}"></span></td>
-      <td><span th:text="${colaborador.nome}" ></span><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#nomeModal' +*{colaborador.id}"><i class="far fa-edit"></i>
-</button></td>
-<!-- Modal nome -->
-
+      <td><span th:text="${colaborador.nome}"></span><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#nomeModal' +*{colaborador.id}"><i class="far fa-edit"></i></button><!-- Modal nome -->
 <div class="modal fade" th:id="*{'nomeModal' + {colaborador.id}}" tabindex="-1" aria-labelledby="nomeModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -105,13 +102,9 @@
 </div>
 <!-- FIM Modal nome -->
 
-<tbody>
-    <tr th:each="colaborador : ${colaboradores}" >
-    	<td><span th:text="${colaborador.id}"></span></td>
-      <td><span th:text="${colaborador.cpf}" ></span><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#cpfModal' +*{colaborador.id}"><i class="far fa-edit"></i>
-</button></td>
-
-<!-- Modal CPF -->
+      </td>
+      <td><span th:text="${colaborador.cpf}" ></span><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#cpfModal' +*{colaborador.id}"><i class="far fa-edit"></i></button>
+      <!-- Modal CPF -->
 <div class="modal fade" th:id="*{'cpfModal' + {colaborador.id}}" tabindex="-1" aria-labelledby="cpfModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -137,15 +130,8 @@
 </div>
 
 <!-- FIM Modal CPF -->
-
-<tbody>
-    <tr th:each="colaborador : ${colaboradores}" >
-    	<td><span th:text="${colaborador.id}"></span></td>
-       <td><span th:text="${colaborador.cargo}" ></span><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#cargoModal' +*{colaborador.id}"><i class="far fa-edit"></i>
-</button></td>
-
-<!-- Modal cargo -->
-<div class="modal fade" th:id="*{'cargoModal' + {colaborador.id}}" tabindex="-1" aria-labelledby="cargoModalLabel" aria-hidden="true">
+      </td>
+       <td><span th:text="${colaborador.cargo.nome}" ></span><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#cargoModal' +*{colaborador.id}"><i class="far fa-edit"></i></button><div class="modal fade" th:id="*{'cargoModal' + {colaborador.id}}" tabindex="-1" aria-labelledby="cargoModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -158,7 +144,7 @@
         <label for="id">Id</label>
        <input type="text" th:value="*{colaborador.id}" class="form-control" name="id" >
     <label for="exampleInputPassword1" class="form-label">Mudar cargo</label>
-    <input type="cargo" class="form-control" id="texto" name="cargo"  th:value="*{colaborador.cargo}">
+    <input type="cargo" class="form-control" id="texto" name="cargo"  th:value="*{colaborador.cargo.nome}">
   </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
@@ -170,16 +156,9 @@
 </div>
 
 <!-- FIM Modal cargo -->
-
-<tr th:each="colaborador : ${colaboradores}" >
-    	<td><span th:text="${colaborador.id}"></span></td>
-        <td><span th:text="${colaborador.login}" ></span><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#loginModal' +*{colaborador.id}"><i class="far fa-edit"></i>
-       
-</button></td>
-
-<!-- Modal Login -->
-
-<div class="modal fade" th:id="*{'loginModal' + {colaborador.id}}" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+       </td>
+       <td><span th:text="${colaborador.login}" ></span><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#loginModal' +*{colaborador.id}"><i class="far fa-edit"></i>
+</button> <div class="modal fade" th:id="*{'loginModal' + {colaborador.id}}" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -203,17 +182,9 @@
   </div>
 </div>
 
-<!-- FIM Modal Login -->
-
-<tr th:each="colaborador : ${colaboradores}" >
-    	<td><span th:text="${colaborador.id}"></span></td>
-        <td><span th:text="${colaborador.email}" ></span><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#emailModal' +*{colaborador.id}"><i class="far fa-edit"></i>
-       
-</button></td>
-
-<!-- Modal Email -->
-
-<div class="modal fade" th:id="*{'emailModal' + {colaborador.id}}" tabindex="-1" aria-labelledby="emailModalLabel" aria-hidden="true">
+<!-- FIM Modal Login --></td>
+ <td><span th:text="${colaborador.email}" ></span><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#emailModal' +*{colaborador.id}"><i class="far fa-edit"></i>
+</button><div class="modal fade" th:id="*{'emailModal' + {colaborador.id}}" tabindex="-1" aria-labelledby="emailModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -237,14 +208,9 @@
   </div>
 </div>
 
-<!-- FIM Modal Email -->
+<!-- FIM Modal Email --></td>
 
-      <td><span th:text="${colaborador.cpf}"></span></td>
-      <td><span th:text="${colaborador.cargo.nome}"></span></td>
-      <td><span th:text="${colaborador.login}"></span></td>
-      <td><span th:text="${colaborador.email}"></span></td>
-      <td><a th:href="${(#mvc.url('CC#deletarColaborador').arg(0, colaborador.id)).build()}"><i class="fas fa-trash-alt"></i></a></td>
-      </tr>
+
   </tbody>
 </table>
 <button class="btn btn-primary"><a href="/cadastrarColaborador">Cadastrar
