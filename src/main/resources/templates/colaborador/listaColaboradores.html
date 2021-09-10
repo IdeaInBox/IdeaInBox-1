@@ -77,10 +77,9 @@
     <tr th:each="colaborador : ${colaboradores}" >
     	<td><span th:text="${colaborador.id}"></span></td>
       <td><span th:text="${colaborador.nome}" ></span><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#nomeModal' +*{colaborador.id}"><i class="far fa-edit"></i>
-      <td><span th:text="${colaborador.cpf}" ></span><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#cpfModal' +*{colaborador.id}"><i class="far fa-edit"></i>
-       <td><span th:text="${colaborador.cargo}" ></span><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#cargoModal' +*{colaborador.id}"><i class="far fa-edit"></i>
 </button></td>
 <!-- Modal nome -->
+
 <div class="modal fade" th:id="*{'nomeModal' + {colaborador.id}}" tabindex="-1" aria-labelledby="nomeModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
