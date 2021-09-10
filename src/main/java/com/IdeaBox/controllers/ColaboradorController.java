@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.IdeaBox.models.cargos.Cargo;
 import com.IdeaBox.models.sugestoes.Sugestao;
 import com.IdeaBox.models.usuarios.Colaborador;
 import com.IdeaBox.repository.ColaboradorRepository;
@@ -56,6 +57,30 @@ public class ColaboradorController {
 	public String editarCpf(@RequestParam long id, @RequestParam("cpf") String cpf) {
 		Colaborador colaborador = cr.findById(id);
 		colaborador.setCpf(cpf);
+		cr.save(colaborador);
+		return "redirect:/colaboradores";
+	}
+	
+	@PostMapping("/editarCargo")
+	public String editarCargo(@RequestParam long id, @RequestParam("cargo") Cargo cargo) {
+		Colaborador colaborador = cr.findById(id);
+		colaborador.setCargo(cargo);
+		cr.save(colaborador);
+		return "redirect:/colaboradores";
+	}
+	
+	@PostMapping("/editarLogin")
+	public String editarLogin(@RequestParam long id, @RequestParam("login") String login) {
+		Colaborador colaborador = cr.findById(id);
+		colaborador.setLogin(login);
+		cr.save(colaborador);
+		return "redirect:/colaboradores";
+	}
+	
+	@PostMapping("/editarEmail")
+	public String editarEmail(@RequestParam long id, @RequestParam("email") String email) {
+		Colaborador colaborador = cr.findById(id);
+		colaborador.setEmail(email);
 		cr.save(colaborador);
 		return "redirect:/colaboradores";
 	}
