@@ -19,43 +19,6 @@ p, li{
 }
 
 
-
-/*Barra de navega��o*/
-header, .navbar{
-    background-color:#F3CA06;
-    
-    }
-    #nav-container{
-        padding-top: 0;
-        padding-bottom: 0;
-    }
-    
-    #logo{
-         width: 160px;
-    }
-    
-    .navbar-brand{
-    padding: 0;
-    color: white;
-    }
-    
-    .navbar-brand:hover{
-        color: white;
-    }
-    
-    #navbar-links a{
-        color: white;
-          font-weight: bolder;
-    }
-    .navbar-expand-lg .navbar-nav .nav-link{
-        padding: 1rem .8rem;
-    }
-
-
-
-
-
-
 .form-1 .form-control{
     width: 400px;
 }
@@ -86,7 +49,17 @@ header, .navbar{
 }
 .card-group{
     margin-bottom: 10px;
+    
 }
+.lnr-eye {
+    position: absolute;
+    bottom: 230px;
+    right: 25px;
+    width: 30px;
+    cursor: pointer;
+    
+    
+    }
 .imglogin{
     
     width: 200px;
@@ -109,7 +82,7 @@ header, .navbar{
     
 
 }
-.btn-primary:hover{
+.btn-primary:hover, .btn-secondary:hover{
     background-image: linear-gradient(to left,#F3B507,#DB8F02,#F3CA06);
 }
 
@@ -123,4 +96,16 @@ header, .navbar{
 	height: auto; 
 	z-index: -1000;
 	background-size: cover; 
+}
+.btn-secondary{
+	background-color:#000440;
+}
+h3{
+	font-size: 16px;
+    font-weight: 500;
+    color:#000440;
+}
+h5{
+    font-weight: 700;
+     color:#000440;
 }
