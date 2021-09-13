@@ -93,7 +93,7 @@ public class SugestaoController {
 		Sugestao sugestao = sr.findById(id);
 		if(session.getAttribute("colaboradorLogado") != null) {
 		Colaborador colaborador = (Colaborador) session.getAttribute("colaboradorLogado");
-		if(cr.findByAvaliacao(sugestao.getId(), colaborador.getId()) == null) {
+		if(!cr.findByAvaliacao(sugestao.getId(), colaborador.getId()).isEmpty()) {
 			return "redirect:/timeline";
 		}
 		sugestao.setTotalDeAvaliacoes(sugestao.getTotalDeAvaliacoes() + 1);
@@ -106,7 +106,7 @@ public class SugestaoController {
 		}
 		else {
 			Colaborador colaborador = (Colaborador) session.getAttribute("gerenteLogado");
-			if(cr.findByAvaliacao(sugestao.getId(), colaborador.getId()) == null) {
+			if(cr.findByAvaliacao(sugestao.getId(), colaborador.getId()) != null) {
 				return "redirect:/timeline";
 			}
 			sugestao.setTotalDeAvaliacoes(sugestao.getTotalDeAvaliacoes() + 1);
