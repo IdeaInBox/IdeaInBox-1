@@ -57,7 +57,8 @@ p, li{
     right: 25px;
     width: 30px;
     cursor: pointer;
-    
+    background-color:transparent;
+    border:none;
     
     }
 .imglogin{
