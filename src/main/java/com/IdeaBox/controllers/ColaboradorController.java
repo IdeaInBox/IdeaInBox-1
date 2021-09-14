@@ -35,7 +35,7 @@ public class ColaboradorController {
 	private ServiceUsuario su;
 
 	@GetMapping("/colaboradores")
-	public ModelAndView listaSugestao() {
+	public ModelAndView listaColaborador() {
 		ModelAndView mv = new ModelAndView("colaborador/listaColaboradores");
 		Iterable<Colaborador> colaboradores = cr.findAll();
 		Iterable<Cargo> cargos = crg.findAll();
@@ -93,6 +93,24 @@ public class ColaboradorController {
 		Colaborador colaborador = cr.findById(id);
 		colaborador.setEmail(email);
 		cr.save(colaborador);
+		return "redirect:/colaboradores";
+	}
+	
+	@PostMapping("/editarTudo")
+	public String editarTudo(@RequestParam long id, @RequestParam("nome") String nome,  @RequestParam("cpf") String cpf,
+			@RequestParam long cargoId, @RequestParam("login") String login, @RequestParam("email") String email) {
+		
+		Cargo cargo1 = crg.findById(cargoId);
+		Colaborador colaborador = cr.findById(id);
+		colaborador.setNome(nome);
+		colaborador.setCpf(cpf);
+		colaborador.setCargo(cargo1);
+		colaborador.setLogin(login);
+		colaborador.setEmail(email);
+		
+		cr.save(colaborador);
+		crg.save(cargo1);
+		
 		return "redirect:/colaboradores";
 	}
 }
