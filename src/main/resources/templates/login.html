@@ -41,10 +41,10 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbar-links">
                     <div class="navbar-nav">
-                      <a class="nav-item nav-link" id="home-menu" href="http://localhost:8080/">Home</a>
+                      <a class="nav-item nav-link" id="home-menu" href="/">Home</a>
                     <a class="nav-item nav-link" id="about-menu" href="/login">Login</a>
                     <a class="nav-item nav-link" id="services-menu" href="/cadastrarColaborador">Cadastrar Colaborador</a>
-                    <a class="nav-item nav-link" id="team-menu" href="http://localhost:8080/timeline">Timeline</a>
+                    <a class="nav-item nav-link" id="team-menu" href="/timeline">Timeline</a>
                     <a class="nav-item nav-link" id="contact-menu" href="/profile">Perfil</a>
                      <a class="nav-item nav-link" id="exit-menu" href="/logout">Sair</a>
                     </div>
@@ -103,17 +103,18 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form action="/emailsenha">
           <div class="mb-3">
           <h3>Digite seu e-mail para redefinir sua senha que lhe enviaremos um link com as instruções!</h3>
             <label for="recipient-name" class="col-form-label">E-mail:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <input type="text" class="form-control" id="recipient-name" name="email">
           </div>
-          </form>
+          
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Sair</button>
-        <button type="button" class="btn btn-secondary">Enviar</button>
+        <button type="submit" class="btn btn-secondary">Enviar</button>
+        </form>
       </div>
     </div>
   </div>

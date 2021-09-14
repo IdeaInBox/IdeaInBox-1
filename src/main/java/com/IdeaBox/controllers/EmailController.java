@@ -8,8 +8,10 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class EmailController {
@@ -31,6 +33,40 @@ public class EmailController {
             return "Erro ao enviar email.";
         }
     }
+    
+    @RequestMapping(path = "/emailsenha", method = RequestMethod.GET)
+    public String emailRecuperacao(@RequestParam String email) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setText("Sua nova senha é 123.");
+        message.setTo(email);
+        message.setFrom("ideainboxapp@gmail.com");
+
+        try {
+            mailSender.send(message);
+            return "redirect:/login";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Erro ao enviar email.";
+        }
+    }
+    
+    @RequestMapping(path = "/enviarEmail", method = RequestMethod.GET)
+    public String email(@RequestParam String email, @RequestParam String text) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setText(text);
+        message.setTo(email);
+        message.setFrom("ideainboxapp@gmail.com");
+
+        try {
+            mailSender.send(message);
+            return "redirect:/login";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Erro ao enviar email.";
+        }
+    }
+
+
 
 //"ideainboxapp@gmail.com"
 }
