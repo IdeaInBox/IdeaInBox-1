@@ -144,7 +144,10 @@
         <label for="id">Id</label>
        <input type="text" th:value="*{colaborador.id}" class="form-control" name="id" >
     <label for="exampleInputPassword1" class="form-label">Mudar cargo</label>
-    <input type="cargo" class="form-control" id="texto" name="cargo"  th:value="*{colaborador.cargo.nome}">
+     <select class="form-select" name="cargoId">
+                           
+  <option th:each="cargo : ${cargos}" th:value="*{cargo.id}" th:text="${cargo.nome}"></option>
+</select>
   </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>

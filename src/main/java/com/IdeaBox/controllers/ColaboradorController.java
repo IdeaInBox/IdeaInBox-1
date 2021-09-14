@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.IdeaBox.models.cargos.Cargo;
 import com.IdeaBox.models.sugestoes.Sugestao;
 import com.IdeaBox.models.usuarios.Colaborador;
+import com.IdeaBox.repository.CargoRepository;
 import com.IdeaBox.repository.ColaboradorRepository;
 import com.IdeaBox.repository.SugestaoRepository;
 import com.IdeaBox.service.ServiceUsuario;
@@ -28,12 +29,20 @@ public class ColaboradorController {
 	private SugestaoRepository sr;
 
 	@Autowired
+	private CargoRepository crg;
+	
+	@Autowired
 	private ServiceUsuario su;
 
 	@GetMapping("/colaboradores")
 	public ModelAndView listaSugestao() {
 		ModelAndView mv = new ModelAndView("colaborador/listaColaboradores");
 		Iterable<Colaborador> colaboradores = cr.findAll();
+		Iterable<Cargo> cargos = crg.findAll();
+		mv.addObject("cargos", cargos);
+		Cargo cargo = new Cargo();
+		mv.addObject("cargoColaborador", cargo);
+		
 		mv.addObject("colaboradores", colaboradores);
 		return mv;
 	}
@@ -62,10 +71,12 @@ public class ColaboradorController {
 	}
 	
 	@PostMapping("/editarCargo")
-	public String editarCargo(@RequestParam long id, @RequestParam("cargo") Cargo cargo) {
+	public String editarCargo(@RequestParam long id, @RequestParam long cargoId) {
+		Cargo cargo1 = crg.findById(cargoId);
 		Colaborador colaborador = cr.findById(id);
-		colaborador.setCargo(cargo);
+		colaborador.setCargo(cargo1);
 		cr.save(colaborador);
+		crg.save(cargo1);
 		return "redirect:/colaboradores";
 	}
 	
