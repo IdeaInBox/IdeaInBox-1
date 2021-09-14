@@ -35,10 +35,8 @@ public class IdeaboxApplication implements CommandLineRunner {
 		Administrador adm = new Administrador(1, "Administrador", "13254743040", cargo1, "admin", "1234567", "admin@senac.com.br");
 		cargo1.getColaborador().add(adm);
 		
-		if(crg.findAll() == null && ar.findAll() == null) {
-			this.crg.saveAll(Arrays.asList(cargo1, cargo2));
-			this.ar.saveAll(Arrays.asList(adm));
-		}
+		this.crg.saveAll(Arrays.asList(cargo1, cargo2));
+		this.ar.saveAll(Arrays.asList(adm));
 	}
 
 }
