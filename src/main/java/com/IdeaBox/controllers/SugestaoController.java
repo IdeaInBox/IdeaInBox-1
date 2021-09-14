@@ -28,6 +28,8 @@ import com.IdeaBox.models.usuarios.Gerente;
 import com.IdeaBox.repository.ColaboradorRepository;
 import com.IdeaBox.repository.SugestaoRepository;
 
+import sun.jvm.hotspot.utilities.FindObjectByType;
+
 
 
 @Controller
@@ -128,6 +130,12 @@ public class SugestaoController {
 			return "redirect:/profile";
 		}
 
-
+@GetMapping("/pendentes")
+public ModelAndView sugestaoPendente() {
+	Iterable<Sugestao> sugestoes = sr.findAllInAnalise();
+	ModelAndView mv = new ModelAndView("sugestoesPendentes");
+	mv.addObject("sugestoes", sugestoes);
+	return mv;
+}
 
 }

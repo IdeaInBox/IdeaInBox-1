@@ -70,13 +70,11 @@
       </tr>
   </thead>
   <tbody>
-    <tr th:each="" >
+   <tr th:each="sugestao : ${sugestoes}">
     <td><div class="icons"><div><span><a href="#"><i class="fas fa-file-upload"></i></a></span></div>
         <div><span ><a href="#"><i class="fas fa-check"></i></a></span></div>
 		<div><span ><a href="#"><i class="fas fa-times"></i></a></div></div></td>
-      <td><span th:text="${}"></span></td>
-      <td><a th:href="${}"></a>
-   
+      <td><span th:text="${sugestao.texto}"></span></td>
       </tr>
   </tbody>
 </table>
