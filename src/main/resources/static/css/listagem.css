@@ -69,3 +69,12 @@ header, .navbar{
 .modal{
 	color: black;
 }
+
+.btn1{
+	 background-color: transparent;
+border: none
+}
+
+.fa-edit#inome{
+	text-align: initial
+	}

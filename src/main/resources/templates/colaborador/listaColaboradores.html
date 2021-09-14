@@ -79,7 +79,7 @@
 
      
 
-      <td><span th:text="${colaborador.nome}"></span><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#nomeModal' +*{colaborador.id}"><i class="far fa-edit"></i></button><!-- Modal nome -->
+      <td><span th:text="${colaborador.nome}"></span><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#nomeModal' +*{colaborador.id}"><i class="far fa-edit" id="inome"></i></button><!-- Modal nome -->
 <div class="modal fade" th:id="*{'nomeModal' + {colaborador.id}}" tabindex="-1" aria-labelledby="nomeModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
