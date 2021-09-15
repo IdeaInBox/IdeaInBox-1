@@ -100,9 +100,9 @@
       <div class="modal-body">
         <form method="post" action="/editarTudo">
         <div class="mb-3">
-        <label for="id">Nº</label>
-       <input type="text" th:value="*{colaborador.id}" class="form-control" name="id" disabled >
-    <label for="exampleInputPassword1" class="form-label">Nome</label>
+
+       <input type="hidden" th:value="*{colaborador.id}" class="form-control" name="id" >
+    <label for="exampleInputPassword1" class="form-label">Mudar nome</label>
     <input type="nome" class="form-control" id="texto" name="nome"  th:value="*{colaborador.nome}">
      <label for="exampleInputPassword1" class="form-label">CPF</label>
     <input type="cpf" class="form-control" id="texto" name="cpf"  th:value="*{colaborador.cpf}">
