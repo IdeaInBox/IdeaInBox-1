@@ -25,7 +25,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-        
+ <!-- Configurações nossas -->       
 <link rel="stylesheet" href="css/barra_navegacao.css">
 <link rel="stylesheet" href="css/listagem.css">
  <!-- Fontawesome -->
@@ -54,7 +54,7 @@
                     <a class="nav-item nav-link" id="services-menu" href="/cadastrarColaborador">Cadastrar Colaborador</a>
                     <a class="nav-item nav-link" id="team-menu" href="http://localhost:8080/timeline">Timeline</a>
                     <a class="nav-item nav-link" id="contact-menu" href="/profile">Perfil</a>
-                     <a class="nav-item nav-link" id="contact-menu" href="/logout">Sair</a>
+                     <a class="nav-item nav-link" id="exit-menu" href="/logout">Sair</a>
 					</div>
 				</div>
 			</nav>
@@ -75,56 +75,58 @@
   </thead>
   <tbody>
     <tr th:each="colaborador : ${colaboradores}" >
-    	<td><span th:text="${colaborador.id}"></span></td>
-      <td><span th:text="${colaborador.cpf}" ></span><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#cpfModal' +*{colaborador.id}"><i class="far fa-edit"></i></button>
-		      <td><span th:text="${colaborador.cargo.nome}" ></span><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#cargoModal' +*{colaborador.id}"><i class="far fa-edit"></i></button><div class="modal fade" th:id="*{'cargoModal' + {colaborador.id}}" tabindex="-1" aria-labelledby="cargoModalLabel" aria-hidden="true">
-		      <td><span th:text="${colaborador.login}" ></span><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#loginModal' +*{colaborador.id}"><i class="far fa-edit"></i></button>
-		 <td><span th:text="${colaborador.email}" ></span><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#emailModal' +*{colaborador.id}"><i class="far fa-edit"></i></button>
-		
-     
+    
+    <td><span th:text="${colaborador.id}"></span></td>
+    <td><span th:text="${colaborador.nome}"></span></td>
+	<td><span th:text="${colaborador.cpf}" ></span></td>
+	<td><span th:text="${colaborador.cargo.nome}" ></span></td>
+	<td><span th:text="${colaborador.login}" ></span></td>
+	<td><span th:text="${colaborador.email}" ></span></td>
+	<td>
+	<span th:id="*{'tudoModal' + {colaborador.id}}"></span><button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#tudoModalLabel"><i class="far fa-edit"></i></button>
+	<span th:id="*{'tudoModal' + {colaborador.id}}"></span><button type="button" class="btn btn-light"><i class="fas fa-trash"></i></button>
+	</td>
+    
 
-      <td><span th:text="${colaborador.nome}"></span><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#tudoModal' +*{colaborador.id}"><i class="far fa-edit" id="inome"></i></button><!-- Modal nome -->
-      
-<div class="modal fade" th:id="*{'tudoModal' + {colaborador.id}}" tabindex="-1" aria-labelledby="tudoModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<!-- Modal -->
+ 
+    <div class="modal fade" id="tudoModalLabel"  tabindex="-1" aria-labelledby="tudoModalLabel" aria-hidden="true">
+    <div class="modal-dialog"> 
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="tudoModalLabel">Mudar todas as credenciais</h5>
+        <h5 class="modal-title" id="tudoModalLabel">Mudar  credenciais</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form method="post" action="/editarTudo">
         <div class="mb-3">
-        <label for="id">Id</label>
-       <input type="text" th:value="*{colaborador.id}" class="form-control" name="id" >
-    <label for="exampleInputPassword1" class="form-label">Mudar nome</label>
+        <label for="id">Nº</label>
+       <input type="text" th:value="*{colaborador.id}" class="form-control" name="id" disabled >
+    <label for="exampleInputPassword1" class="form-label">Nome</label>
     <input type="nome" class="form-control" id="texto" name="nome"  th:value="*{colaborador.nome}">
-     <label for="exampleInputPassword1" class="form-label">Mudar CPF</label>
+     <label for="exampleInputPassword1" class="form-label">CPF</label>
     <input type="cpf" class="form-control" id="texto" name="cpf"  th:value="*{colaborador.cpf}">
-    <label for="exampleInputPassword1" class="form-label">Mudar cargo</label>
+    <label for="exampleInputPassword1" class="form-label">Cargo</label>
      <select class="form-select" name="cargoId">                 
   <option th:each="cargo : ${cargos}" th:value="*{cargo.id}" th:text="${cargo.nome}"></option>
 </select>
-	<label for="exampleInputPassword1" class="form-label">Mudar login</label>
+	<label for="exampleInputPassword1" class="form-label">Login</label>
     <input type="login" class="form-control" id="texto" name="login"  th:value="*{colaborador.login}">
-    <label for="exampleInputPassword1" class="form-label">Mudar email</label>
+    <label for="exampleInputPassword1" class="form-label">E-mail</label>
     <input type="email" class="form-control" id="texto" name="email"  th:value="*{colaborador.email}">
   </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
-       <button type="submit" class="btn btn-outline-success">Aceitar</button>
+      <button type="submit" class="btn btn-success">Aceitar</button>
+      <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
+       
         </form>
       </div>
     </div>
   </div>
 </div>
-
-     
-
-
-
-  </tbody>
-</table>
+</tr>
+</tbody>
+ </table>
 <button class="btn btn-primary"><a href="/cadastrarColaborador">Cadastrar
 									Colaborador  &nbsp&nbsp<i class="fas fa-user-plus"></i></a></button>
 	</div>
