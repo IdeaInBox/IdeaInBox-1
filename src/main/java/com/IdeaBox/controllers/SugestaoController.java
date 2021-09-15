@@ -96,6 +96,7 @@ public class SugestaoController {
 		if(!cr.findByAvaliacao(sugestao.getId(), colaborador.getId()).isEmpty()) {
 			return "redirect:/timeline";
 		}
+		colaborador.setTotalSugestoesAvaliadas(colaborador.getTotalSugestoesAvaliadas() + 1);
 		sugestao.setTotalDeAvaliacoes(sugestao.getTotalDeAvaliacoes() + 1);
 		sugestao.setClassificacao((sugestao.getClassificacao() + classificacao.getClassificacao()) / sugestao.getTotalDeAvaliacoes());
 		sugestao.getAvaliadores().add(colaborador);
@@ -109,6 +110,7 @@ public class SugestaoController {
 			if(!cr.findByAvaliacao(sugestao.getId(), colaborador.getId()).isEmpty()) {
 				return "redirect:/timeline";
 			}
+			colaborador.setTotalSugestoesAvaliadas(colaborador.getTotalSugestoesAvaliadas() + 1);
 			sugestao.setTotalDeAvaliacoes(sugestao.getTotalDeAvaliacoes() + 1);
 			sugestao.setClassificacao((sugestao.getClassificacao() + classificacao.getClassificacao()) / sugestao.getTotalDeAvaliacoes());
 			sugestao.getAvaliadores().add(colaborador);
