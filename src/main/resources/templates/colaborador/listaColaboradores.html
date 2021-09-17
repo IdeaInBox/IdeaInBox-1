@@ -84,7 +84,7 @@
 	<td><span th:text="${colaborador.email}" ></span></td>
 	<td>
 	<span th:id="*{'tudoModal' + {colaborador.id}}"></span><button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#tudoModalLabel"><i class="far fa-edit"></i></button>
-	<span th:id="*{'tudoModal' + {colaborador.id}}"></span><button type="button" class="btn btn-light"><i class="fas fa-trash"></i></button>
+	<a th:href="${(#mvc.url('CC#deletarColaborador').arg(0, colaborador.id)).build()}"><i class="fas fa-trash"></i></a>
 	</td>
     
 
