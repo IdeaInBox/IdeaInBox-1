@@ -47,7 +47,7 @@ public class ColaboradorController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/deletar", method = RequestMethod.DELETE)
+	@RequestMapping("/deletar")
 	public String deletarColaborador(long Id) {
 		Colaborador colaborador = cr.findById(Id);
 		cr.delete(colaborador);
