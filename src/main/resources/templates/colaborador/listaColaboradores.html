@@ -82,9 +82,12 @@
 	<td><span th:text="${colaborador.cargo.nome}" ></span></td>
 	<td><span th:text="${colaborador.login}" ></span></td>
 	<td><span th:text="${colaborador.email}" ></span></td>
-	<td><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#tudoModal' +*{colaborador.id}"><i class="far fa-edit"></i></button>
-   
 
+	<td><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#tudoModal' +*{colaborador.id}"><i class="far fa-edit"></i></button></td>
+   
+	<td><a th:href="${(#mvc.url('CC#deletarColaborador').arg(0, colaborador.id)).build()}"><i class="fas fa-trash"></i></a>
+	</td>
+    
 <!-- Modal -->
  	
     <div class="modal fade" th:id="*{'tudoModal' + {colaborador.id}}" tabindex="-1" aria-labelledby="tudoModalLabel" aria-hidden="true">
