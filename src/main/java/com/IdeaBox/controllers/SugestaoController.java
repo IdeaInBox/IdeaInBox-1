@@ -28,7 +28,7 @@ import com.IdeaBox.models.usuarios.Gerente;
 import com.IdeaBox.repository.ColaboradorRepository;
 import com.IdeaBox.repository.SugestaoRepository;
 
-import sun.jvm.hotspot.utilities.FindObjectByType;
+
 
 
 
@@ -137,5 +137,18 @@ public ModelAndView sugestaoPendente() {
 	mv.addObject("sugestoes", sugestoes);
 	return mv;
 }
-
+@GetMapping("/topsugestoes")
+public ModelAndView sugestoesMaisVotadas() {
+	Iterable<Sugestao> sugestoes = sr.findAll();
+	ModelAndView mv = new ModelAndView("sugestoesmaisvotadas");
+	mv.addObject("sugestoes", sugestoes);
+	return mv;
+}
+@GetMapping("/sugestaoADM")
+public ModelAndView sugestoesAnaliseAdm() {
+	Iterable<Sugestao> sugestoes = sr.findAll();
+	ModelAndView mv = new ModelAndView("sugestaoAdmAnalisar");
+	mv.addObject("sugestoes", sugestoes);
+	return mv;
+}
 }
