@@ -82,15 +82,12 @@
 	<td><span th:text="${colaborador.cargo.nome}" ></span></td>
 	<td><span th:text="${colaborador.login}" ></span></td>
 	<td><span th:text="${colaborador.email}" ></span></td>
-	<td>
-	<span th:id="*{'tudoModal' + {colaborador.id}}"></span><button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#tudoModalLabel"><i class="far fa-edit"></i></button>
-	<span th:id="*{'tudoModal' + {colaborador.id}}"></span><button type="button" class="btn btn-light"><i class="fas fa-trash"></i></button>
-	</td>
-    
+	<td><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#tudoModal' +*{colaborador.id}"><i class="far fa-edit"></i></button>
+   
 
 <!-- Modal -->
- 
-    <div class="modal fade" id="tudoModalLabel"  tabindex="-1" aria-labelledby="tudoModalLabel" aria-hidden="true">
+ 	
+    <div class="modal fade" th:id="*{'tudoModal' + {colaborador.id}}" tabindex="-1" aria-labelledby="tudoModalLabel" aria-hidden="true">
     <div class="modal-dialog"> 
     <div class="modal-content">
       <div class="modal-header">
