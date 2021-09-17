@@ -142,7 +142,9 @@
                                     <tbody>
                                         <tr th:each="sugestao : ${sugestoes}">
                                             <td><span th:text="${sugestao.texto}"></span>
-                                                 <button type="button" class="btn2" data-bs-toggle="modal" data-bs-target="exampleModal"><i class="far fa-envelope"></i></button>
+                                                 <button type="button" class="btn2" data-bs-toggle="modal" data-bs-target="exampleModal">
+													<i class="far fa-envelope"></i>
+												</button>
 														
                                             
                                             <a
@@ -190,8 +192,8 @@
                         <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownSugestao" data-bs-toggle="dropdown" aria-expanded="false">Sugestões &nbsp;&nbsp;<i class="fas fa-lightbulb"></i></a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownSugestao">
                              
-                             <li><a class="dropdown-item" href="../sugestoesPendentes.html"> Sugestões Pendentes &nbsp;&nbsp;</a></li>
-                            <li><a class="dropdown-item"  href="../sugestoesmaisvotadas.html"> Sugestões mais votadas &nbsp;&nbsp;</a></li>
+                             <li><a class="dropdown-item" href="/pendentes#"> Sugestões Pendentes &nbsp;&nbsp;</a></li>
+                            <li><a class="dropdown-item"  href="/topsugestoes#"> Sugestões mais votadas &nbsp;&nbsp;</a></li>
                              </ul>
                     </div>
                     <div class="dropdown">
