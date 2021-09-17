@@ -140,7 +140,7 @@ public ModelAndView sugestaoPendente() {
 @GetMapping("/topsugestoes")
 public ModelAndView sugestoesMaisVotadas() {
 	Iterable<Sugestao> sugestoes = sr.findAll();
-	ModelAndView mv = new ModelAndView("sugestoesmaisvotadas");
+	ModelAndView mv = new ModelAndView("sugestoesMaisVotadas");
 	mv.addObject("sugestoes", sugestoes);
 	return mv;
 }
