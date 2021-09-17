@@ -108,7 +108,7 @@
     <input type="cpf" class="form-control" id="texto" name="cpf"  th:value="*{colaborador.cpf}">
     <label for="exampleInputPassword1" class="form-label">Cargo</label>
      <select class="form-select" name="cargoId">                 
-  <option th:each="cargo : ${cargos}" th:value="*{cargo.id}" th:text="${cargo.nome}"></option>
+  <option th:each="cargo : ${cargos}" th:value="*{cargo.id}" th:text="${colaborador.cargo.nome}"></option>
 </select>
 	<label for="exampleInputPassword1" class="form-label">Login</label>
     <input type="login" class="form-control" id="texto" name="login"  th:value="*{colaborador.login}">
