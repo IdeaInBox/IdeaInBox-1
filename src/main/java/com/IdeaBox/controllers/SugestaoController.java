@@ -76,7 +76,7 @@ public class SugestaoController {
 		}
 		
 		sr.save(sugestao);
-		return "redirect:/profile";
+		return "redirect:/pendentes";
 	}
 	
 	@RequestMapping("/reprovarSugestao")
@@ -86,7 +86,7 @@ public class SugestaoController {
 		sugestao.setStatus(Status_Sugestao.REPROVADO_PELO_RH);}
 		
 		sr.save(sugestao);
-		return "redirect:/profile";
+		return "redirect:/pendentes";
 	}
 	
 	
