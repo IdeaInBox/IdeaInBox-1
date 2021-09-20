@@ -84,12 +84,12 @@
 
       <td><div class="icons"><span class="sugestao"><a href="#"><i class="far fa-comment" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></a></span>
             <span class="analise "><a href="#"><i class="fas fa-folder-open"></i></a></span>
-            <button type="button" class="btn btn-secundary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="far fa-envelope"></i></button>
+            <button type="button" class="btn btn-secundary" data-bs-toggle="modal" th:attr="data-bs-target='#exampleModal' +*{sugestao.id}"><i class="far fa-envelope"></i></button>
 
 
             </div></td>  
            <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" th:id="*{'exampleModal' + {sugestao.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
