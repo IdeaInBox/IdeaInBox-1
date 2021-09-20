@@ -30,6 +30,8 @@ import com.IdeaBox.repository.SugestaoRepository;
 
 
 
+
+
 @Controller
 public class SugestaoController {
 	@Autowired
@@ -74,7 +76,7 @@ public class SugestaoController {
 		}
 		
 		sr.save(sugestao);
-		return "redirect:/profile";
+		return "redirect:/pendentes";
 	}
 	
 	@RequestMapping("/reprovarSugestao")
@@ -84,7 +86,7 @@ public class SugestaoController {
 		sugestao.setStatus(Status_Sugestao.REPROVADO_PELO_RH);}
 		
 		sr.save(sugestao);
-		return "redirect:/profile";
+		return "redirect:/pendentes";
 	}
 	
 	
@@ -130,6 +132,33 @@ public class SugestaoController {
 			return "redirect:/profile";
 		}
 
+@GetMapping("/pendentes")
+public ModelAndView sugestaoPendente() {
+	Iterable<Sugestao> sugestoes = sr.findAllInAnalise();
+	ModelAndView mv = new ModelAndView("sugestoesPendentes");
+	mv.addObject("sugestoes", sugestoes);
+	return mv;
+}
+@GetMapping("/topsugestoes")
+public ModelAndView sugestoesMaisVotadas() {
+	Iterable<Sugestao> sugestoes = sr.findTop();
+	ModelAndView mv = new ModelAndView("sugestoesMaisVotadas");
+	mv.addObject("sugestoes", sugestoes);
+	return mv;
+}
+@RequestMapping("/moveToAdm")
+public String moverParaOAdm(long id) {
+	Sugestao sugestao = sr.findById(id);
+	sugestao.setStatus(Status_Sugestao.TOP_TREND);
+	sr.save(sugestao);
+	return "redirect:/topsugestoes";
+}
 
-
+@GetMapping("/sugestaoADM")
+public ModelAndView sugestoesAnaliseAdm() {
+	Iterable<Sugestao> sugestoes = sr.findAllInTopTrend();
+	ModelAndView mv = new ModelAndView("sugestaoAdmAnalisar");
+	mv.addObject("sugestoes", sugestoes);
+	return mv;
+}
 }

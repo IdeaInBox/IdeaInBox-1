@@ -1,0 +1,35 @@
+body{
+    font-family: 'Roboto', sans-serif;
+   background-color: #F5F5F5;
+   
+}
+
+.container{
+   margin-top: 60px;
+   width:90%;
+}
+h1{
+    margin-top: 4.3%;
+    font-size: 25px;
+    background-color: #000440;
+    color: #fff;
+    height: 50px;
+    width: 100%;
+    padding: 8px;
+    
+}
+fieldset{
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+
+
+.fa-envelope{
+	color:#7703FB;
+}
+.fa-times{color:#E62105;}
+.fa-check{color:#31FF12;}
+.fa-share{color:#0D6B28;}
+.fa-archive{color:#FA6109;}
+.fa-folder-open{color:#FA6109;}

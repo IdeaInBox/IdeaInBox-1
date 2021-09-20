@@ -28,4 +28,6 @@ public interface SugestaoRepository extends CrudRepository<Sugestao, String>{
 	
 	Sugestao findById(long id);
 
+	@Query(value = "SELECT * FROM sugestao WHERE status = 'TOP_TREND'", nativeQuery = true)
+	Iterable<Sugestao> findAllInTopTrend();
 }

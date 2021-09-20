@@ -96,8 +96,7 @@
                 </div>  
                 <div class="Sugestoes">
                     <p>
-                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            Melhores sugestões &nbsp; <i class="fas fa-lightbulb"></i>
+                        <a href="/sugestaoADM#"><button class="btn btn-primary">Sugestões para analise &nbsp; <i class="fas fa-lightbulb"></i></button>
                         </a>
                     </p>
                     <div class="collapse" id="collapseExample">
@@ -106,9 +105,7 @@
                             <tbody>
                                <tr th:each="sugestao : ${sugestoes}">
                                <td><span th:text="${sugestao.texto}"></span><a th:href="${(#mvc.url('SC#aprovarSugestao').arg(0, sugestao.id)).build()}"><i class="fas fa-check"></i></a>
-
-                             
-                                </tr>
+                              </tr>
                             </tbody>
                          </table>
                       </div>
