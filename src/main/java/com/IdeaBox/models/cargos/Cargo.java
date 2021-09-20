@@ -40,10 +40,10 @@ public class Cargo implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
-	@Column(length = 30, nullable = false, unique = false)
+	@Column(length = 30, nullable = false, unique = true)
 	private String nome;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.MERGE)
 	private List <Usuario> colaboradores;
 	
 	
@@ -51,8 +51,9 @@ public class Cargo implements Serializable {
 	public Cargo () {}
 	
 	
-	public Cargo(String nome) {
+	public Cargo(long id, String nome) {
 		setNome(nome);
+		setId(id);
 		colaboradores = new ArrayList<Usuario>();
 	}
 	

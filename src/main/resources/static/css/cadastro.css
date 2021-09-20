@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 body{
     font-family: 'Roboto', sans-serif;
-    background: url("../img/grupotransp.png") no-repeat 90% 450px;
+    background: url("../img/grupotransp.png") no-repeat 75% 450px;
     background-color:#f9f9f9;
 }
 .row{
@@ -19,40 +19,6 @@ p, li{
 }
 
 
-/*Barra de navega��o*/
-header, .navbar{
-    background-color:#F3CA06;
-    
-    }
-    #nav-container{
-        padding-top: 0;
-        padding-bottom: 0;
-    }
-    
-    #logo{
-      width: 160px;
-    }
-    
-    .navbar-brand{
-    padding: 0;
-    color: white;
-    }
-    
-    .navbar-brand:hover{
-        color: white;
-    }
-    
-    #navbar-links a{
-        color: white;
-          font-weight: bolder;
-    }
-    .navbar-expand-lg .navbar-nav .nav-link{
-        padding: 1rem .8rem;
-    }
-    
-
-    
-      /* questionario*/ 
 
 /* questionario*/ 
 
@@ -81,11 +47,22 @@ header, .navbar{
 .form-group2{
 margin-top: 45px;
 }
-.btn-primary:hover{
+.btn-secondary{
+	background-color:#000440;
+}
+.btn-primary:hover, .btn-secondary:hover{
     
    background-image: linear-gradient(to left,#F3B507,#DB8F02,#F3CA06);
 }
 
 .form-control#SelectForm{
 	 text-transform: lowercase;
+}
+h5{
+    font-weight: 700;
+}
+h6{
+    font-size: 18px;
+    font-weight: 500;
+    color:#000440;
 }

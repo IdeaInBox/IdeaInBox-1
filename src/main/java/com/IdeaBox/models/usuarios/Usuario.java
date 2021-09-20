@@ -61,7 +61,8 @@ public abstract class Usuario implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private StatusColaborador status;
 	
-	
+	@Column(nullable = false, unique = false)
+	private long totalSugestoesAvaliadas;
 
 
 	public Usuario(long id, String nome, String cpf, Cargo cargo, String login, String senha, String email) {
@@ -137,6 +138,12 @@ public abstract class Usuario implements Serializable {
 	}
 	public void setStatus(StatusColaborador status) {
 		this.status = status;
+	}
+	public long getTotalSugestoesAvaliadas() {
+		return totalSugestoesAvaliadas;
+	}
+	public void setTotalSugestoesAvaliadas(long totalSugestoesAvaliadas) {
+		this.totalSugestoesAvaliadas = totalSugestoesAvaliadas;
 	}
 	
 	

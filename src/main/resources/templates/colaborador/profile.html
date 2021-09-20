@@ -47,7 +47,7 @@
 							Colaborador</a>
 						<a class="nav-item nav-link" id="team-menu" href="http://localhost:8080/timeline">Timeline</a>
 						<a class="nav-item nav-link" id="contact-menu" href="/profile">Perfil</a>
-						<a class="nav-item nav-link" id="contact-menu" href="/logout">Sair</a>
+						<a class="nav-item nav-link" id="exit-menu" href="/logout">Sair</a>
 					</div>
 				</div>
 			</nav>
@@ -62,7 +62,7 @@
 						<h4> &nbsp;<span th:text="${colaborador.nome}"></span></h4>
 						&nbsp;
 						<h6><b>CPF:</b>&nbsp;<span th:text="${colaborador.cpf}"></span></h6>
-						<h6><b>Cargo:</b>&nbsp;<span th:text="${colaborador.cargo}"></span></h6>
+						<h6><b>Cargo:</b>&nbsp;<span th:text="${colaborador.cargo.nome}"></span></h6>
 						<h6><b>Email:</b>&nbsp;<span th:text="${colaborador.email}"></span></h6>
 					</div>
 				</div>
@@ -75,7 +75,7 @@
                         </div>
                             <div class="col">
                         <h6 style="color:#000429">Avaliações</h6>
-                        <p style="color:#000429">15</p> 
+                        <p style="color:#000429"><span th:text="${colaborador.totalSugestoesAvaliadas}"></span></p> 
                             </div>
                      </div>
                 </div>  

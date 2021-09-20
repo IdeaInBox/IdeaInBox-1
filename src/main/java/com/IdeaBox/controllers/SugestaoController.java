@@ -93,9 +93,10 @@ public class SugestaoController {
 		Sugestao sugestao = sr.findById(id);
 		if(session.getAttribute("colaboradorLogado") != null) {
 		Colaborador colaborador = (Colaborador) session.getAttribute("colaboradorLogado");
-		if(cr.findByAvaliacao(sugestao.getId(), colaborador.getId()) == null) {
+		if(!cr.findByAvaliacao(sugestao.getId(), colaborador.getId()).isEmpty()) {
 			return "redirect:/timeline";
 		}
+		colaborador.setTotalSugestoesAvaliadas(colaborador.getTotalSugestoesAvaliadas() + 1);
 		sugestao.setTotalDeAvaliacoes(sugestao.getTotalDeAvaliacoes() + 1);
 		sugestao.setClassificacao((sugestao.getClassificacao() + classificacao.getClassificacao()) / sugestao.getTotalDeAvaliacoes());
 		sugestao.getAvaliadores().add(colaborador);
@@ -106,9 +107,10 @@ public class SugestaoController {
 		}
 		else {
 			Colaborador colaborador = (Colaborador) session.getAttribute("gerenteLogado");
-			if(cr.findByAvaliacao(sugestao.getId(), colaborador.getId()) == null) {
+			if(!cr.findByAvaliacao(sugestao.getId(), colaborador.getId()).isEmpty()) {
 				return "redirect:/timeline";
 			}
+			colaborador.setTotalSugestoesAvaliadas(colaborador.getTotalSugestoesAvaliadas() + 1);
 			sugestao.setTotalDeAvaliacoes(sugestao.getTotalDeAvaliacoes() + 1);
 			sugestao.setClassificacao((sugestao.getClassificacao() + classificacao.getClassificacao()) / sugestao.getTotalDeAvaliacoes());
 			sugestao.getAvaliadores().add(colaborador);
