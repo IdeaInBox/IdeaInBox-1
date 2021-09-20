@@ -24,11 +24,9 @@ fieldset{
 }
 
 
-.fas fa-share{
-   color: #000440;
-   margin-right: 0;
-   
+
+.fa-envelope{
+	color:#7703FB;
 }
-.fas fa-share:hover{
-    color: rgb(9, 212, 9);
-}
+.fa-times{color:#E62105;}
+.fa-check{color:#31FF12;}

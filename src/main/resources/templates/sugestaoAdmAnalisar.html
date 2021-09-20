@@ -81,9 +81,11 @@
        <td><span th:text="${sugestao.colaborador.nome}"></span>
       <td><span th:text="${sugestao.colaborador.cargo.nome}"></span></td>
       <td><span th:text="${sugestao.dataEnvio}"></span></td>
+
       <td><div class="icons"><span class="sugestao"><a href="#"><i class="far fa-comment" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></a></span>
             <span class="analise "><a href="#"><i class="fas fa-folder-open"></i></a></span>
             <button type="button" class="btn btn-secundary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="far fa-envelope"></i></button>
+
 
             </div></td>  
            <!-- Modal -->
@@ -112,7 +114,7 @@
     </div>
   </div>
 </div>
-            
+         
       </tr>
   </tbody>
 </table>

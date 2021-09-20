@@ -51,10 +51,10 @@
 				<div class="collapse navbar-collapse justify-content-end"
 					id="navbar-links">
 					<div class="navbar-nav">
-						 <a class="nav-item nav-link" id="home-menu" href="http://localhost:8080/">Home</a>
+						 <a class="nav-item nav-link" id="home-menu" href="http:/">Home</a>
                     <a class="nav-item nav-link" id="about-menu" href="/login">Login</a>
                     <a class="nav-item nav-link" id="services-menu" href="/cadastrarColaborador">Cadastrar Colaborador</a>
-                    <a class="nav-item nav-link" id="team-menu" href="http://localhost:8080/timeline">Timeline</a>
+                    <a class="nav-item nav-link" id="team-menu" href="http:/timeline">Timeline</a>
                     <a class="nav-item nav-link" id="contact-menu" href="/profile">Perfil</a>
                      <a class="nav-item nav-link" id="exit-menu" href="/logout" >Sair</a>
 					</div>
@@ -79,11 +79,11 @@
    <tr th:each="sugestao : ${sugestoes}">
        <td><span th:text="${sugestao.texto}"></span></td>    
        <td><span th:text="${sugestao.categoria}"></span></td>
-       <td><div class="icons"><div><span><a href="#"><i class="fas fa-file-upload"></i></a></span>
-       <a th:href="${(#mvc.url('SC#aprovarSugestao').arg(0, sugestao.id)).build()}"><i class="fas fa-check"></i></a>
-	<a  th:href="${(#mvc.url('SC#reprovarSugestao').arg(0, sugestao.id)).build()}"><i class="fas fa-times"></i></a>
-	        <button type="button" class="btn btn-secundary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="far fa-envelope"></i></button></div></td>
-	   
+       <td><div class="icons"><div>
+       <a th:href="${(#mvc.url('SC#aprovarSugestao').arg(0, sugestao.id)).build()}"><i class="fas fa-check" data-bs-toggle="tooltip" data-bs-placement="rigth" title="Aprovar Sugestão"></i></a>
+	   <a  th:href="${(#mvc.url('SC#reprovarSugestao').arg(0, sugestao.id)).build()}"><i class="fas fa-times" data-bs-toggle="tooltip" data-bs-placement="rigth" title="Reprovar Sugestão"></i></a>
+	   <button type="button" class="btn btn-secundary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="far fa-envelope" data-bs-toggle="tooltip" data-bs-placement="rigth" title="FeedBack para Colaborador"></i></button>
+	   <span data-bs-toggle="tooltip" data-bs-placement="rigth" title="Anexar Analise da Sugestão"><a href="#"><i class="fas fa-file-upload"></i></a></span></div></td>
 	   <div class="col">
      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
