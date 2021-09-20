@@ -82,12 +82,29 @@
       <td><span th:text="${sugestao.colaborador.cargo.nome}" ></span></td>
       <td><span th:text="${sugestao.dataEnvio}"></span></td>
 
-      <td><div class="icons"><span class="sugestao"  data-bs-toggle="tooltip" data-bs-placement="rigth" title="Sugestão"><a href="#"><i class="far fa-comment" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></a></span>
+      <td><div class="icons"><span class="sugestao"  data-bs-toggle="tooltip" data-bs-placement="rigth" title="Sugestão"><a href="#"><i class="far fa-comment" data-bs-toggle="modal" th:attr="data-bs-target='#sugestao' +*{sugestao.id}"></i></a></span>
             <span class="analise "  data-bs-toggle="tooltip" data-bs-placement="rigth" title="Estudo de viabilidade"><a href="#"><i class="fas fa-folder-open" ></i></a></span>
             <button type="button" class="btn btn-secundary" data-bs-toggle="modal" th:attr="data-bs-target='#exampleModal' +*{sugestao.id}"><i class="far fa-envelope"  data-bs-toggle="tooltip" data-bs-placement="rigth" title="FeedBack para Gerente"></i></button>
             </div></td> 
+            
+         <!-- Modal Sugestão-->
+<div class="modal fade" id="sugestao" th:id="*{'sugestao' + {sugestao.id}}" tabindex="-1" aria-labelledby="sugestaoLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="sugestaoLabel">Sugestão</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body"><span th:text="*{sugestao.texto}"></span>
+       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sair</button>
+        </div>
+    </div>
+  </div>
+</div>
              
-           <!-- Modal -->
+           <!-- Modal Email -->
    <div class="modal fade" th:id="*{'exampleModal' + {sugestao.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
     <div class="modal-content">
