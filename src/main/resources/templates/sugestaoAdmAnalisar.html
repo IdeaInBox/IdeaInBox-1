@@ -81,9 +81,10 @@
        <td><span th:text="${sugestao.colaborador.nome}"></span>
       <td><span th:text="${sugestao.colaborador.cargo.nome}"></span></td>
       <td><span th:text="${sugestao.dataEnvio}"></span></td>
-      <td><div class="icons"><span class="sugestao"><a href="#"><i class="far fa-comment" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></a></span>
-            <span class="analise "><a href="#"><i class="fas fa-folder-open"></i></a></span>
-            <span class="email"><a href="#"><i class="fas fa-at"></i></a></span>
+      <td><div class="icons"><span class="sugestao" data-bs-toggle="tooltip" data-bs-placement="left" title="Sugestão"><a href="#"><i class="far fa-comment" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></a></span>
+            <span class="analise" data-bs-toggle="tooltip" data-bs-placement="left" title="Analise da Sugestão">
+ <a href="#"><i class="fas fa-folder-open"></i></a></span>
+            <span class="email" data-bs-toggle="tooltip" data-bs-placement="left" title="FeedBack para Gerente"><a href="#"><i class="fas fa-at"></i></a></span>
             </div></td>  
            <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -101,7 +102,7 @@
     </div>
   </div>
 </div>
-            
+         
       </tr>
   </tbody>
 </table>

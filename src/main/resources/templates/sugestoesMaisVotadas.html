@@ -51,10 +51,10 @@
 				<div class="collapse navbar-collapse justify-content-end"
 					id="navbar-links">
 					<div class="navbar-nav">
-						 <a class="nav-item nav-link" id="home-menu" href="http://localhost:8080/">Home</a>
+						 <a class="nav-item nav-link" id="home-menu" href="http:/">Home</a>
                     <a class="nav-item nav-link" id="about-menu" href="/login">Login</a>
                     <a class="nav-item nav-link" id="services-menu" href="/cadastrarColaborador">Cadastrar Colaborador</a>
-                    <a class="nav-item nav-link" id="team-menu" href="http://localhost:8080/timeline">Timeline</a>
+                    <a class="nav-item nav-link" id="team-menu" href="http:/timeline">Timeline</a>
                     <a class="nav-item nav-link" id="contact-menu" href="/profile">Perfil</a>
                      <a class="nav-item nav-link" id="exit-menu" href="/logout" >Sair</a>
 					</div>
@@ -82,8 +82,8 @@
       <td><span th:text="${sugestao.status}"></span></td>
       <td><span th:text="${sugestao.texto}"></span></td>
       <td><span th:text = "${sugestao.classificacao}"></span></td>
-      <td><div class="icons"><div><span ><a href="/sugestaoADM#"><i class="fas fa-share"></i></a></span></div>
-	  <div><span ><a href="#"><i class="fas fa-archive"></i></a></div></div></td>
+      <td><div class="icons"><div><span data-bs-toggle="tooltip" data-bs-placement="rigth" title="Enviar para Administrador"><a href="/sugestaoADM#"><i class="fas fa-share"></i></a></span></div>
+	  <div><span data-bs-toggle="tooltip" data-bs-placement="rigth" title="Arquivar Sugestão"><a href="#"><i class="fas fa-archive"></i></a></div></div></td>
    
       </tr>
   </tbody>
