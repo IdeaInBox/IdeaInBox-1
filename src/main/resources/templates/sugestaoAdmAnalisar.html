@@ -83,21 +83,32 @@
       <td><span th:text="${sugestao.dataEnvio}"></span></td>
       <td><div class="icons"><span class="sugestao"><a href="#"><i class="far fa-comment" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></a></span>
             <span class="analise "><a href="#"><i class="fas fa-folder-open"></i></a></span>
-            <span class="email"><a href="#"><i class="fas fa-at"></i></a></span>
+            <button type="button" class="btn btn-secundary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="far fa-envelope"></i></button>
+
             </div></td>  
            <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Sugestão</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Retorno</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body"><span th:text="*{sugestao.texto}"></span>
-       </div>
+      <div class="modal-body">
+        <form action="/enviarEmail">
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Para: </label>
+            <input type="text" class="form-control" id="recipient-name" th:value="${sugestao.colaborador.email}" name="email">
+            <label for="recipient-name" class="col-form-label">Email: </label>
+            <input type="text" class="form-control" id="recipient-name"  name="text">
+          </div>
+          
+      </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sair</button>
-        </div>
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Sair</button>
+        <button type="submit" class="btn btn-secondary">Enviar</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

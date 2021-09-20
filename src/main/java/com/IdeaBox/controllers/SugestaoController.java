@@ -154,7 +154,7 @@ public String moverParaOAdm(long id) {
 
 @GetMapping("/sugestaoADM")
 public ModelAndView sugestoesAnaliseAdm() {
-	Iterable<Sugestao> sugestoes = sr.findAll();
+	Iterable<Sugestao> sugestoes = sr.findAllInTopTrend();
 	ModelAndView mv = new ModelAndView("sugestaoAdmAnalisar");
 	mv.addObject("sugestoes", sugestoes);
 	return mv;
