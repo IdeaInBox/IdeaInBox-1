@@ -139,11 +139,19 @@ public ModelAndView sugestaoPendente() {
 }
 @GetMapping("/topsugestoes")
 public ModelAndView sugestoesMaisVotadas() {
-	Iterable<Sugestao> sugestoes = sr.findAll();
+	Iterable<Sugestao> sugestoes = sr.findTop();
 	ModelAndView mv = new ModelAndView("sugestoesMaisVotadas");
 	mv.addObject("sugestoes", sugestoes);
 	return mv;
 }
+@RequestMapping("/moveToAdm")
+public String moverParaOAdm(long id) {
+	Sugestao sugestao = sr.findById(id);
+	sugestao.setStatus(Status_Sugestao.TOP_TREND);
+	sr.save(sugestao);
+	return "redirect:/topsugestoes";
+}
+
 @GetMapping("/sugestaoADM")
 public ModelAndView sugestoesAnaliseAdm() {
 	Iterable<Sugestao> sugestoes = sr.findAll();
