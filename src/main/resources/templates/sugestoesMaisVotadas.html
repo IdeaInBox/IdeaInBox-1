@@ -69,8 +69,8 @@
    <thead>
     <tr>
       
-      <th scope="col">Status</th>
       <th scope="col">Sugestões</th>
+      <th scope="col">Status</th>
       <th scope="col">Notas</th>
       <th scope="col"  class="col-1">Ações</th>
      </tr>
@@ -79,11 +79,11 @@
     <tr th:each="sugestao : ${sugestoes}">
     
     
-      <td><span th:text="${sugestao.status}"></span></td>
       <td><span th:text="${sugestao.texto}"></span></td>
+      <td><span th:text="${sugestao.status}"></span></td>
       <td><span th:text = "${sugestao.classificacao}"></span></td>
-      <td><div class="icons"><div><span ><a href="/sugestaoADM#"><i class="fas fa-share"></i></a></span></div>
-	  <div><span ><a href="#"><i class="fas fa-archive"></i></a></div></div></td>
+      <td><div><span ><a th:href="${(#mvc.url('SC#moverParaOAdm').arg(0, sugestao.id)).build()}"><i class="fas fa-share"></i></a></span></div>
+	  <div><span ><a href="#"><i class="fas fa-archive"></i></a></div></td>
    
       </tr>
   </tbody>
