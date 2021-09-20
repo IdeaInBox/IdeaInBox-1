@@ -79,7 +79,7 @@
    <tr th:each="sugestao : ${sugestoes}">
        <td><span th:text="${sugestao.texto}"></span></td>    
        <td><span th:text="${sugestao.categoria}"></span></td>
-       <td><div class="icons"><div>
+       <td><div class="icons">
        <a th:href="${(#mvc.url('SC#aprovarSugestao').arg(0, sugestao.id)).build()}"><i class="fas fa-check" data-bs-toggle="tooltip" data-bs-placement="rigth" title="Aprovar Sugestão"></i></a>
 	   <a  th:href="${(#mvc.url('SC#reprovarSugestao').arg(0, sugestao.id)).build()}"><i class="fas fa-times" data-bs-toggle="tooltip" data-bs-placement="rigth" title="Reprovar Sugestão"></i></a>
 	   <button type="button" class="btn btn-secundary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="far fa-envelope" data-bs-toggle="tooltip" data-bs-placement="rigth" title="FeedBack para Colaborador"></i></button>
