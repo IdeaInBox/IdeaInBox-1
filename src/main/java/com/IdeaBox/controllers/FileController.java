@@ -29,17 +29,18 @@ public class FileController {
 	private FileStorageService storageService;
 	
 	@PostMapping("/upload")
-	public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("id") long id){
+	public String uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("id") long id){
 		String message = "";
 		
 		try {
 			storageService.store(file, id);
 			message = "Arquivo enviado com sucesso: " + file.getOriginalFilename();
-			return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
+			return "redirect:/pendentes";
 		}
 		catch(Exception e) {
 			message = "Não foi possivel enviar o arquivo: " + file.getOriginalFilename() + "!";
-			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
+			e.printStackTrace();
+			return "redirect:/pendentes";
 		}
 	}
 	
