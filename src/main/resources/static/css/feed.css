@@ -1,6 +1,8 @@
 body{
     font-family: 'Roboto', sans-serif;
-    background-color: #F5F5F5;
+    background-color:#CBFFDB;
+    margin-top: 70px;
+   
 }
 .row{
     margin: 0;
@@ -14,41 +16,6 @@ p, li{
     color: #000429;
     font-size: 16px;
 }
-
-
-/*Barra de navega��o*/
-header, .navbar{
-    background-color: #F3CA06;
-    margin-bottom: 80px;
-    
-    }
-    #nav-container{
-        padding-top: 0;
-        padding-bottom: 0;
-    }
-    
-    #logo{
-       width: 160px;
-    }
-    
-    .navbar-brand{
-    padding: 0;
-    color: white;
-    }
-    
-    .navbar-brand:hover{
-        color: white;
-    }
-    
-    #navbar-links a{
-        color: white;
-          font-weight: bolder;
-    }
-    .navbar-expand-lg .navbar-nav .nav-link{
-        padding: 1rem .8rem;
-    }
-
-
 
 .btn-primary{
     background-color:#000440;
@@ -80,7 +47,7 @@ ul{
     padding: 10px;
     
 }
-   .form-control{
+.form-control{
 	resize: none;
 }
 .form-select{
