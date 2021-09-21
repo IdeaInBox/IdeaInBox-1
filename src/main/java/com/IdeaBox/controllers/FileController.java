@@ -29,11 +29,11 @@ public class FileController {
 	private FileStorageService storageService;
 	
 	@PostMapping("/upload")
-	public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file){
+	public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("id") long id){
 		String message = "";
 		
 		try {
-			storageService.store(file);
+			storageService.store(file, id);
 			message = "Arquivo enviado com sucesso: " + file.getOriginalFilename();
 			return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
 		}

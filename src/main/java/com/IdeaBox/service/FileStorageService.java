@@ -9,7 +9,9 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.IdeaBox.models.sugestoes.FileEstudoViabilidade;
+import com.IdeaBox.models.sugestoes.Sugestao;
 import com.IdeaBox.repository.FileRepository;
+import com.IdeaBox.repository.SugestaoRepository;
 
 @Service
 public class FileStorageService {
@@ -17,11 +19,16 @@ public class FileStorageService {
 	@Autowired
 	private FileRepository fr;
 
-	public FileEstudoViabilidade store(MultipartFile file) throws IOException {
+	@Autowired
+	private SugestaoRepository sr;
+	
+	public FileEstudoViabilidade store(MultipartFile file, long id) throws IOException {
 
+		Sugestao sugestao = sr.findById(id);
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		FileEstudoViabilidade File = new FileEstudoViabilidade(fileName, file.getContentType(), file.getBytes());
-
+		sugestao.setEstudoViabilidade(File);
+		sr.save(sugestao);
 		return fr.save(File);
 	}
 	
