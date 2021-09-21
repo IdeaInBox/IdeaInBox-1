@@ -62,17 +62,18 @@
 			</nav>
 		</div>
 	</header>
-    <h1>Sugestões pendentes de analise</h1>
-	
+
+    <h1>Sugestões pendentes de análise</h1>
+	<div class="container-fluid">
     <fieldset>
-    <table class="table">
+    <table class="table table-info table-striped">
+
    <thead>
     <tr>
       
       <th scope="col">Sugestão</th>
       <th scope="col">Categoria</th>
       <th scope="col"  class="col-1">Ações</a></th>
-      
       </tr>
   </thead>
   <tbody>
@@ -100,7 +101,7 @@
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Para: </label>
             <input type="text" class="form-control" id="recipient-name" th:value="${sugestao.colaborador.email}" name="email">
-            <label for="recipient-name" class="col-form-label">Email: </label>
+            <label for="recipient-name" class="col-form-label">E-mail: </label>
             <input type="text" class="form-control" id="recipient-name"  name="text">
           </div>
           
