@@ -88,13 +88,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form method="post" action="/editar">
+        <form method="post" action="/upload" enctype="multipart/form-data">
         <div class="mb-3">
        
        <input type="hidden" th:value="*{sugestao.id}" class="form-control" name="id" >
     <label for="exampleInputPassword1" class="form-label">Faça upload do arquivo</label>
   <label for="formFile" class="form-label">Default file input example</label>
-  <input class="form-control" type="file" id="formFile">
+  <input class="form-control" type="file" id="formFile" name="file">
 </div>
   </div>
      

@@ -22,7 +22,7 @@ import com.IdeaBox.models.sugestoes.ResponseMessage;
 import com.IdeaBox.service.FileStorageService;
 
 @Controller
-@CrossOrigin("http://localhost:8098")
+@CrossOrigin("http://localhost:8099")
 public class FileController {
 
 	@Autowired

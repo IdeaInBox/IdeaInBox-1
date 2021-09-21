@@ -69,7 +69,7 @@ public class Sugestao implements Serializable {
 	@Column
 	private int totalDeAvaliacoes;
 	
-	@Column
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private FileEstudoViabilidade estudoViabilidade;
 	
 	@Column
