@@ -100,3 +100,13 @@ left: 83%;
 color: #000440;
 font-size: 14pt;
 }
+
+table {
+width:500px;
+table-layout:fixed;
+}
+
+
+td {
+word-wrap:break-word;
+}
