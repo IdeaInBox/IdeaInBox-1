@@ -76,20 +76,38 @@
   </thead>
   <tbody>
     <tr th:each="colaborador : ${colaboradores}" >
-    
+    <!-- Modal Excluir -->
+<div class="modal fade" id="excluir" tabindex="-1" aria-labelledby="excluirLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="excluirLabel">Exclusão</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <p> Você confirma a exclusão dos dados</p>
+       
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-secondary" th:href="${(#mvc.url('CC#deletarColaborador').arg(0, colaborador.id)).build()}">Confirmar</button>
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
     <td><span th:text="${colaborador.id}"></span></td>
     <td><span th:text="${colaborador.nome}"></span></td>
 	<td><span th:text="${colaborador.cpf}" ></span></td>
 	<td><span th:text="${colaborador.cargo.nome}" ></span></td>
 	<td><span th:text="${colaborador.login}" ></span></td>
 	<td><span th:text="${colaborador.email}" ></span></td>
-	<td><span class= "icons" data-bs-toggle="tooltip" data-bs-placement="rigth" title="Editar"><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#tudoModal' +*{colaborador.id}"><i class="far fa-edit"></i></button>
-   	<a th:href="${(#mvc.url('CC#deletarColaborador').arg(0, colaborador.id)).build()}"><i class="fas fa-trash" data-bs-toggle="tooltip" data-bs-placement="rigth" title="Excluir"></i></a></span>
-	</td>
-    
+	<td><span class= "icons" >
+	<button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#tudoModal' +*{colaborador.id}"><i class="far fa-edit" ></i></button>
+    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#excluir"><i class="fas fa-trash" data-bs-toggle="tooltip" data-bs-placement="rigth" title="Excluir"></i></button>
+   	</span></td>   	
+   	
 <!-- Modal Editar-->
- 	
-    <div class="modal fade" th:id="*{'tudoModal' + {colaborador.id}}" tabindex="-1" aria-labelledby="tudoModalLabel" aria-hidden="true">
+ 	<div class="modal fade" th:id="*{'tudoModal' + {colaborador.id}}" tabindex="-1" aria-labelledby="tudoModalLabel" aria-hidden="true">
     <div class="modal-dialog"> 
     <div class="modal-content">
       <div class="modal-header">
@@ -99,7 +117,6 @@
       <div class="modal-body">
         <form method="post" action="/editarTudo">
         <div class="mb-3">
-
        <input type="hidden" th:value="*{colaborador.id}" class="form-control" name="id" >
     <label for="exampleInputPassword1" class="form-label">Mudar nome</label>
     <input type="nome" class="form-control" id="texto" name="nome"  th:value="*{colaborador.nome}">
@@ -115,7 +132,7 @@
     <input type="email" class="form-control" id="texto" name="email"  th:value="*{colaborador.email}">
   </div>
       <div class="modal-footer">
-      <button type="submit" class="btn btn-success">Aceitar</button>
+      <button type="submit" class="btn btn-secondary">Aceitar</button>
       <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
        
         </form>
@@ -123,29 +140,13 @@
     </div>
   </div>
 </div>
-<!-- Modal Excluir -->
-<div class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+
+
 </tr>
 </tbody>
  </table>
 <button class="btn btn-primary"><a href="/cadastrarColaborador">Cadastrar
-									Colaborador  &nbsp&nbsp<i class="fas fa-user-plus"></i></a></button>
+									Colaborador  &nbsp;&nbsp;<i class="fas fa-user-plus"></i></a></button>
 	</div>
 
 
