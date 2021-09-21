@@ -19,6 +19,7 @@ h1{
     position: absolute;
     
 }
+.btn-secondary{background-color:#000440;}
 fieldset{
     box-sizing: border-box;
     z-index: 1;
@@ -46,6 +47,7 @@ margin-top: 1.5%;
 td {
 word-wrap:break-word;
 }
+
 .btn1{
 	 background-color: transparent;
 border: none
