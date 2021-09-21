@@ -49,10 +49,10 @@
 				<div class="collapse navbar-collapse justify-content-end"
 					id="navbar-links">
 					<div class="navbar-nav">
-						 <a class="nav-item nav-link" id="home-menu" href="http://localhost:8080/">Home</a>
+						 <a class="nav-item nav-link" id="home-menu" href="http:/">Home</a>
                     <a class="nav-item nav-link" id="about-menu" href="/login">Login</a>
                     <a class="nav-item nav-link" id="services-menu" href="/cadastrarColaborador">Cadastrar Colaborador</a>
-                    <a class="nav-item nav-link" id="team-menu" href="http://localhost:8080/timeline">Timeline</a>
+                    <a class="nav-item nav-link" id="team-menu" href="http:/timeline">Timeline</a>
                     <a class="nav-item nav-link" id="contact-menu" href="/profile">Perfil</a>
                      <a class="nav-item nav-link" id="exit-menu" href="/logout">Sair</a>
 					</div>
@@ -60,8 +60,9 @@
 			</nav>
 		</div>
 	</header>
+	<h1> Colaboradores</h1>
 	<div class="container-fluid">
-	<table class="table">
+	<table class="table table-info table-striped">
    <thead>
     <tr>
      <th scope="col">Nº</th>
@@ -70,7 +71,7 @@
       <th scope="col">Cargo</th>
       <th scope="col">Login</th>
       <th scope="col">Email</th>
-      <th scope="col"> </th>
+      <th scope="col">Ações </th>
     </tr>
   </thead>
   <tbody>
@@ -82,13 +83,11 @@
 	<td><span th:text="${colaborador.cargo.nome}" ></span></td>
 	<td><span th:text="${colaborador.login}" ></span></td>
 	<td><span th:text="${colaborador.email}" ></span></td>
-
-	<td><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#tudoModal' +*{colaborador.id}"><i class="far fa-edit"></i></button></td>
-   
-	<td><a th:href="${(#mvc.url('CC#deletarColaborador').arg(0, colaborador.id)).build()}"><i class="fas fa-trash"></i></a>
+	<td><span class= "icons" data-bs-toggle="tooltip" data-bs-placement="rigth" title="Editar"><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#tudoModal' +*{colaborador.id}"><i class="far fa-edit"></i></button>
+   	<a th:href="${(#mvc.url('CC#deletarColaborador').arg(0, colaborador.id)).build()}"><i class="fas fa-trash" data-bs-toggle="tooltip" data-bs-placement="rigth" title="Excluir"></i></a></span>
 	</td>
     
-<!-- Modal -->
+<!-- Modal Editar-->
  	
     <div class="modal fade" th:id="*{'tudoModal' + {colaborador.id}}" tabindex="-1" aria-labelledby="tudoModalLabel" aria-hidden="true">
     <div class="modal-dialog"> 
@@ -120,6 +119,24 @@
       <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
        
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Excluir -->
+<div class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

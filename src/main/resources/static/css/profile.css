@@ -1,7 +1,7 @@
 
 body{
     font-family: 'Roboto', sans-serif;
-    background-color: #F5F5F5;
+    background-color: #f3f3f3;
     margin-top:60px;
 
 }
@@ -99,4 +99,14 @@ color: #000440;
 left: 83%;
 color: #000440;
 font-size: 14pt;
+}
+
+table {
+width:500px;
+table-layout:fixed;
+}
+
+
+td {
+word-wrap:break-word;
 }

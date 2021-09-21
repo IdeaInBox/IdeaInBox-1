@@ -62,28 +62,62 @@
 			</nav>
 		</div>
 	</header>
-    <h1>Sugestões pendentes de analise</h1>
+
+    <h1>Sugestões pendentes de análise</h1>
 	<div class="container-fluid">
     <fieldset>
-    <table class="table table-success table-striped">
+    <table class="table table-info table-striped">
+
    <thead>
     <tr>
       
       <th scope="col">Sugestão</th>
       <th scope="col">Categoria</th>
       <th scope="col"  class="col-1">Ações</a></th>
-      
       </tr>
   </thead>
   <tbody>
    <tr th:each="sugestao : ${sugestoes}">
+    <!-- MODAL FILE -->
+ 
+   <div class="modal fade" th:id="*{'anexoModal' + {sugestao.id}}" tabindex="-1" aria-labelledby="anexoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="anexoModalLabel">Anexar arquivo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/editar">
+        <div class="mb-3">
+       
+       <input type="hidden" th:value="*{sugestao.id}" class="form-control" name="id" >
+    <label for="exampleInputPassword1" class="form-label">Faça upload do arquivo</label>
+  <label for="formFile" class="form-label">Default file input example</label>
+  <input class="form-control" type="file" id="formFile">
+</div>
+  </div>
+     
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+       <button type="submit" class="btn btn-outline-success">Aceitar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
        <td><span th:text="${sugestao.texto}"></span></td>    
        <td><span th:text="${sugestao.categoria}"></span></td>
        <td><div class="icons">
        <a th:href="${(#mvc.url('SC#aprovarSugestao').arg(0, sugestao.id)).build()}"><i class="fas fa-check" data-bs-toggle="tooltip" data-bs-placement="rigth" title="Aprovar Sugestão"></i></a>
 	   <a  th:href="${(#mvc.url('SC#reprovarSugestao').arg(0, sugestao.id)).build()}"><i class="fas fa-times" data-bs-toggle="tooltip" data-bs-placement="rigth" title="Reprovar Sugestão"></i></a>
 	   <button type="button" class="btn btn-secundary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="far fa-envelope" data-bs-toggle="tooltip" data-bs-placement="rigth" title="FeedBack para Colaborador"></i></button>
-	   <span data-bs-toggle="tooltip" data-bs-placement="rigth" title="Anexar Analise da Sugestão"><a href="#"><i class="fas fa-file-upload"></i></a></span></div></td>
+	   <span data-bs-toggle="tooltip" data-bs-placement="rigth" title="Anexar Analise da Sugestão"><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#anexoModal' +*{sugestao.id}" ><i class="fas fa-file-upload"></i></button></span>
+	   <button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#editarModal' +*{sugestao.id}"><i class="far fa-edit"></i></button></div></td>
+	   
+	  
+	  <!-- MODAL EMAIL -->
 	   <div class="col">
      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -97,7 +131,7 @@
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Para: </label>
             <input type="text" class="form-control" id="recipient-name" th:value="${sugestao.colaborador.email}" name="email">
-            <label for="recipient-name" class="col-form-label">Email: </label>
+            <label for="recipient-name" class="col-form-label">E-mail: </label>
             <input type="text" class="form-control" id="recipient-name"  name="text">
           </div>
           
@@ -111,6 +145,38 @@
   </div>
 </div>
      </div>
+
+
+
+
+ <!-- MODAL EDITAR -->
+ <div class="modal fade" th:id="*{'editarModal' + {sugestao.id}}" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editarModalLabel">Editar Sugestão</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/editar">
+        <div class="mb-3">
+        <label for="id">Id</label>
+       <input type="text" th:value="*{sugestao.id}" class="form-control" name="id" >
+    <label for="exampleInputPassword1" class="form-label">Nova sugestão</label>
+    <input type="texto" class="form-control" id="texto" name="texto">
+  </div>
+     
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+       <button type="submit" class="btn btn-outline-success">Aceitar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- MODAL FILE -->
+ 
 
       </tr>
   </tbody>
