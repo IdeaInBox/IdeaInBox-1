@@ -19,6 +19,7 @@
 	rel="stylesheet"
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
+	<!-- Nossas Configurações -->
 <link rel="stylesheet" href="css/barra_navegacao.css">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/footer.css">
@@ -235,12 +236,14 @@
 		</div>
 	</main>
 	<footer class="rodape">
+	<div id="voltarTopo">
+	<a href="#" id="subir"><i class="fas fa-caret-up"  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Voltar ao Topo"></i></a></div>
 		
 		<div class="social-icons">
-			<a href="#"><i class="fa fa-facebook"></i></a>
-			<a href="#"><i class="fa fa-twitter"></i></a>
-			<a href="#"><i class="fa fa-instagram"></i></a>
-			<a href="#"><button type="button" class="btn btn-ligt" data-bs-toggle="modal" data-bs-target="#contatoModal" data-bs-whatever="@mdo"><i class="fa fa-envelope" ></i></button></a>
+			<a href="#"><i class="fa fa-facebook" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Facebook"></i></a>
+			<a href="#"><i class="fa fa-twitter"data-bs-toggle="tooltip" data-bs-placement="bottom" title="Twitter"></i></a>
+			<a href="#"><i class="fa fa-instagram" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Instagram"></i></a>
+			<a href="#"><button type="button" class="btn btn-ligt" data-bs-toggle="modal" data-bs-target="#contatoModal" data-bs-whatever="@mdo"><i class="fa fa-envelope" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Contato"></i></button></a>
 
       <!-- Modal Contato -->
          <div class="modal fade" id="contatoModal" tabindex="-1" aria-labelledby="contatoLabel" aria-hidden="true">
@@ -281,6 +284,10 @@
 	</footer>
 	<script> document.getElementById("ano").innerHTML = new Date().getFullYear();
 </script>
+<script>"$(document).ready(function() {
+	    $('#subir').click(function(){
+		$('html, body').animate({scrollTop:0}, 'slow');
+		return false;});});"></script>
 </body>
 
 </html>

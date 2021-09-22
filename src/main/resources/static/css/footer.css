@@ -28,3 +28,14 @@
 	font-size: 12px;
 	
 }
+
+#subir{
+	position:fixed;
+	bottom:224px;
+	right:50px;
+	font-size:60px;
+	color:#F3CA06;
+	opacity:0.9;
+
+	
+}
