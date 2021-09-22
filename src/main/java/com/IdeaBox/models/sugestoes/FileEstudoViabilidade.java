@@ -1,5 +1,8 @@
 package com.IdeaBox.models.sugestoes;
 
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,6 +30,11 @@ public class FileEstudoViabilidade {
 	
 	@Lob
 	private byte[] data;
+	
+    private volatile transient Path filePath;
+
+    private final String path = null;
+
 	
 	public FileEstudoViabilidade() {
 		
@@ -65,4 +73,20 @@ public class FileEstudoViabilidade {
 	public String getId() {
 		return id;
 	}
+
+	public Path toPath() {
+		Path result = filePath;
+        if (result == null) {
+            synchronized (this) {
+                result = filePath;
+                if (result == null) {
+                    result = FileSystems.getDefault().getPath(path);
+                    filePath = result;
+                }
+            }
+        }
+        return result;
+	}
+
+	
 }

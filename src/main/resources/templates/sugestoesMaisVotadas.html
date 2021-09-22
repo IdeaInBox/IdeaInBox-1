@@ -81,7 +81,7 @@
     
       <td><span th:text="${sugestao.texto}"></span></td>
       <td><span th:text="${sugestao.status}"></span></td>
-      <td><span th:text = "${sugestao.classificacao}"></span></td>
+      <td><span th:text = "${sugestao.classificacao}"></span></td>      
 
       <td><div><span data-bs-toggle="tooltip" data-bs-placement="rigth" title="Enviar para Administrador"><a th:href="${(#mvc.url('SC#moverParaOAdm').arg(0, sugestao.id)).build()}"><i class="fas fa-share"></i></a></span></div>
 	  <div><span data-bs-toggle="tooltip" data-bs-placement="rigth" title="Arquivar Sugestão"><a href="#"><i class="fas fa-archive"></i></a></div></td>
