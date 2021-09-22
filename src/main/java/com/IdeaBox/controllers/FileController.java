@@ -87,6 +87,7 @@ public class FileController {
 		return linha;
 	}
 	
+	//Colocar o getMapping aqui(Primeiro testar o metodo acima)
 	public String metodo2(@RequestParam("arquivo")FileEstudoViabilidade file) throws IOException {
 		
 
