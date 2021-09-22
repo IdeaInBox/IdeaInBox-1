@@ -33,7 +33,7 @@ public class FileEstudoViabilidade {
 
 	private volatile transient Path filePath;
 
-	private final String path = null;
+	private final String path = "aaa";
 
 	public FileEstudoViabilidade() {
 
