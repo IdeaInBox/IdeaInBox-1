@@ -119,7 +119,7 @@
 	   <button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#editarModal' +*{sugestao.id}"><i class="far fa-edit" data-bs-toggle="tooltip" data-bs-placement="left" title="Editar"></i></button></div></td>
 	   
 	  
-	  <!-- MODAL EMAIL -->
+	  <!-- Start MODAL EMAIL -->
 	   <div class="col">
      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -147,9 +147,7 @@
   </div>
 </div>
      </div>
-
-
-
+<!-- End Modal E-mail -->
 
  <!-- MODAL EDITAR -->
  <div class="modal fade" th:id="*{'editarModal' + {sugestao.id}}" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
@@ -177,7 +175,7 @@
   </div>
 </div>
 
- <!-- MODAL FILE -->
+ <!--End  MODAL Editar-->
  
 
       </tr>
