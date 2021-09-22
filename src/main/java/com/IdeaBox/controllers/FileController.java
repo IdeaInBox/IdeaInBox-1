@@ -1,5 +1,8 @@
 package com.IdeaBox.controllers;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,48 +30,58 @@ public class FileController {
 
 	@Autowired
 	private FileStorageService storageService;
-	
+
 	@PostMapping("/upload")
-	public String uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("id") long id){
+	public String uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("id") long id) {
 		String message = "";
-		
+
 		try {
 			storageService.store(file, id);
 			message = "Arquivo enviado com sucesso: " + file.getOriginalFilename();
 			return "redirect:/pendentes";
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			message = "Não foi possivel enviar o arquivo: " + file.getOriginalFilename() + "!";
 			e.printStackTrace();
 			return "redirect:/pendentes";
 		}
 	}
-	
+
 	@GetMapping("/arquivos")
-	public ResponseEntity<List<ResponseFile>> getListFiles(){
+	public ResponseEntity<List<ResponseFile>> getListFiles() {
 		List<ResponseFile> files = storageService.getAllFiles().map(dbFile -> {
-			String fileDownloadUri = ServletUriComponentsBuilder
-					.fromCurrentContextPath()
-					.path("/arquivos/")
-					.path(dbFile.getId())
-					.toUriString();
-			
-			return new ResponseFile(
-					dbFile.getNome(),
-					fileDownloadUri,
-					dbFile.getTipo(),
-					dbFile.getData().length);
-		}).collect(Collectors.toList()); 
-		
+			String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/arquivos/")
+					.path(dbFile.getId()).toUriString();
+
+			return new ResponseFile(dbFile.getNome(), fileDownloadUri, dbFile.getTipo(), dbFile.getData().length);
+		}).collect(Collectors.toList());
+
 		return ResponseEntity.status(HttpStatus.OK).body(files);
 	}
-	
-	@GetMapping("/arquivos/{id}")
-	public ResponseEntity<byte[]> getFile(@PathVariable String id){
+
+	@GetMapping("/arquivo/{id}")
+	public ResponseEntity<byte[]> getFile(@PathVariable String id) {
 		FileEstudoViabilidade file = storageService.getFile(id);
-		
+
 		return ResponseEntity.ok()
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getNome() + "\"")
 				.body(file.getData());
+	}
+
+	@GetMapping("/arquivo")
+	public String verConteudo(@RequestParam("path") String path) throws IOException {
+		BufferedReader reader = new BufferedReader(new FileReader(path));
+		String linha = "";
+
+		while (true) {
+			if (linha != null) {
+				linha = reader.readLine();
+				return linha;
+			} else {
+				break;
+			}
+
+		}
+		
+		return linha;
 	}
 }
