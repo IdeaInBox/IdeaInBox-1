@@ -23,21 +23,20 @@ public class FileEstudoViabilidade {
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String id;
-	
+
 	private String nome;
-	
+
 	private String tipo;
-	
+
 	@Lob
 	private byte[] data;
-	
-    private volatile transient Path filePath;
 
-    private final String path = null;
+	private volatile transient Path filePath;
 
-	
+	private final String path = null;
+
 	public FileEstudoViabilidade() {
-		
+
 	}
 
 	public FileEstudoViabilidade(String nome, String tipo, byte[] data) {
@@ -69,24 +68,23 @@ public class FileEstudoViabilidade {
 	public void setData(byte[] data) {
 		this.data = data;
 	}
-	
+
 	public String getId() {
 		return id;
 	}
 
 	public Path toPath() {
 		Path result = filePath;
-        if (result == null) {
-            synchronized (this) {
-                result = filePath;
-                if (result == null) {
-                    result = FileSystems.getDefault().getPath(path);
-                    filePath = result;
-                }
-            }
-        }
-        return result;
+		if (result == null) {
+			synchronized (this) {
+				result = filePath;
+				if (result == null) {
+					result = FileSystems.getDefault().getPath(path);
+					filePath = result;
+				}
+			}
+		}
+		return result;
 	}
 
-	
 }
