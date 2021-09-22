@@ -78,7 +78,7 @@
   </thead>
   <tbody>
    <tr th:each="sugestao : ${sugestoes}">
-    <!-- MODAL FILE -->
+    <!--Start MODAL FILE -->
  
    <div class="modal fade" th:id="*{'anexoModal' + {sugestao.id}}" tabindex="-1" aria-labelledby="anexoModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -99,13 +99,15 @@
   </div>
      
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
-       <button type="submit" class="btn btn-outline-success">Aceitar</button>
+       
+       <button type="submit" class="btn btn-secondary">Confirmar</button>
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
         </form>
       </div>
     </div>
   </div>
 </div>
+<!-- End Modal File -->
 
        <td><span th:text="${sugestao.texto}"></span></td>    
        <td><span th:text="${sugestao.categoria}"></span></td>
@@ -114,7 +116,7 @@
 	   <a  th:href="${(#mvc.url('SC#reprovarSugestao').arg(0, sugestao.id)).build()}"><i class="fas fa-times" data-bs-toggle="tooltip" data-bs-placement="rigth" title="Reprovar Sugestão"></i></a>
 	   <button type="button" class="btn btn-secundary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="far fa-envelope" data-bs-toggle="tooltip" data-bs-placement="rigth" title="FeedBack para Colaborador"></i></button>
 	   <span data-bs-toggle="tooltip" data-bs-placement="rigth" title="Anexar Estudo de Viabilidade"><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#anexoModal' +*{sugestao.id}" ><i class="fas fa-file-upload"></i></button></span>
-	   <button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#editarModal' +*{sugestao.id}"><i class="far fa-edit"></i></button></div></td>
+	   <button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#editarModal' +*{sugestao.id}"><i class="far fa-edit" data-bs-toggle="tooltip" data-bs-placement="left" title="Editar"></i></button></div></td>
 	   
 	  
 	  <!-- MODAL EMAIL -->

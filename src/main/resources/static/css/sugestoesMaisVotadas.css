@@ -24,18 +24,14 @@ fieldset{
     box-sizing: border-box;
     z-index: 1;
 }
+.fa-check{color: #05F00D;}
+.fa-times{color: #F03C11;}
+.fa-envelope{color: #000440;}
+.fa-edit{color:#F3CA06;}
+.fa-file-upload{color:#883DF5;}
 
-
-
-.fa-envelope{
-color: #000440;
-}
-.fa-times{color: #000440;}
-.fa-check{color: #000440;}
-.fa-share{color: #000440;}
-.fa-archive{color: #000440;}
-.fa-folder-open{color: #000440;}
-
+.fa-share{color: #05F00D;}
+.fa-archive{color: #883DF5;}
 
 table {
 width:500px;
