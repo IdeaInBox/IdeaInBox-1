@@ -1,8 +1,10 @@
 package com.IdeaBox.controllers;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -83,5 +85,16 @@ public class FileController {
 		}
 		
 		return linha;
+	}
+	
+	//Colocar o getMapping aqui depois(Primeiro testar o metodo acima)
+	public String metodo2(@RequestParam("arquivo")FileEstudoViabilidade file) throws IOException {
+		
+
+        byte[] bytes = Files.readAllBytes(file.toPath());
+
+        String textoDoArquivo = new String(bytes, "UTF-8");
+
+        return textoDoArquivo;
 	}
 }
