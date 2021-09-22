@@ -27,6 +27,7 @@ body{
 	text-decoration: none;
 	color: white;
 }
+.btn-secondary{background-color:#000440;}
 .icons{
   width: 20px;
   margin: 8px;
