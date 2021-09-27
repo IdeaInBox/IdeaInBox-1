@@ -1,10 +1,12 @@
 package com.IdeaBox.controllers;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +26,7 @@ import com.IdeaBox.models.usuarios.Gerente;
 import com.IdeaBox.repository.CargoRepository;
 import com.IdeaBox.repository.ColaboradorRepository;
 import com.IdeaBox.repository.SugestaoRepository;
+import com.IdeaBox.service.ServicePagination;
 import com.IdeaBox.service.ServiceUsuario;
 import com.IdeaBox.util.Util;
 
@@ -41,12 +44,20 @@ public class UsuarioController {
 	
 	@Autowired
 	private CargoRepository crg;
+	
+	@Autowired
+	ServicePagination sp;
 
-	@GetMapping("/timeline")
-	public ModelAndView feed(HttpSession session) {
+	@GetMapping("/timeline/{pageNumber}")
+	public ModelAndView feed(HttpSession session, @PathVariable(value = "pageNumber") int pageNumber) {
 		if (session.getAttribute("colaboradorLogado") != null || session.getAttribute("gerenteLogado") != null) {
+			int pageSize = 5;
 			ModelAndView mv = new ModelAndView("feed");
-			Iterable<Sugestao> sugestoes = sr.findAllByStatus();
+			Page<Sugestao> page = sp.findPaginated(pageNumber, pageSize);
+			List<Sugestao> sugestoes = page.getContent();
+			mv.addObject("currentPage", pageNumber);
+			mv.addObject("totalPages", page.getTotalPages());
+			mv.addObject("totalItems", page.getTotalElements());
 			mv.addObject("sugestoes", sugestoes);
 			return mv;
 		} else {
