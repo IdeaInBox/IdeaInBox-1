@@ -19,11 +19,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.IdeaBox.models.sugestoes.FileEstudoViabilidade;
 import com.IdeaBox.models.sugestoes.ResponseFile;
 import com.IdeaBox.models.sugestoes.ResponseMessage;
+import com.IdeaBox.models.sugestoes.Sugestao;
+import com.IdeaBox.repository.SugestaoRepository;
 import com.IdeaBox.service.FileStorageService;
 
 @Controller
@@ -32,6 +35,9 @@ public class FileController {
 
 	@Autowired
 	private FileStorageService storageService;
+	
+	@Autowired
+	private SugestaoRepository sr;
 
 	@PostMapping("/upload")
 	public String uploadFile(@RequestParam("file") MultipartFile file, @RequestParam("id") long id) {
@@ -87,7 +93,8 @@ public class FileController {
 		return linha;
 	}
 	
-	//Colocar o getMapping aqui depois(Primeiro testar o metodo acima)
+	
+	@GetMapping("adaihdaoifoifhj")
 	public String metodo2(@RequestParam("arquivo")FileEstudoViabilidade file) throws IOException {
 		
 
