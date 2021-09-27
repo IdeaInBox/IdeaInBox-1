@@ -45,7 +45,7 @@ public class SugestaoController {
 	@Autowired
 	private FileRepository fr;
 
-	@RequestMapping(value="/enviar", method=RequestMethod.POST)
+	@RequestMapping(value="/timeline", method=RequestMethod.POST)
 	public String form(Sugestao sugestao, HttpSession session) {
 		if(session.getAttribute("colaboradorLogado") != null) {
 		Colaborador colaborador = (Colaborador)session.getAttribute("colaboradorLogado");
@@ -62,6 +62,7 @@ public class SugestaoController {
 		}
 		
 		return "redirect:/timeline/1";
+
 	}
 	
 	@RequestMapping("/deletarSugestao")
