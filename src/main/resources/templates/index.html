@@ -64,15 +64,12 @@
 				<div class="collapse navbar-collapse justify-content-end"
 					id="navbar-links">
 					<div class="navbar-nav">
-						<a class="nav-item nav-link" id="home-menu"
-							href="http:/">Home</a> <a
-							class="nav-item nav-link" id="about-menu" href="/login">Login</a>
-						<a class="nav-item nav-link" id="services-menu"
-							href="/cadastrarColaborador">Cadastrar Colaborador</a> <a
-							class="nav-item nav-link" id="team-menu"
-							href="/timeline">Timeline</a> <a
-							class="nav-item nav-link" id="contact-menu" href="/profile">Perfil</a>
-						<a class="nav-item nav-link" id="exit-menu" href="/logout">Sair</a>
+					<a class="nav-item nav-link" id="home-menu" href="http:/">Home</a>
+					<a class="nav-item nav-link" id="about-menu" href="/login">Login</a>
+					<a class="nav-item nav-link" id="services-menu" href="/cadastrarColaborador">Cadastrar Colaborador</a>
+					<a class="nav-item nav-link" id="team-menu" href="/timeline">Timeline</a> 
+					<a class="nav-item nav-link" id="contact-menu" href="/profile">Perfil</a>
+					<a class="nav-item nav-link" id="exit-menu" href="/logout">Sair</a>
 					</div>
 				</div>
 				<div class="alert alert-warning" role="alert" th:if="${logadoexce}">
@@ -135,77 +132,61 @@
 				<span class="visually-hidden">Next</span>
 			</button>
 		</div>
-
+<!--SERVIÇOS AREA-->
+		<div class="services-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<h3 class="main-title">	Funcionalidades do Sistema</h1>
+					</div>
+					<div class="col-md-4 service-box"><i class="fas fa-lightbulb"></i>
+					<h4>Criar sua sugestão para a empresa</h4>
+					<p>Os colaboradores da empresa ajudam a melhorar a mesma dando sugestões para ela.</p>
+					</div>
+					<div class="col-md-4 service-box"><i class="fas fa-user-plus"></i>
+					<h4>Registrar colaboradores</h4>
+					<p>Você pode registrar colaboradores facilmente atráves do sistema.</p>
+					</div>
+					<div class="col-md-4 service-box"><i class="fas fa-cogs"></i>
+					<h4>Administrar sugestões</h4>
+					<p>Os administradores podem remodelar sugestões e ter controle sobre elas.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- End Serviços Area -->
 		<!--About area-->
 		<div id="about-area">
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
-						<h3 class="main-title">
-							Sobre o Idea in box
-							</h1>
+					<h3 class="main-title">Idea in box</h1>
 					</div>
 					<div class="col-md-6">
 						<img class="img-fluid" src="img/thumb-1920-855715.jpg"
 							alt="Idea in box">
 					</div>
-
 					<div class="col-md-6">
 						<h3 class="about-title">Um projeto para o futuro</h3>
-						<p>Desenvolvido no programa ENTRA21.</p>
-						<p>Criado para falicitar a vida de colaboradores e gestores
-							que prezam pelo bem-estar da empresa.</p>
+						<p>Criado para falicitar a vida de colaboradores e gestores que prezam pelo bem-estar da empresa.</p>
 						<p>Vantagens de implementar o Idea in Box em sua empresa:</p>
 						<ul id="about-list">
-							<li><i class="fas fa-check"></i> Chance de ouvir pontos de
-								vistas diferentes sobre a estrutura da empresa</li>
-							<li><i class="fas fa-check"></i> Estudos comprovam que
-								colaboradores felizes tem produtividade aumentada em até 30%</li>
-							<li><i class="fas fa-check"></i> Incentiva seus
-								colaboradores a expressarem suas idéias</li>
+							<li><i class="fas fa-check"></i> Chance de ouvir pontos de vistas diferentes sobre a estrutura da empresa</li>
+							<li><i class="fas fa-check"></i> Estudos comprovam que colaboradores felizes tem produtividade aumentada em até 30%</li>
+							<li><i class="fas fa-check"></i> Incentiva seus colaboradores a expressarem suas idéias</li>
 							<li><i class="fas fa-check"></i> Alto sigilo das sugestões</li>
 						</ul>
 					</div>
 				</div>
 			</div>
-
 		</div>
-		<!--SERVIÇOS AREA-->
-		<div class="services-area">
-			<div class="container">
-				<div class="row">
-					<div class="col-12">
-						<h3 class="main-title">
-							Funcionalidades do Sistema
-							</h1>
-					</div>
-					<div class="col-md-4 service-box">
-						<i class="fas fa-lightbulb"></i>
-						<h4>Criar sua sugestão para a empresa</h4>
-						<p>Os colaboradores da empresa ajudam a melhorar a mesma dando
-							sugestões para ela.</p>
-					</div>
-					<div class="col-md-4 service-box">
-						<i class="fas fa-user-plus"></i>
-						<h4>Registrar colaboradores</h4>
-						<p>Você pode registrar colaboradores facilmente atráves do
-							sistema.</p>
-					</div>
-					<div class="col-md-4 service-box">
-						<i class="fas fa-cogs"></i>
-						<h4>Administrar sugestões</h4>
-						<p>Os administradores podem remodelar sugestões e ter controle
-							sobre elas.</p>
-					</div>
-				</div>
-			</div>
-		</div>
+	<!-- End Area -->	
 		<!-- FILTRO PROJETOS-->
 		<div id="portfolio-area">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<h3 class="main-title">Conheça nosso sistema</h3>
+					<h3 class="main-title">Conheça nosso sistema</h3>
 					</div>
 					<div class="col-md-12" id="filter-btn-box">
 						<button class="main-btn filter-btn active " id="all-btn">Todos</button>
@@ -214,23 +195,6 @@
 						<button class="main-btn filter-btn" id="seo-btn">SEO</button>
 					</div>
 					<div class="col-md-4 project-box dev">
-						<img src="img/proj1.jpg" class="img-fluid" alt="Projeto 1">
-					</div>
-					<div class="col-md-4 project-box dsg">
-						<img src="img/proj2.jpg" class="img-fluid" alt="Projeto 2">
-					</div>
-					<div class="col-md-4 project-box seo">
-						<img src="img/proj3.jpg" class="img-fluid" alt="Projeto 3">
-					</div>
-					<div class="col-md-4 project-box dev">
-						<img src="img/proj4.jpg" class="img-fluid" alt="Projeto 4">
-					</div>
-					<div class="col-md-4 project-box dsg">
-						<img src="img/proj5.jpg" class="img-fluid" alt="Projeto 5">
-					</div>
-					<div class="col-md-4 project-box seo">
-						<img src="img/proj6.jpg" class="img-fluid" alt="Projeto 6">
-					</div>
 				</div>
 			</div>
 		</div>
@@ -282,12 +246,8 @@
        </div>  
 	
 	</footer>
-	<script> document.getElementById("ano").innerHTML = new Date().getFullYear();
-</script>
-<script>"$(document).ready(function() {
-	    $('#subir').click(function(){
-		$('html, body').animate({scrollTop:0}, 'slow');
-		return false;});});"></script>
+	<script> document.getElementById("ano").innerHTML = new Date().getFullYear();</script>
+    <script>"$(document).ready(function() {$('#subir').click(function(){$('html, body').animate({scrollTop:0}, 'slow');return false;});});"></script>
 </body>
 
 </html>
