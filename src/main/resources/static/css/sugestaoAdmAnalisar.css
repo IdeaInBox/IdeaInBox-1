@@ -1,6 +1,6 @@
 body{
    font-family: 'Roboto', sans-serif;
-   background-color: #F5F5F5;
+   background-color: #f3f3f3;
    margin:0;
    padding:0;
    border:0;
@@ -42,8 +42,7 @@ color: #F21DBF;
 }
 
 .fa-folder-open{color:#F3CA06;}
-.fa-envelope{color:#F3CA06;position: relative;
-left: -13px;}
+.fa-envelope{color:#000440;position: relative;left: -13px;}
 .col-1{
     width:15%;
 }

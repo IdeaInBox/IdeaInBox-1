@@ -69,8 +69,8 @@ public class Sugestao implements Serializable {
 	@Column
 	private int totalDeAvaliacoes;
 	
-	@Column
-	private String estudoViabilidade;
+	@OneToOne(cascade = CascadeType.PERSIST)
+	private FileEstudoViabilidade estudoViabilidade;
 	
 	@Column
 	private ZonedDateTime dataEnvio = ZonedDateTime.now(ZoneId.of("America/Sao_Paulo"));
@@ -179,11 +179,11 @@ public class Sugestao implements Serializable {
 		this.avaliadores = avaliadores;
 	}
 	
-	public String getEstudoViabilidade() {
+	public FileEstudoViabilidade getEstudoViabilidade() {
 		return estudoViabilidade;
 	}
 
-	public void setEstudoViabilidade(String estudoViabilidade) {
+	public void setEstudoViabilidade(FileEstudoViabilidade estudoViabilidade) {
 		this.estudoViabilidade = estudoViabilidade;
 	}
 
