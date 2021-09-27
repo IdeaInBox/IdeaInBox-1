@@ -33,3 +33,23 @@ fieldset{
 .fa-share{color:#0D6B28;}
 .fa-archive{color:#FA6109;}
 .fa-folder-open{color:#FA6109;}
+.btn-light{
+    background-color: #F3CA06;
+    color:#ffffff;
+    border-style: none;
+}   
+.dark {
+    background: linear-gradient(236.85deg, #0f1216 27.26%, #192027 96.03%);
+}
+.dark main{
+    font-family: 'Roboto', sans-serif;
+    color:#ffffff
+        
+}
+
+.dark .tema button {
+   color: #ffffff;
+   background: #1c1c1c;
+   border-style: none;
+   }
+      

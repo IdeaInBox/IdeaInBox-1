@@ -100,3 +100,26 @@ left: 83%;
 color: #000440;
 font-size: 14pt;
 }
+.btn-light{
+    background-color: #F3CA06;
+    color:#ffffff;
+    border-style: none;
+}
+.dark {
+    background: linear-gradient(236.85deg, #0f1216 27.26%, #192027 96.03%);
+  }
+.dark main{
+    font-family: 'Roboto', sans-serif;
+    color:#ffffff
+    
+  }
+  
+.dark .tema button {
+    color: #ffffff;
+    background: #1c1c1c;
+    border-style: none;
+  }
+.dark h6{
+    color:#ffffff;
+}
+  
