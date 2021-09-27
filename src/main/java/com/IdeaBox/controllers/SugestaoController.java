@@ -61,7 +61,7 @@ public class SugestaoController {
 			gerente.getSugestoes().clear();
 		}
 		
-		return "redirect:/timeline/{1}";
+		return "redirect:/timeline/1";
 	}
 	
 	@RequestMapping("/deletarSugestao")
