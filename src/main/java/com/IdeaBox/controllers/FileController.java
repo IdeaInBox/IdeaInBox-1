@@ -54,17 +54,7 @@ public class FileController {
 		}
 	}
 
-	@GetMapping("/arquivos")
-	public ResponseEntity<List<ResponseFile>> getListFiles() {
-		List<ResponseFile> files = storageService.getAllFiles().map(dbFile -> {
-			String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/arquivos/")
-					.path(dbFile.getId()).toUriString();
-
-			return new ResponseFile(dbFile.getNome(), fileDownloadUri, dbFile.getTipo(), dbFile.getData().length);
-		}).collect(Collectors.toList());
-
-		return ResponseEntity.status(HttpStatus.OK).body(files);
-	}
+	
 
 	@GetMapping("/arquivo/{id}")
 	public ResponseEntity<byte[]> getFile(@PathVariable String id) {
@@ -75,33 +65,5 @@ public class FileController {
 				.body(file.getData());
 	}
 
-	@GetMapping("/arquivo")
-	public String verConteudo(@RequestParam("path") String path) throws IOException {
-		BufferedReader reader = new BufferedReader(new FileReader(path));
-		String linha = "";
-
-		while (true) {
-			if (linha != null) {
-				linha = reader.readLine();
-				return linha;
-			} else {
-				break;
-			}
-
-		}
-		
-		return linha;
-	}
 	
-	
-	@GetMapping("adaihdaoifoifhj")
-	public String metodo2(@RequestParam("arquivo")FileEstudoViabilidade file) throws IOException {
-		
-
-        byte[] bytes = Files.readAllBytes(file.toPath());
-
-        String textoDoArquivo = new String(bytes, "UTF-8");
-
-        return textoDoArquivo;
-	}
 }

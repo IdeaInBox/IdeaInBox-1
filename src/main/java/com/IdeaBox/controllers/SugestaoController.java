@@ -167,7 +167,7 @@ public ModelAndView sugestoesAnaliseAdm() {
 	return mv;
 }
 
-@GetMapping("/arquivos1")
+@GetMapping("/arquivos")
 public ModelAndView arquivos() {
 	ModelAndView mv = new ModelAndView("arquivos");
 	Iterable<FileEstudoViabilidade> list  = fr.findAll();
