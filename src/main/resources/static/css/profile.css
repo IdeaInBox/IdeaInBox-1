@@ -106,7 +106,7 @@ font-size: 14pt;
     border-style: none;
 }
 .dark {
-    background: linear-gradient(236.85deg, #0f1216 27.26%, #192027 96.03%);
+    background:#0f1216 ;
   }
 .dark main{
     font-family: 'Roboto', sans-serif;
@@ -122,4 +122,15 @@ font-size: 14pt;
 .dark h6{
     color:#ffffff;
 }
-  
+.dark  .btn-primary{
+    width: 95%;
+    margin-top: 7%; 
+    border-radius: 8px;
+    background-image: linear-gradient(to left,#F3B507,#DB8F02,#F3CA06);
+   border: none;
+    
+}
+.dark .btn-primary:hover{
+	 background-color:#000440;
+ 
+}

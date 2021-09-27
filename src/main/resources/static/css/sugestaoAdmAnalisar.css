@@ -62,7 +62,7 @@ th{
     border-style: none;
 }   
 .dark {
-    background: linear-gradient(236.85deg, #0f1216 27.26%, #192027 96.03%);
+    background:#0f1216;
 }
 .dark main{
     font-family: 'Roboto', sans-serif;

@@ -70,8 +70,9 @@ h6{
     color:#ffffff;
     border-style: none;
 }
+
 .dark {
-    background: linear-gradient(236.85deg, #0f1216 27.26%, #192027 96.03%);
+    background:#0f1216 ;
   }
   .dark main{
       font-family: 'Roboto', sans-serif;
@@ -84,3 +85,16 @@ h6{
     background: #1c1c1c;
     border-style: none;
   }
+.dark  .btn-primary{
+   position: absolute;
+    margin-top: 35px; 
+    border-radius: 12px;
+    background:linear-gradient(to left,#F3B507,#DB8F02,#F3CA06);
+    border: none;
+    left: 48%;
+    
+}
+.dark .btn-primary:hover{
+	 background-color:#000440;
+ 
+}
