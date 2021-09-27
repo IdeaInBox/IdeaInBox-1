@@ -59,7 +59,7 @@
           <div class="tema">
             <button class="btn btn-light" onclick="mudaTema()"><i class="fas fa-moon"></i></button>
             </div>
-				</div>
+			</div>
 			</nav>
 		</div>
 	</header>
@@ -80,8 +80,6 @@
   <tbody>
     <tr th:each="colaborador : ${colaboradores}" >
   
-  <td><span th:text="${colaborador.id}"></span></td>
-  <td><span th:text="${colaborador.nome}"></span></td>
     <!-- Modal Excluir -->
 <div class="modal fade" id="excluir" tabindex="-1" aria-labelledby="excluirLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -106,18 +104,8 @@
 	<td><span th:text="${colaborador.cargo.nome}" ></span></td>
 	<td><span th:text="${colaborador.login}" ></span></td>
 	<td><span th:text="${colaborador.email}" ></span></td>
-
-
 	<td><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#tudoModal' +*{colaborador.id}"><i class="far fa-edit"></i></button>
   <a th:href="${(#mvc.url('CC#deletarColaborador').arg(0, colaborador.id)).build()}"><i class="fas fa-trash"></i></a></td>
-    
-<!-- Modal -->
- 	
-    <div class="modal fade" th:id="*{'tudoModal' + {colaborador.id}}" tabindex="-1" aria-labelledby="tudoModalLabel" aria-hidden="true">
-	<td><span class= "icons" >
-	<button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#tudoModal' +*{colaborador.id}"><i class="far fa-edit" ></i></button>
-    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#excluir"><i class="fas fa-trash" data-bs-toggle="tooltip" data-bs-placement="rigth" title="Excluir"></i></button>
-   	</span></td>   	
    	
 <!-- Modal Editar-->
  	<div class="modal fade" th:id="*{'tudoModal' + {colaborador.id}}" tabindex="-1" aria-labelledby="tudoModalLabel" aria-hidden="true">
@@ -147,8 +135,7 @@
       <div class="modal-footer">
       <button type="submit" class="btn btn-secondary">Aceitar</button>
       <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
-       
-        </form>
+               </form>
       </div>
     </div>
   </div>

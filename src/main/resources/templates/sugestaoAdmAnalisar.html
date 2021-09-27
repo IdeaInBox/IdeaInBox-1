@@ -71,7 +71,6 @@
     <table class="table table-primary table-striped">
    <thead>
     <tr>
-      
       <th scope="col"  class="col-3">Colaborador</th>
       <th scope="col"  class="col-4">Cargo</th>
       <th scope="col"  class="col-5">Data</th>
@@ -80,16 +79,13 @@
   </thead>
   <tbody>
    <tr th:each="sugestao : ${sugestoes}">
-        
-       <td ><span th:text="${sugestao.colaborador.nome}"></span>
+      <td ><span th:text="${sugestao.colaborador.nome}"></span>
       <td><span th:text="${sugestao.colaborador.cargo.nome}" ></span></td>
       <td><span th:text="${sugestao.dataEnvio}"></span></td>
-      <td><span th:text="${sugestao.estudoViabilidade}"></span></td>
-
       <td><div class="icons"><span class="sugestao"  data-bs-toggle="tooltip" data-bs-placement="rigth" title="Sugestão"><a href="#"><i class="far fa-comment" data-bs-toggle="modal" th:attr="data-bs-target='#sugestao' +*{sugestao.id}"></i></a></span>
-            <span class="analise "  data-bs-toggle="tooltip" data-bs-placement="rigth" title="Estudo de viabilidade"><a th:href="@{/arquivo/{id}(id = ${sugestao.estudoViabilidade})}"><i class="fas fa-folder-open" ></i></a></span>
-            <button type="button" class="btn btn-secundary" data-bs-toggle="modal" th:attr="data-bs-target='#exampleModal' +*{sugestao.id}"><i class="far fa-envelope"  data-bs-toggle="tooltip" data-bs-placement="rigth" title="FeedBack para Gerente"></i></button>
-            </div></td> 
+       <span class="analise "  data-bs-toggle="tooltip" data-bs-placement="rigth" title="Estudo de viabilidade"><a th:href="@{/arquivo/{id}(id = ${sugestao.estudoViabilidade})}"><i class="fas fa-folder-open" ></i></a></span>
+       <button type="button" class="btn btn-secundary" data-bs-toggle="modal" th:attr="data-bs-target='#exampleModal' +*{sugestao.id}"><i class="far fa-envelope"  data-bs-toggle="tooltip" data-bs-placement="rigth" title="FeedBack para Gerente"></i></button>
+       </div></td> 
             
 <!-- Start Modal Sugestão-->
 <div class="modal fade" id="sugestao" th:id="*{'sugestao' + {sugestao.id}}" tabindex="-1" aria-labelledby="sugestaoLabel" aria-hidden="true">

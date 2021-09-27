@@ -73,20 +73,7 @@ crossorigin="anonymous"></script>
     </tr>
   </thead>
   <tbody>
-   <tr th:each="sugestao : ${sugestoes}">
-      <td><span th:text="${sugestao.texto}"></span></td>    
-      <td><span th:text="${sugestao.categoria}"></span></td>
-      <td><div class="icons">
-      <a th:href="${(#mvc.url('SC#aprovarSugestao').arg(0, sugestao.id)).build()}"><i class="fas fa-check" data-bs-toggle="tooltip" data-bs-placement="rigth" title="Aprovar Sugestão"></i></a>
-	    <a  th:href="${(#mvc.url('SC#reprovarSugestao').arg(0, sugestao.id)).build()}"><i class="fas fa-times" data-bs-toggle="tooltip" data-bs-placement="rigth" title="Reprovar Sugestão"></i></a>
-	    <button type="button" class="btn btn-secundary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="far fa-envelope" data-bs-toggle="tooltip" data-bs-placement="rigth" title="FeedBack para Colaborador"></i></button>
-	    <span data-bs-toggle="tooltip" data-bs-placement="rigth" title="Anexar Analise da Sugestão"><a href="#"><i class="fas fa-file-upload"></i></a></span></div></td>
-	  <div class="col">
-      <!--Start Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-      </tr>
-  </thead>
+     </thead>
   <tbody>
    <tr th:each="sugestao : ${sugestoes}">
     <!--Start MODAL FILE -->
@@ -108,9 +95,7 @@ crossorigin="anonymous"></script>
   <input class="form-control" type="file" id="formFile" name="file">
 </div>
   </div>
-     
       <div class="modal-footer">
-       
        <button type="submit" class="btn btn-secondary">Confirmar</button>
         <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
         </form>
