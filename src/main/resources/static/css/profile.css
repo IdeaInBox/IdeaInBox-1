@@ -1,7 +1,7 @@
 
 body{
     font-family: 'Roboto', sans-serif;
-    background-color: #F5F5F5;
+    background-color: #f3f3f3;
     margin-top:60px;
 
 }
@@ -45,7 +45,7 @@ word-wrap: break-word
     }
    
          
- .imagcolaborador{
+.imagcolaborador{
         width: 100%;
       position: relative;
       right: 30%;
@@ -100,6 +100,7 @@ left: 83%;
 color: #000440;
 font-size: 14pt;
 }
+
 .btn-light{
     background-color: #F3CA06;
     color:#ffffff;
@@ -132,5 +133,15 @@ font-size: 14pt;
 }
 .dark .btn-primary:hover{
 	 background-color:#000440;
- 
+} 
+
+
+table {
+width:500px;
+table-layout:fixed;
+}
+
+td {
+word-wrap:break-word;
+
 }

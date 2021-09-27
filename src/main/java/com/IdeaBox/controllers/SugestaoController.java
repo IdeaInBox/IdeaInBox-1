@@ -21,11 +21,13 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.IdeaBox.dto.ClassificacaoRequest;
+import com.IdeaBox.models.sugestoes.FileEstudoViabilidade;
 import com.IdeaBox.models.sugestoes.Status_Sugestao;
 import com.IdeaBox.models.sugestoes.Sugestao;
 import com.IdeaBox.models.usuarios.Colaborador;
 import com.IdeaBox.models.usuarios.Gerente;
 import com.IdeaBox.repository.ColaboradorRepository;
+import com.IdeaBox.repository.FileRepository;
 import com.IdeaBox.repository.SugestaoRepository;
 
 
@@ -39,6 +41,9 @@ public class SugestaoController {
 	
 	@Autowired
 	private ColaboradorRepository cr;
+	
+	@Autowired
+	private FileRepository fr;
 
 	@RequestMapping(value="/timeline", method=RequestMethod.POST)
 	public String form(Sugestao sugestao, HttpSession session) {
@@ -157,8 +162,22 @@ public String moverParaOAdm(long id) {
 @GetMapping("/sugestaoADM")
 public ModelAndView sugestoesAnaliseAdm() {
 	Iterable<Sugestao> sugestoes = sr.findAllInTopTrend();
+	Iterable<FileEstudoViabilidade> files = fr.findAll();
+	FileEstudoViabilidade file = new FileEstudoViabilidade();
 	ModelAndView mv = new ModelAndView("sugestaoAdmAnalisar");
 	mv.addObject("sugestoes", sugestoes);
+	mv.addObject("files", files);
+	mv.addObject("file", file);
+	return mv;
+}
+
+@GetMapping("/arquivos")
+public ModelAndView arquivos() {
+	ModelAndView mv = new ModelAndView("arquivos");
+	Iterable<FileEstudoViabilidade> list  = fr.findAll();
+	
+	mv.addObject("files", list);
+	
 	return mv;
 }
 }

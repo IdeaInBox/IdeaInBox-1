@@ -1,16 +1,17 @@
-/*Barra de navega��o*/
 
 body{
 	 font-family: 'Roboto', sans-serif;
-    background-color: #F5F5F5;
+    background-color: #f3f3f3;
     color: aliceblue;
 }
 
 .container{
-	margin-top: 10%;
+	margin-top: 4.5%;
 }
 
+
 .btn-primary{
+
 	color: white;
     margin-top: 25px; 
     border-radius: 12px;
@@ -27,9 +28,13 @@ body{
 	text-decoration: none;
 	color: white;
 }
-.fa-trash-alt{
-	color: black;
+.btn-secondary{background-color:#000440;}
+.icons{
+  width: 20px;
+  margin: 8px;
 }
+.fa-trash{color:#961F00;}
+.fa-edit{text-align: initial; 	color: #000440;	}
 .modal{
 	color: black;
 }
@@ -76,3 +81,13 @@ border: none
 	 background-color:#000440;
  
 }      
+
+h1{
+    margin-top: 70px;
+    font-size: 25px;
+    background-color: #000440;
+    color: #fff;
+    height: 50px;
+    width: 100wp;
+    padding: 15px;
+}

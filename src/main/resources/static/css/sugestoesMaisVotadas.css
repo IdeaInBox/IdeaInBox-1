@@ -1,6 +1,6 @@
 body{
     font-family: 'Roboto', sans-serif;
-   background-color: #F5F5F5;
+   background-color: #f3f3f3;
    
 }
 
@@ -9,21 +9,40 @@ body{
    width:90%;
 }
 h1{
-    margin-top: 4.3%;
+    bottom: -1%;
     font-size: 25px;
     background-color: #000440;
     color: #fff;
     height: 50px;
     width: 100%;
     padding: 8px;
+    position: absolute;
     
 }
+.btn-secondary{background-color:#000440;}
 fieldset{
     box-sizing: border-box;
     z-index: 1;
 }
+.fa-check{color: #05F00D;}
+.fa-times{color: #F03C11;}
+.fa-envelope{color: #000440;}
+.fa-edit{color:#F3CA06;}
+.fa-file-upload{color:#883DF5;}
+
+.fa-share{color: #05F00D;}
+.fa-archive{color: #883DF5;}
+
+table {
+width:500px;
+table-layout:fixed;
+margin-top: 1.5%;
+}
 
 
+td {
+word-wrap:break-word;
+}
 
 .fa-envelope{
 	color:#7703FB;
@@ -53,3 +72,14 @@ fieldset{
    border-style: none;
    }
       
+
+.btn1{
+	 background-color: transparent;
+border: none
+}
+a{color: #000440;}
+
+.table thead th { 
+  background-color: #000440;
+  color: white;
+}

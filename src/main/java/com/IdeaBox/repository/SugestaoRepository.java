@@ -1,7 +1,13 @@
 package com.IdeaBox.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -10,12 +16,12 @@ import com.IdeaBox.models.usuarios.Administrador;
 import com.IdeaBox.models.usuarios.Colaborador;
 import com.IdeaBox.models.usuarios.Gerente;
 
-public interface SugestaoRepository extends CrudRepository<Sugestao, String>{
+public interface SugestaoRepository extends JpaRepository<Sugestao, String>{
 	
 	Iterable<Sugestao> findByColaborador(Colaborador colaborador);
 	
 	@Query(value = "SELECT * FROM sugestao WHERE status != 'EM_ANALISE_RH' and status <>'REPROVADO_PELO_RH' ", nativeQuery = true)
-	Iterable<Sugestao> findAllByStatus();
+	Page<Sugestao> findAllByStatus(Pageable pageable);
 
 	@Query(value = "SELECT * FROM sugestao WHERE status = 'EM_ANALISE_RH'", nativeQuery = true)
 	Iterable<Sugestao> findAllInAnalise();

@@ -1,6 +1,8 @@
 body{
     font-family: 'Roboto', sans-serif;
-    background-color: #F5F5F5;
+    background-color:#f3f3f3;
+    margin-top: 70px;
+   
 }
 .row{
     margin: 0;
@@ -95,5 +97,8 @@ ul{
     
 }
 .dark .btn-primary:hover{
-    background:#000440;
-}
+    background:#000440;}
+.pagination{
+        left: 10%;
+    
+    }

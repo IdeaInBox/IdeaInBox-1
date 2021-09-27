@@ -86,7 +86,7 @@
       <td><span th:text="${sugestao.dataEnvio}"></span></td>
 
       <td><div class="icons"><span class="sugestao"  data-bs-toggle="tooltip" data-bs-placement="rigth" title="Sugestão"><a href="#"><i class="far fa-comment" data-bs-toggle="modal" th:attr="data-bs-target='#sugestao' +*{sugestao.id}"></i></a></span>
-            <span class="analise "  data-bs-toggle="tooltip" data-bs-placement="rigth" title="Estudo de viabilidade"><a href="#"><i class="fas fa-folder-open" ></i></a></span>
+            <span class="analise "  data-bs-toggle="tooltip" data-bs-placement="rigth" title="Estudo de viabilidade"><a th:href="@{/arquivo/{id}(id = ${sugestao.estudoViabilidade.id})}"><i class="fas fa-folder-open" ></i></a></span>
             <button type="button" class="btn btn-secundary" data-bs-toggle="modal" th:attr="data-bs-target='#exampleModal' +*{sugestao.id}"><i class="far fa-envelope"  data-bs-toggle="tooltip" data-bs-placement="rigth" title="FeedBack para Gerente"></i></button>
             </div></td> 
             
