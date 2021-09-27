@@ -70,6 +70,7 @@ public class Sugestao implements Serializable {
 	private int totalDeAvaliacoes;
 	
 	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "estudo_viabilidade_id")
 	private FileEstudoViabilidade estudoViabilidade;
 	
 	@Column

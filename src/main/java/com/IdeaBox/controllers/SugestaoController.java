@@ -162,8 +162,12 @@ public String moverParaOAdm(long id) {
 @GetMapping("/sugestaoADM")
 public ModelAndView sugestoesAnaliseAdm() {
 	Iterable<Sugestao> sugestoes = sr.findAllInTopTrend();
+	Iterable<FileEstudoViabilidade> files = fr.findAll();
+	FileEstudoViabilidade file = new FileEstudoViabilidade();
 	ModelAndView mv = new ModelAndView("sugestaoAdmAnalisar");
 	mv.addObject("sugestoes", sugestoes);
+	mv.addObject("files", files);
+	mv.addObject("file", file);
 	return mv;
 }
 

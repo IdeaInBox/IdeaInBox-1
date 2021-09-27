@@ -9,7 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -34,6 +36,10 @@ public class FileEstudoViabilidade {
 	private volatile transient Path filePath;
 
 	private final String path = "aaa";
+	
+	@OneToOne
+	@JoinColumn(name = "sugestao_id")
+	private Sugestao sugestao;
 
 	public FileEstudoViabilidade() {
 
@@ -71,6 +77,18 @@ public class FileEstudoViabilidade {
 
 	public String getId() {
 		return id;
+	}
+
+	public Sugestao getSugestao() {
+		return sugestao;
+	}
+
+	public void setSugestao(Sugestao sugestao) {
+		this.sugestao = sugestao;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public Path toPath() {
