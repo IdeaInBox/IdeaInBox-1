@@ -49,6 +49,9 @@
 						<a class="nav-item nav-link" id="contact-menu" href="/profile">Perfil</a>
 						<a class="nav-item nav-link" id="exit-menu" href="/logout">Sair</a>
 					</div>
+					<div class="tema">
+					<button class="btn btn-light" onclick="mudaTema()"><i class="fas fa-moon"></i></button>
+					</div>
 				</div>
 			</nav>
 		</div>
@@ -70,19 +73,18 @@
 					<div class="contador">
 						<div class="row align-items-start">
 							<div class="col">
-								<h6 style="color:#000429" >Sugestões</h6>
-								<span th:text="${#lists.size(sugestoes)}"/> 
+								<h6>Sugestões</h6>
+								<p><span th:text="${#lists.size(sugestoes)}"></span></p> 
                         </div>
                             <div class="col">
-                        <h6 style="color:#000429">Avaliações</h6>
-                        <p style="color:#000429"><span th:text="${colaborador.totalSugestoesAvaliadas}"></span></p> 
-                            </div>
+                        <h6>Avaliações</h6>
+                        <p><span th:text="${colaborador.totalSugestoesAvaliadas}"></span></p>
+                        </div>
                      </div>
-                </div>  
-                       <div class="Sugestoes">
-                        <p><a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
-                                aria-expanded="false" aria-controls="collapseExample">
-                                Suas Sugestões &nbsp; <i class="fas fa-lightbulb"></i></a></p>
+                     </div>  
+                     <div class="Sugestoes">
+                     <p><a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                      aria-expanded="false" aria-controls="collapseExample">Suas Sugestões &nbsp; <i class="fas fa-lightbulb"></i></a></p>
                         <div class="collapse" id="collapseExample">
                             <div class="card card-body w-100">
                                 <table class="table">
@@ -116,19 +118,21 @@
   </div>
 </div>
 								
-                                </td>
-                              </tr>
-                              </tbody>
-                              </table>
-                      </div>
-                    </div> 
-                </div>          
-                  </div> 
-                </div>
-            </div>
-         
-          
-     </main>
+  </td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+   </div> 
+   </div>          
+   </div> 
+    </div>
+    </div>
+</main>
+	 <script>function mudaTema() {
+		document.body.classList.toggle("dark");
+	  }
+	  </script>
      
 </body>
 </html>

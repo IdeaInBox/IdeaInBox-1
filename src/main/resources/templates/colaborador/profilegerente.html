@@ -47,217 +47,177 @@
 
 <body>
 
-	<!-- Start Barra Navegacao-->
-	<header>
-		<div class="container" id="nav-container">
-			<nav class="navbar navbar-expand-lg fixed-top">
-				<a href="#" class="navbar-brand"> <img id="logo"
-					src="img/MicrosoftTeams-image-removebg-preview-Branco.png"
-					alt="IdeaBox"></a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbar-links" aria-controls="navbar-links"
-					aria-expanded="false" aria-label="Toogle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse justify-content-end"
-					id="navbar-links">
-					<div class="navbar-nav">
-						<a class="nav-item nav-link" id="home-menu" href="http:/">Home</a>
-						<a class="nav-item nav-link" id="about-menu" href="/login">Login</a>
-						<a class="nav-item nav-link" id="services-menu"
-							href="/cadastrarColaborador">Cadastrar Colaborador</a> <a
-							class="nav-item nav-link" id="team-menu" href="http:/timeline">Timeline</a>
-						<a class="nav-item nav-link" id="contact-menu" href="/profile">Perfil</a>
-						<a class="nav-item nav-link" id="exit-menu" href="/logout">Sair</a>
-					</div>
-				</div>
-			</nav>
-		</div>
-	</header>
-	<!-- End Barra Navegacao-->
-	<main>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="profile">
-						<img class="gerente" src="img/newideia-removebg-preview.png">
-						<h4>
-							&nbsp;<span th:text="${gerente.nome}"></span>
-						</h4>
-						&nbsp;
-						<h6>
-							<b>CPF:</b>&nbsp;<span th:text="${gerente.cpf}"></span>
-						</h6>
-						<h6>
-							<b>Cargo:</b>&nbsp;<span th:text="${gerente.cargo.nome}"></span>
-						</h6>
-						<h6>
-							<b>Email:</b>&nbsp;<span th:text="${gerente.email}"></span>
-						</h6>
-					</div>
-				</div>
-				<div class="col">
-					<div class="contador">
-						<div class="row align-items-start">
-							<div class="col">
-								<h6>Sugestões</h6>
-								<span th:text="${#lists.size(sugestoesGerente)}"></span>
-							</div>
-							<div class="col">
-								<h6>Avaliações</h6>
-								<p>
-									<span th:text="${gerente.totalSugestoesAvaliadas}"></span>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="Sugestoes">
-						<p>
-							<a class="btn btn-primary" data-bs-toggle="collapse"
-								href="#collapse1" role="button" aria-expanded="false"
-								aria-controls="collapse1"> Suas Sugestões &nbsp; <i
-								class="fas fa-lightbulb"></i></a>
-						</p>
-						<div class="collapse" id="collapse1">
-							<div class="card card-body w-100">
-								<table class="table">
-									<tbody>
-										<tr th:each="sugestao : ${sugestoesGerente}">
-											<td><span th:text="${sugestao.texto}"></span>
-												<button type="button" class="btn1" data-bs-toggle="modal"
-													th:attr="data-bs-target='#exampleModal' +*{sugestao.id}">
-													<i class="far fa-edit"></i>
-												</button>
-												<div class="modal fade"
-													th:id="*{'exampleModal' + {sugestao.id}}" tabindex="-1"
-													aria-labelledby="exampleModalLabel" aria-hidden="true">
-													<div class="modal-dialog">
-														<div class="modal-content">
-															<div class="modal-header">
-																<h5 class="modal-title" id="exampleModalLabel">Editar
-																	Sugestão</h5>
-																<button type="button" class="btn-close"
-																	data-bs-dismiss="modal" aria-label="Close"></button>
-															</div>
-															<div class="modal-body">
-																<form method="post" action="/editar">
-																	<div class="mb-3">
-																		<label for="id">Id</label> <input type="text"
-																			th:value="*{sugestao.id}" class="form-control"
-																			name="id"> <label
-																			for="exampleInputPassword1" class="form-label">Nova
-																			sugestão</label> <input type="texto" class="form-control"
-																			id="texto" name="texto">
-																	</div>
+    <!-- Start Barra Navegacao-->
+    <header>
+        <div class="container" id="nav-container">
+            <nav class="navbar navbar-expand-lg fixed-top">
+                <a href="#" class="navbar-brand">
+                    <img id="logo" src="img/MicrosoftTeams-image-removebg-preview-Branco.png" alt="IdeaBox"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links"
+                    aria-controls="navbar-links" aria-expanded="false" aria-label="Toogle navigation">
+                    <span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbar-links">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" id="home-menu" href="/">Home</a>
+                        <a class="nav-item nav-link" id="about-menu" href="/login">Login</a>
+                        <a class="nav-item nav-link" id="services-menu" href="/cadastrarColaborador">Cadastrar
+                        Colaborador</a>
+                        <a class="nav-item nav-link" id="team-menu" href="/timeline">Timeline</a>
+                        <a class="nav-item nav-link" id="contact-menu" href="/profile">Perfil</a>
+                        <a class="nav-item nav-link" id="exit-menu" href="/logout">Sair</a>
+                    </div>
+                    <div class="tema">
+                    <button class="btn btn-light" onclick="mudaTema()"><i class="fas fa-moon"></i></button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- End Barra Navegacao-->
+    <main>
+        <div class="container">
+          <div class="row">
+           <div class="col">
+            <div class="profile">
+              <img class="gerente" src="img/newideia-removebg-preview.png">
+              <h4> &nbsp;<span th:text="${gerente.nome}"></span></h4>&nbsp;
+                <h6><b>CPF:</b>&nbsp;<span th:text="${gerente.cpf}"></span></h6>
+                <h6><b>Cargo:</b>&nbsp;<span th:text="${gerente.cargo.nome}"></span></h6>
+                <h6><b>Email:</b>&nbsp;<span th:text="${gerente.email}"></span></h6>
+            </div>
+           </div>
+       <div class="col">
+         <div class="contador">
+             <div class="row align-items-start">
+              <div class="col">
+               <h6>Sugestões</h6>
+               <span th:text="${#lists.size(sugestoesGerente)}"></span>
+               </div>
+                <div class="col">
+                <h6>Avaliações</h6>
+                <p><span th:text="${gerente.totalSugestoesAvaliadas}"></span></p>
+                </div>
+                </div>
+                </div>
+                <div class="Sugestoes">
+                <p><a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                aria-expanded="false" aria-controls="collapseExample">
+                 Suas Sugestões &nbsp; <i class="fas fa-lightbulb"></i></a></p>
+                <div class="collapse" id="collapseExample">
+                <div class="card card-body w-100">
+                <table class="table">
+                <tbody>
+                <tr th:each="sugestao : ${sugestoesGerente}">
+                 <td><span th:text="${sugestao.texto}"></span>
+                 <button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#exampleModal' +*{sugestao.id}"><i class="far fa-edit"></i></button>
+<!--Modal-->
+       <div class="modal fade" th:id="*{'exampleModal' + {sugestao.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+      <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Editar Sugestão</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/editar">
+        <div class="mb-3">
+        <label for="id">Id</label>
+       <input type="text" th:value="*{sugestao.id}" class="form-control" name="id" >
+    <label for="exampleInputPassword1" class="form-label">Nova sugestão</label>
+    <input type="texto" class="form-control" id="texto" name="texto">
+     </div>
+     <div class="modal-footer">
+     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+     <button type="submit" class="btn btn-outline-success">Aceitar</button>
+     </form>
+    </div>
+    </div>
+  </div>
+</div>
+<!--End Modal-->
+  </td>
+ </tr>
+ </tbody>
+  </table>
+  </div>
+   </div>
+    </div>
+   <div class="Sugestoes">
+       <div class="collapse" id="collapseExample">
+      <div class="card card-body w-100">
+       <table class="table">
+        <tbody>
+        <tr th:each="sugestao : ${sugestoes}">
+        <td><span th:text="${sugestao.texto}"></span>
+        <button type="button" class="btn2" data-bs-toggle="modal" data-bs-target="exampleModal">
+		<i class="far fa-envelope"></i></button>
+		<a th:href="${(#mvc.url('SC#aprovarSugestao').arg(0, sugestao.id)).build()}"><i  class="fas fa-check"></i></a>
+        <a th:href="${(#mvc.url('SC#reprovarSugestao').arg(0, sugestao.id)).build()}"><i class="fas fa-times"></i></a>
+        <button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#exampleModal' +*{sugestao.id}"><i class="far fa-edit"></i>
+</button>
+<!--Modal-->
+<div class="modal fade" th:id="*{'exampleModal' + {sugestao.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Sugestão</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/editar">
+        <div class="mb-3">
+        <label for="id">Id</label>
+       <input type="text" th:value="*{sugestao.id}" class="form-control" name="id" >
+    <label for="exampleInputPassword1" class="form-label">Nova sugestão</label>
+    <input type="texto" class="form-control" id="texto" name="texto">
+  </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+       <button type="submit" class="btn btn-outline-success">Aceitar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End Modal-->
+</td>
+</tr>
+</tbody>
+</table>
+ </div>
+</div>
+</div>
+<div class="dropdown">
+ <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownSugestao" data-bs-toggle="dropdown" aria-expanded="false">Sugestões &nbsp;&nbsp;<i class="fas fa-lightbulb"></i></a>
+   <ul class="dropdown-menu" aria-labelledby="dropdownSugestao">
+     <li><a class="dropdown-item" href="/pendentes#"> Sugestões Pendentes &nbsp;&nbsp;</a></li>
+     <li><a class="dropdown-item"  href="/topsugestoes#"> Sugestões mais votadas &nbsp;&nbsp;</a></li>
+    </ul>
+    </div>
+    <div class="dropdown">
+    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownCadastro" data-bs-toggle="dropdown" aria-expanded="false" >Cadastros &nbsp;&nbsp;<i class="fas fa-user-plus" ></i></a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownCadastro">
+        <li><a class="dropdown-item" href="/cadastrarColaborador"> Cadastrar Colaborador &nbsp;&nbsp;</a></li>
+        <li><a class="dropdown-item" href="/cargos"> Cadastrar Cargos &nbsp;&nbsp;</a></li>
+    </ul>
+    </div>    
+     <a href="/colaboradores"><button class="btn btn-primary">Lista de Colaboradores &nbsp;&nbsp;<i class="fas fa-address-card"></i></button></a>
+    </div>
+    </div>
+    </div>
+    </main>
 
-																	<div class="modal-footer">
-																		<button type="button" class="btn btn-danger"
-																			data-bs-dismiss="modal">Fechar</button>
-																		<button type="submit" class="btn btn-outline-success">Aceitar</button>
-																</form>
-															</div>
-														</div>
-													</div>
-												</div></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-					<div class="Sugestoes">
-						<div class="collapse" id="collapseExample">
-							<div class="card card-body w-100">
-								<table class="table">
-									<tbody>
-										<tr th:each="sugestao : ${sugestoes}">
-											<td><span th:text="${sugestao.texto}"></span>
-												<button type="button" class="btn2" data-bs-toggle="modal" data-bs-target="exampleModal">
-												<i class="far fa-envelope"></i>
-												</button> <a th:href="${(#mvc.url('SC#aprovarSugestao').arg(0, sugestao.id)).build()}">
-												<i class="fas fa-check"></i></a>
-												<a 	th:href="${(#mvc.url('SC#reprovarSugestao').arg(0, sugestao.id)).build()}">
-												<i class="fas fa-times"></i></a>
-												<button type="button" class="btn1" data-bs-toggle="modal"
-													th:attr="data-bs-target='#exampleModal' +*{sugestao.id}">
-													<i class="far fa-edit"></i></button>
-												<div class="modal fade"
-													th:id="*{'exampleModal' + {sugestao.id}}" tabindex="-1"
-													aria-labelledby="exampleModalLabel" aria-hidden="true">
-													<div class="modal-dialog">
-														<div class="modal-content">
-															<div class="modal-header">
-																<h5 class="modal-title" id="exampleModalLabel">Editar
-																	Sugestão</h5>
-																<button type="button" class="btn-close"
-																	data-bs-dismiss="modal" aria-label="Close"></button>
-															</div>
-															<div class="modal-body">
-																<form method="post" action="/editar">
-																	<div class="mb-3">
-																		<label for="id">Id</label> <input type="text"
-																			th:value="*{sugestao.id}" class="form-control"
-																			name="id"> <label
-																			for="exampleInputPassword1" class="form-label">Nova
-																			sugestão</label> <input type="texto" class="form-control"
-																			id="texto" name="texto">
-																	</div>
+<script>
+var myModal = document.getElementById('myModal')
+var myInput = document.getElementById('myInput')
 
-																	<div class="modal-footer">
-																		<button type="button" class="btn btn-danger"
-																			data-bs-dismiss="modal">Fechar</button>
-																		<button type="submit" class="btn btn-outline-success">Aceitar</button>
-																</form>
-															</div>
-														</div>
-													</div>
-												</div></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-					<div class="dropdown">
-						<a class="btn btn-primary dropdown-toggle" href="#" role="button"
-							id="dropdownSugestao" data-bs-toggle="dropdown"
-							aria-expanded="false">Sugestões &nbsp;&nbsp;<i
-							class="fas fa-lightbulb"></i></a>
-						<ul class="dropdown-menu" aria-labelledby="dropdownSugestao">
+myModal.addEventListener('shown.bs.modal', function () {
+  myInput.focus()
+})
 
-							<li><a class="dropdown-item" href="/pendentes#">
-									Sugestões Pendentes &nbsp;&nbsp;</a></li>
-							<li><a class="dropdown-item" href="/topsugestoes#">
-									Sugestões mais votadas &nbsp;&nbsp;</a></li>
-						</ul>
-					</div>
-					<div class="dropdown">
-						<a class="btn btn-primary dropdown-toggle" href="#" role="button"
-							id="dropdownCadastro" data-bs-toggle="dropdown"
-							aria-expanded="false">Cadastros &nbsp;&nbsp;<i
-							class="fas fa-user-plus"></i></a>
-						<ul class="dropdown-menu" aria-labelledby="dropdownCadastro">
-							<li><a class="dropdown-item" href="/cadastrarColaborador">
-									Cadastrar Colaborador &nbsp;&nbsp;</a></li>
-							<li><a class="dropdown-item" href="/cargos"> Cadastrar
-									Cargos &nbsp;&nbsp;</a></li>
-						</ul>
-					</div>
-					<a href="/colaboradores"><button class="btn btn-primary">
-							Lista de Colaboradores &nbsp;&nbsp;<i class="fas fa-address-card"></i>
-						</button></a>
-				</div>
-			</div>
-	 </div>
-	</main>
-	<script>
-		var myModal = document.getElementById('myModal')
-		var myInput = document.getElementById('myInput')
+</script>
+<script>function mudaTema() {document.body.classList.toggle("dark");}</script>
 
-		myModal.addEventListener('shown.bs.modal', function() {
-			myInput.focus()
-		})
-	</script>
 </body>
 
 </html>

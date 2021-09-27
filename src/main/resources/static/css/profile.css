@@ -45,7 +45,7 @@ word-wrap: break-word
     }
    
          
- .imagcolaborador{
+.imagcolaborador{
         width: 100%;
       position: relative;
       right: 30%;
@@ -101,12 +101,47 @@ color: #000440;
 font-size: 14pt;
 }
 
+.btn-light{
+    background-color: #F3CA06;
+    color:#ffffff;
+    border-style: none;
+}
+.dark {
+    background:#0f1216 ;
+  }
+.dark main{
+    font-family: 'Roboto', sans-serif;
+    color:#ffffff
+    
+  }
+  
+.dark .tema button {
+    color: #ffffff;
+    background: #1c1c1c;
+    border-style: none;
+  }
+.dark h6{
+    color:#ffffff;
+}
+.dark  .btn-primary{
+    width: 95%;
+    margin-top: 7%; 
+    border-radius: 8px;
+    background-image: linear-gradient(to left,#F3B507,#DB8F02,#F3CA06);
+   border: none;
+    
+}
+.dark .btn-primary:hover{
+	 background-color:#000440;
+} 
+
+
 table {
 width:500px;
 table-layout:fixed;
 }
 
-
 td {
 word-wrap:break-word;
+
 }

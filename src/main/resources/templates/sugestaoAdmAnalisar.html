@@ -58,6 +58,9 @@
                     <a class="nav-item nav-link" id="contact-menu" href="/profile">Perfil</a>
                      <a class="nav-item nav-link" id="exit-menu" href="/logout" >Sair</a>
 					</div>
+          <div class="tema">
+          <button class="btn btn-light" onclick="mudaTema()"><i class="fas fa-moon"></i></button>
+          </div>
 				</div>
 			</nav>
 		</div>
@@ -88,7 +91,7 @@
             <button type="button" class="btn btn-secundary" data-bs-toggle="modal" th:attr="data-bs-target='#exampleModal' +*{sugestao.id}"><i class="far fa-envelope"  data-bs-toggle="tooltip" data-bs-placement="rigth" title="FeedBack para Gerente"></i></button>
             </div></td> 
             
-         <!-- Modal Sugestão-->
+<!-- Start Modal Sugestão-->
 <div class="modal fade" id="sugestao" th:id="*{'sugestao' + {sugestao.id}}" tabindex="-1" aria-labelledby="sugestaoLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -104,8 +107,8 @@
     </div>
   </div>
 </div>
-             
-           <!-- Modal Email -->
+<!--End Modal Sugestão-->
+<!--Start Modal Email -->
    <div class="modal fade" th:id="*{'exampleModal' + {sugestao.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
     <div class="modal-content">
@@ -121,8 +124,7 @@
             <label for="recipient-name" class="col-form-label">Email: </label>
             <input type="text" class="form-control" id="recipient-name"  name="text">
           </div>
-          
-      </div>
+     </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Sair</button>
         <button type="submit" class="btn btn-secondary">Enviar</button>
@@ -131,13 +133,14 @@
     </div>
   </div>
 </div>
-     
-      </tr>
-  </tbody>
+<!--End Modal Email-->
+</tr>
+</tbody>
 </table>
-
 </fieldset>
 </div>
+</main>
+<script>function mudaTema() {document.body.classList.toggle("dark"); }</script>
 
 </body>
 </html>
