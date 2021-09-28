@@ -17,8 +17,8 @@
 		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 		<!-- Nossas configurações -->
-	<link rel="stylesheet" href="../css/barra_navegacao.css">
-	<link rel="stylesheet" href="../css/feed.css">
+	<link rel="stylesheet" href="css/barra_navegacao.css">
+	<link rel="stylesheet" href="css/feed.css">
 
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
 		integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
@@ -62,8 +62,8 @@
 			<div class="mb-3">
 				<label for="texto" class="form-label"></label>
 				<div class="mb-3">
-					<textarea class="form-control" id="texto" name="texto" rows="3" maxlength="245"
-						placeholder="Digite sua sugestão"></textarea>
+					<textarea class="form-control" id="texto" name="texto" rows="3" maxlength="240"
+						placeholder="Digite sua sugestão" oninput="limitarCaracter()"></textarea>
 				</div>
 				<select class="form-select" aria-label="Default select example" name="categoria">
 					<option selected>Categoria</option>
@@ -76,7 +76,7 @@
 					<option>OUTROS</option>
 				</select>
 			</div>
-			<button type="submit" class="btn btn-primary">Enviar</button>
+			<button type="submit" class="btn btn-primary" id="botao" disabled=true>Enviar</button>
 		</div>
 	</form>
 
@@ -106,5 +106,6 @@
    </div>
 	</main>
 	<script>function mudaTema() {document.body.classList.toggle("dark"); } </script>
+	<script type="text/javascript" src="/js/scripts.js"></script>
 </body>
 </html>

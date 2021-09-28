@@ -1,3 +1,4 @@
+//login
 function mostrarOcultarSenha(){
 	
  var senha = document.getElementById("password");
@@ -16,4 +17,14 @@ function mostrarOcultarSenha(){
 	}
 }
 
+}
+//timeline
+function limitarCaracter() {
+  var texto = document.getElementById("texto").value;
+
+  if (texto.length > 8 && texto.length < 240) {
+    document.getElementById("botao").disabled = false;
+  } else {
+    document.getElementById("botao").disabled = true;
+  }
 }
