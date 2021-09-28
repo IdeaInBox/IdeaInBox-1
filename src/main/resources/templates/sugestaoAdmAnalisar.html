@@ -54,10 +54,13 @@
 						 <a class="nav-item nav-link" id="home-menu" href="/">Home</a>
                     <a class="nav-item nav-link" id="about-menu" href="/login">Login</a>
                     <a class="nav-item nav-link" id="services-menu" href="/cadastrarColaborador">Cadastrar Colaborador</a>
-                    <a class="nav-item nav-link" id="team-menu" href="/timeline">Timeline</a>
+                    <a class="nav-item nav-link" id="team-menu" href="/timeline/1">Timeline</a>
                     <a class="nav-item nav-link" id="contact-menu" href="/profile">Perfil</a>
                      <a class="nav-item nav-link" id="exit-menu" href="/logout" >Sair</a>
 					</div>
+          <div class="tema">
+          <button class="btn btn-light" onclick="mudaTema()"><i class="fas fa-moon"></i></button>
+          </div>
 				</div>
 			</nav>
 		</div>
@@ -68,7 +71,6 @@
     <table class="table table-primary table-striped">
    <thead>
     <tr>
-      
       <th scope="col"  class="col-3">Colaborador</th>
       <th scope="col"  class="col-4">Cargo</th>
       <th scope="col"  class="col-5">Data</th>
@@ -77,17 +79,15 @@
   </thead>
   <tbody>
    <tr th:each="sugestao : ${sugestoes}">
-        
-       <td ><span th:text="${sugestao.colaborador.nome}"></span>
+      <td ><span th:text="${sugestao.colaborador.nome}"></span>
       <td><span th:text="${sugestao.colaborador.cargo.nome}" ></span></td>
       <td><span th:text="${sugestao.dataEnvio}"></span></td>
-
       <td><div class="icons"><span class="sugestao"  data-bs-toggle="tooltip" data-bs-placement="rigth" title="Sugestão"><a href="#"><i class="far fa-comment" data-bs-toggle="modal" th:attr="data-bs-target='#sugestao' +*{sugestao.id}"></i></a></span>
-            <span class="analise "  data-bs-toggle="tooltip" data-bs-placement="rigth" title="Estudo de viabilidade"><a href="#"><i class="fas fa-folder-open" ></i></a></span>
-            <button type="button" class="btn btn-secundary" data-bs-toggle="modal" th:attr="data-bs-target='#exampleModal' +*{sugestao.id}"><i class="far fa-envelope"  data-bs-toggle="tooltip" data-bs-placement="rigth" title="FeedBack para Gerente"></i></button>
-            </div></td> 
+       <span class="analise "  data-bs-toggle="tooltip" data-bs-placement="rigth" title="Estudo de viabilidade"><a th:href="${(#mvc.url('FC#verAquivoSugestao').arg(0, sugestao.id)).build()}"><i class="fas fa-folder-open" ></i></a></span>
+       <button type="button" class="btn btn-secundary" data-bs-toggle="modal" th:attr="data-bs-target='#exampleModal' +*{sugestao.id}"><i class="far fa-envelope"  data-bs-toggle="tooltip" data-bs-placement="rigth" title="FeedBack para Gerente"></i></button>
+       </div></td> 
             
-         <!-- Modal Sugestão-->
+<!-- Start Modal Sugestão-->
 <div class="modal fade" id="sugestao" th:id="*{'sugestao' + {sugestao.id}}" tabindex="-1" aria-labelledby="sugestaoLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -103,8 +103,8 @@
     </div>
   </div>
 </div>
-             
-           <!-- Modal Email -->
+<!--End Modal Sugestão-->
+<!--Start Modal Email -->
    <div class="modal fade" th:id="*{'exampleModal' + {sugestao.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
     <div class="modal-content">
@@ -120,8 +120,7 @@
             <label for="recipient-name" class="col-form-label">Email: </label>
             <input type="text" class="form-control" id="recipient-name"  name="text">
           </div>
-          
-      </div>
+     </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Sair</button>
         <button type="submit" class="btn btn-secondary">Enviar</button>
@@ -130,13 +129,14 @@
     </div>
   </div>
 </div>
-     
-      </tr>
-  </tbody>
+<!--End Modal Email-->
+</tr>
+</tbody>
 </table>
-
 </fieldset>
 </div>
+</main>
+<script>function mudaTema() {document.body.classList.toggle("dark"); }</script>
 
 </body>
 </html>

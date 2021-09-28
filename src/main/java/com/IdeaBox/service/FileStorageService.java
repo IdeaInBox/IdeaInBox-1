@@ -29,6 +29,7 @@ public class FileStorageService {
 		FileEstudoViabilidade File = new FileEstudoViabilidade(fileName, file.getContentType(), file.getBytes());
 		sugestao.setEstudoViabilidade(File);
 		sr.save(sugestao);
+		File.setSugestao(sugestao);
 		return fr.save(File);
 	}
 	

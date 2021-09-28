@@ -1,7 +1,5 @@
 package com.IdeaBox.controllers;
 
-
-
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpSession;
 
@@ -28,152 +26,161 @@ import com.IdeaBox.models.usuarios.Colaborador;
 import com.IdeaBox.models.usuarios.Gerente;
 import com.IdeaBox.repository.ColaboradorRepository;
 import com.IdeaBox.repository.FileRepository;
+import com.IdeaBox.repository.GerenteRepository;
 import com.IdeaBox.repository.SugestaoRepository;
-
-
-
-
 
 @Controller
 public class SugestaoController {
 	@Autowired
 	private SugestaoRepository sr;
-	
+
 	@Autowired
 	private ColaboradorRepository cr;
 	
 	@Autowired
+	private GerenteRepository gr;
+
+	@Autowired
 	private FileRepository fr;
 
-	@RequestMapping(value="/timeline", method=RequestMethod.POST)
+	@RequestMapping(value = "/enviar", method = RequestMethod.POST)
 	public String form(Sugestao sugestao, HttpSession session) {
-		if(session.getAttribute("colaboradorLogado") != null) {
-		Colaborador colaborador = (Colaborador)session.getAttribute("colaboradorLogado");
-		sugestao.setColaborador(colaborador);
-		colaborador.getSugestoes().add(sugestao);
-		cr.save(colaborador);
-		colaborador.getSugestoes().clear();
-		}else { 
-			Gerente gerente = (Gerente)session.getAttribute("gerenteLogado");
+		if (session.getAttribute("colaboradorLogado") != null) {
+			Colaborador colaborador = (Colaborador) session.getAttribute("colaboradorLogado");
+			sugestao.setColaborador(colaborador);
+			colaborador.getSugestoes().add(sugestao);
+			cr.save(colaborador);
+			colaborador.getSugestoes().clear();
+		} else {
+			Gerente gerente = (Gerente) session.getAttribute("gerenteLogado");
 			sugestao.setColaborador(gerente);
 			gerente.getSugestoes().add(sugestao);
 			cr.save(gerente);
 			gerente.getSugestoes().clear();
 		}
-		
-		return "redirect:/timeline";
+
+		return "redirect:/timeline/1";
+
 	}
-	
+
 	@RequestMapping("/deletarSugestao")
 	public String deletarSugestao(long Id) {
-	Sugestao sugestao = sr.findById(Id);
-	sr.delete(sugestao);
+		Sugestao sugestao = sr.findById(Id);
+		sr.delete(sugestao);
 		return "redirect:/profile";
 	}
-	
+
 	@RequestMapping("/aprovarSugestao")
 	public String aprovarSugestao(long Id) {
 		Sugestao sugestao = sr.findById(Id);
-		if(sugestao.getStatus() == Status_Sugestao.EM_ANALISE_RH) {
-		sugestao.setStatus(Status_Sugestao.APROVADO_PELO_RH);}
-		else {
+		if (sugestao.getStatus() == Status_Sugestao.EM_ANALISE_RH) {
+			sugestao.setStatus(Status_Sugestao.APROVADO_PELO_RH);
+		} else {
 			sugestao.setStatus(Status_Sugestao.APROVADO_GERENCIA);
 		}
-		
+
 		sr.save(sugestao);
 		return "redirect:/pendentes";
 	}
-	
+
 	@RequestMapping("/reprovarSugestao")
 	public String reprovarSugestao(long Id) {
 		Sugestao sugestao = sr.findById(Id);
-		if(sugestao.getStatus() == Status_Sugestao.EM_ANALISE_RH) {
-		sugestao.setStatus(Status_Sugestao.REPROVADO_PELO_RH);}
-		
+		if (sugestao.getStatus() == Status_Sugestao.EM_ANALISE_RH) {
+			sugestao.setStatus(Status_Sugestao.REPROVADO_PELO_RH);
+		}
+
 		sr.save(sugestao);
 		return "redirect:/pendentes";
 	}
-	
-	
+
 	@PostMapping("/avaliar")
-	public String avaliarSugestao(@RequestParam(required = true) long id, ClassificacaoRequest classificacao, HttpSession session) {
+	public String avaliarSugestao(@RequestParam(required = true) long id, ClassificacaoRequest classificacao,
+			HttpSession session) {
 		Sugestao sugestao = sr.findById(id);
-		if(session.getAttribute("colaboradorLogado") != null) {
-		Colaborador colaborador = (Colaborador) session.getAttribute("colaboradorLogado");
-		if(!cr.findByAvaliacao(sugestao.getId(), colaborador.getId()).isEmpty()) {
-			return "redirect:/timeline";
-		}
-		colaborador.setTotalSugestoesAvaliadas(colaborador.getTotalSugestoesAvaliadas() + 1);
-		sugestao.setTotalDeAvaliacoes(sugestao.getTotalDeAvaliacoes() + 1);
-		sugestao.setClassificacao((sugestao.getClassificacao() + classificacao.getClassificacao()) / sugestao.getTotalDeAvaliacoes());
-		sugestao.getAvaliadores().add(colaborador);
-		colaborador.getSugestoesAvaliadas().add(sugestao);
-		sr.save(sugestao);
-		cr.save(colaborador);
-		colaborador.getSugestoesAvaliadas().clear();
-		}
-		else {
-			Colaborador colaborador = (Colaborador) session.getAttribute("gerenteLogado");
-			if(!cr.findByAvaliacao(sugestao.getId(), colaborador.getId()).isEmpty()) {
-				return "redirect:/timeline";
+		
+		if (session.getAttribute("colaboradorLogado") != null) {
+			Colaborador colaborador = (Colaborador) session.getAttribute("colaboradorLogado");
+			if (!cr.findByAvaliacao(sugestao.getId(), colaborador.getId()).isEmpty()) {
+				return "redirect:/timeline/1";
 			}
 			colaborador.setTotalSugestoesAvaliadas(colaborador.getTotalSugestoesAvaliadas() + 1);
 			sugestao.setTotalDeAvaliacoes(sugestao.getTotalDeAvaliacoes() + 1);
-			sugestao.setClassificacao((sugestao.getClassificacao() + classificacao.getClassificacao()) / sugestao.getTotalDeAvaliacoes());
+			sugestao.setClassificacao(
+					(sugestao.getClassificacao() + classificacao.getClassificacao()) / sugestao.getTotalDeAvaliacoes());
 			sugestao.getAvaliadores().add(colaborador);
 			colaborador.getSugestoesAvaliadas().add(sugestao);
 			sr.save(sugestao);
 			cr.save(colaborador);
-			colaborador.getSugestoesAvaliadas().clear(); 
+			colaborador.getSugestoesAvaliadas().clear();
+
 		}
-		return "redirect:/timeline";
+		
+		if(session.getAttribute("gerenteLogado") != null){
+			Gerente colaborador = (Gerente) session.getAttribute("gerenteLogado");
+			if (!cr.findByAvaliacao(sugestao.getId(), colaborador.getId()).isEmpty()) {
+				return "redirect:/timeline/1";
+			}
+			colaborador.setTotalSugestoesAvaliadas(colaborador.getTotalSugestoesAvaliadas() + 1);
+			sugestao.setTotalDeAvaliacoes(sugestao.getTotalDeAvaliacoes() + 1);
+			sugestao.setClassificacao(
+					(sugestao.getClassificacao() + classificacao.getClassificacao()) / sugestao.getTotalDeAvaliacoes());
+			sugestao.getAvaliadores().add(colaborador);
+			colaborador.getSugestoesAvaliadas().add(sugestao);
+			sr.save(sugestao);
+			gr.save(colaborador);
+			colaborador.getSugestoesAvaliadas().clear();
+		}
+		return "redirect:/timeline/1";
 	}
-	
- @PostMapping("/editar")
- public String editarSugestao(@RequestParam long id, @RequestParam("texto") String texto) {
+
+	@PostMapping("/editar")
+	public String editarSugestao(@RequestParam long id, @RequestParam("texto") String texto) {
 		Sugestao sugestao = sr.findById(id);
 		sugestao.setTexto(texto);
 		sr.save(sugestao);
-			return "redirect:/profile";
-		}
+		return "redirect:/profile";
+	}
 
-@GetMapping("/pendentes")
-public ModelAndView sugestaoPendente() {
-	Iterable<Sugestao> sugestoes = sr.findAllInAnalise();
-	ModelAndView mv = new ModelAndView("sugestoesPendentes");
-	mv.addObject("sugestoes", sugestoes);
-	return mv;
-}
-@GetMapping("/topsugestoes")
-public ModelAndView sugestoesMaisVotadas() {
-	Iterable<Sugestao> sugestoes = sr.findTop();
-	ModelAndView mv = new ModelAndView("sugestoesMaisVotadas");
-	mv.addObject("sugestoes", sugestoes);
-	return mv;
-}
-@RequestMapping("/moveToAdm")
-public String moverParaOAdm(long id) {
-	Sugestao sugestao = sr.findById(id);
-	sugestao.setStatus(Status_Sugestao.TOP_TREND);
-	sr.save(sugestao);
-	return "redirect:/topsugestoes";
-}
+	@GetMapping("/pendentes")
+	public ModelAndView sugestaoPendente() {
+		Iterable<Sugestao> sugestoes = sr.findAllInAnalise();
+		ModelAndView mv = new ModelAndView("sugestoesPendentes");
+		mv.addObject("sugestoes", sugestoes);
+		return mv;
+	}
 
-@GetMapping("/sugestaoADM")
-public ModelAndView sugestoesAnaliseAdm() {
-	Iterable<Sugestao> sugestoes = sr.findAllInTopTrend();
-	ModelAndView mv = new ModelAndView("sugestaoAdmAnalisar");
-	mv.addObject("sugestoes", sugestoes);
-	return mv;
-}
+	@GetMapping("/topsugestoes")
+	public ModelAndView sugestoesMaisVotadas() {
+		Iterable<Sugestao> sugestoes = sr.findTop();
+		ModelAndView mv = new ModelAndView("sugestoesMaisVotadas");
+		mv.addObject("sugestoes", sugestoes);
+		return mv;
+	}
 
-@GetMapping("/arquivos")
-public ModelAndView arquivos() {
-	ModelAndView mv = new ModelAndView("arquivos");
-	Iterable<FileEstudoViabilidade> list  = fr.findAll();
-	
-	mv.addObject("files", list);
-	
-	return mv;
-}
+	@RequestMapping("/moveToAdm")
+	public String moverParaOAdm(long id) {
+		Sugestao sugestao = sr.findById(id);
+		sugestao.setStatus(Status_Sugestao.TOP_TREND);
+		sr.save(sugestao);
+		return "redirect:/topsugestoes";
+	}
+
+	@GetMapping("/sugestaoADM")
+	public ModelAndView sugestoesAnaliseAdm() {
+		Iterable<Sugestao> sugestoes = sr.findAllInTopTrend();
+		ModelAndView mv = new ModelAndView("sugestaoAdmAnalisar");
+		mv.addObject("sugestoes", sugestoes);
+		return mv;
+	}
+
+	@GetMapping("/arquivos")
+	public ModelAndView arquivos() {
+		ModelAndView mv = new ModelAndView("arquivos");
+		Iterable<FileEstudoViabilidade> list = fr.findAll();
+
+		mv.addObject("files", list);
+
+		return mv;
+	}
 }

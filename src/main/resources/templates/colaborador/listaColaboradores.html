@@ -52,11 +52,14 @@
 						 <a class="nav-item nav-link" id="home-menu" href="http:/">Home</a>
                     <a class="nav-item nav-link" id="about-menu" href="/login">Login</a>
                     <a class="nav-item nav-link" id="services-menu" href="/cadastrarColaborador">Cadastrar Colaborador</a>
-                    <a class="nav-item nav-link" id="team-menu" href="http:/timeline">Timeline</a>
+                    <a class="nav-item nav-link" id="team-menu" href="http:/timeline/1">Timeline</a>
                     <a class="nav-item nav-link" id="contact-menu" href="/profile">Perfil</a>
                      <a class="nav-item nav-link" id="exit-menu" href="/logout">Sair</a>
 					</div>
-				</div>
+          <div class="tema">
+            <button class="btn btn-light" onclick="mudaTema()"><i class="fas fa-moon"></i></button>
+            </div>
+			</div>
 			</nav>
 		</div>
 	</header>
@@ -76,6 +79,7 @@
   </thead>
   <tbody>
     <tr th:each="colaborador : ${colaboradores}" >
+  
     <!-- Modal Excluir -->
 <div class="modal fade" id="excluir" tabindex="-1" aria-labelledby="excluirLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -86,8 +90,7 @@
       </div>
       <div class="modal-body">
       <p> Você confirma a exclusão dos dados</p>
-       
-      </div>
+       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-secondary" th:href="${(#mvc.url('CC#deletarColaborador').arg(0, colaborador.id)).build()}">Confirmar</button>
         <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
@@ -101,10 +104,8 @@
 	<td><span th:text="${colaborador.cargo.nome}" ></span></td>
 	<td><span th:text="${colaborador.login}" ></span></td>
 	<td><span th:text="${colaborador.email}" ></span></td>
-	<td><span class= "icons" >
-	<button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#tudoModal' +*{colaborador.id}"><i class="far fa-edit" ></i></button>
-    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#excluir"><i class="fas fa-trash" data-bs-toggle="tooltip" data-bs-placement="rigth" title="Excluir"></i></button>
-   	</span></td>   	
+	<td><button type="button" class="btn1" data-bs-toggle="modal" th:attr="data-bs-target='#tudoModal' +*{colaborador.id}"><i class="far fa-edit"></i></button>
+  <a th:href="${(#mvc.url('CC#deletarColaborador').arg(0, colaborador.id)).build()}"><i class="fas fa-trash"></i></a></td>
    	
 <!-- Modal Editar-->
  	<div class="modal fade" th:id="*{'tudoModal' + {colaborador.id}}" tabindex="-1" aria-labelledby="tudoModalLabel" aria-hidden="true">
@@ -134,22 +135,18 @@
       <div class="modal-footer">
       <button type="submit" class="btn btn-secondary">Aceitar</button>
       <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
-       
-        </form>
+               </form>
       </div>
     </div>
   </div>
 </div>
-
-
 </tr>
 </tbody>
  </table>
-<button class="btn btn-primary"><a href="/cadastrarColaborador">Cadastrar
-									Colaborador  &nbsp;&nbsp;<i class="fas fa-user-plus"></i></a></button>
+<button class="btn btn-primary"><a href="/cadastrarColaborador">Cadastrar Colaborador  &nbsp;&nbsp;<i class="fas fa-user-plus"></i></a></button>
 	</div>
 
 
-<script src="js/scripts.js"></script> 
+  <script>function mudaTema() {	document.body.classList.toggle("dark");  } </script>
 
 </body>

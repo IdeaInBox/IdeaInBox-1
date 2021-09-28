@@ -55,4 +55,23 @@ th{
 	margin-top: 0%;
 	padding: 0px;
 }
+.btn-light{
+    background-color: #F3CA06;
+    color:#ffffff;
+    border-style: none;
+}   
+.dark {
+    background:#0f1216;
+}
+.dark main{
+    font-family: 'Roboto', sans-serif;
+    color:#ffffff
+        
+}
 
+.dark .tema button {
+   color: #ffffff;
+   background: #1c1c1c;
+   border-style: none;
+   }
+      
