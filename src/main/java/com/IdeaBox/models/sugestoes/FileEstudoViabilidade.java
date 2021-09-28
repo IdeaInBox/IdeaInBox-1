@@ -18,7 +18,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "arquivos")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class FileEstudoViabilidade {
 
 	@Id

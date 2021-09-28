@@ -17,8 +17,8 @@
 		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 		<!-- Nossas configurações -->
-	<link rel="stylesheet" href="css/barra_navegacao.css">
-	<link rel="stylesheet" href="css/feed.css">
+	<link rel="stylesheet" href="../css/barra_navegacao.css">
+	<link rel="stylesheet" href="../css/feed.css">
 
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
 		integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
@@ -35,7 +35,7 @@
 		<div class="container" id="nav-container">
 			<nav class="navbar navbar-expand-lg fixed-top">
 				<a href="#" class="navbar-brand"> <img id="logo"
-				src="img/MicrosoftTeams-image-removebg-preview-Branco.png" alt="IdeaBox"></a>
+				src="../img/MicrosoftTeams-image-removebg-preview-Branco.png" alt="IdeaBox"></a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" ata-target="#navbar-links"
 				aria-controls="navbar-links" aria-expanded="false" aria-label="Toogle navigation">
 				<span class="navbar-toggler-icon"></span></button>
@@ -55,7 +55,7 @@
 			</nav>
 		</div>
 	</header>
-
+<main>
 	<form method="post" action="/enviar">
 
 		<div class="container">
@@ -87,11 +87,12 @@
 				<li class="list-group-item"><span th:text="${sugestao.texto}"></span><span class="data"
 						th:text="${sugestao.dataEnvio}"></span>
 					<!-- AVALIAÇÃO -->
-					<form method="POST" th:action="${(#mvc.url('SC#avaliarSugestao').arg(0, sugestao.id)).build()}">
+					<form method="POST"  th:action="${(#mvc.url('SC#avaliarSugestao').arg(0, sugestao.id)).build()}">
 					<span><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
 					class="fa fa-star"></i> <i class="fa fa-star"></i></span>
 					<input type="range" class="form-range" name="classificacao" min="1" max="5" id="customRange2">
 					<button type="submit" class="btn btn-primary">Avaliar</button>
+					</form>
 				</li>
 			</ul>
 		</div>
