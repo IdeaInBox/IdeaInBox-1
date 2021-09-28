@@ -26,6 +26,7 @@ import com.IdeaBox.models.usuarios.Colaborador;
 import com.IdeaBox.models.usuarios.Gerente;
 import com.IdeaBox.repository.ColaboradorRepository;
 import com.IdeaBox.repository.FileRepository;
+import com.IdeaBox.repository.GerenteRepository;
 import com.IdeaBox.repository.SugestaoRepository;
 
 @Controller
@@ -35,6 +36,9 @@ public class SugestaoController {
 
 	@Autowired
 	private ColaboradorRepository cr;
+	
+	@Autowired
+	private GerenteRepository gr;
 
 	@Autowired
 	private FileRepository fr;
@@ -94,6 +98,7 @@ public class SugestaoController {
 	public String avaliarSugestao(@RequestParam(required = true) long id, ClassificacaoRequest classificacao,
 			HttpSession session) {
 		Sugestao sugestao = sr.findById(id);
+		
 		if (session.getAttribute("colaboradorLogado") != null) {
 			Colaborador colaborador = (Colaborador) session.getAttribute("colaboradorLogado");
 			if (!cr.findByAvaliacao(sugestao.getId(), colaborador.getId()).isEmpty()) {
@@ -108,8 +113,11 @@ public class SugestaoController {
 			sr.save(sugestao);
 			cr.save(colaborador);
 			colaborador.getSugestoesAvaliadas().clear();
-		} else {
-			Colaborador colaborador = (Gerente) session.getAttribute("gerenteLogado");
+
+		}
+		
+		if(session.getAttribute("gerenteLogado") != null){
+			Gerente colaborador = (Gerente) session.getAttribute("gerenteLogado");
 			if (!cr.findByAvaliacao(sugestao.getId(), colaborador.getId()).isEmpty()) {
 				return "redirect:/timeline/1";
 			}
@@ -120,7 +128,7 @@ public class SugestaoController {
 			sugestao.getAvaliadores().add(colaborador);
 			colaborador.getSugestoesAvaliadas().add(sugestao);
 			sr.save(sugestao);
-			cr.save(colaborador);
+			gr.save(colaborador);
 			colaborador.getSugestoesAvaliadas().clear();
 		}
 		return "redirect:/timeline/1";
