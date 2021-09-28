@@ -39,7 +39,7 @@ public class SugestaoController {
 	@Autowired
 	private FileRepository fr;
 
-	@RequestMapping(value = "/timeline", method = RequestMethod.POST)
+	@RequestMapping(value = "/enviar", method = RequestMethod.POST)
 	public String form(Sugestao sugestao, HttpSession session) {
 		if (session.getAttribute("colaboradorLogado") != null) {
 			Colaborador colaborador = (Colaborador) session.getAttribute("colaboradorLogado");
@@ -97,7 +97,7 @@ public class SugestaoController {
 		if (session.getAttribute("colaboradorLogado") != null) {
 			Colaborador colaborador = (Colaborador) session.getAttribute("colaboradorLogado");
 			if (!cr.findByAvaliacao(sugestao.getId(), colaborador.getId()).isEmpty()) {
-				return "redirect:/timeline";
+				return "redirect:/timeline/1";
 			}
 			colaborador.setTotalSugestoesAvaliadas(colaborador.getTotalSugestoesAvaliadas() + 1);
 			sugestao.setTotalDeAvaliacoes(sugestao.getTotalDeAvaliacoes() + 1);
@@ -109,9 +109,9 @@ public class SugestaoController {
 			cr.save(colaborador);
 			colaborador.getSugestoesAvaliadas().clear();
 		} else {
-			Colaborador colaborador = (Colaborador) session.getAttribute("gerenteLogado");
+			Colaborador colaborador = (Gerente) session.getAttribute("gerenteLogado");
 			if (!cr.findByAvaliacao(sugestao.getId(), colaborador.getId()).isEmpty()) {
-				return "redirect:/timeline";
+				return "redirect:/timeline/1";
 			}
 			colaborador.setTotalSugestoesAvaliadas(colaborador.getTotalSugestoesAvaliadas() + 1);
 			sugestao.setTotalDeAvaliacoes(sugestao.getTotalDeAvaliacoes() + 1);
@@ -123,7 +123,7 @@ public class SugestaoController {
 			cr.save(colaborador);
 			colaborador.getSugestoesAvaliadas().clear();
 		}
-		return "redirect:/timeline";
+		return "redirect:/timeline/1";
 	}
 
 	@PostMapping("/editar")
