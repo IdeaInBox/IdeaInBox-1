@@ -64,15 +64,13 @@
 				<div class="collapse navbar-collapse justify-content-end"
 					id="navbar-links">
 					<div class="navbar-nav">
-						<a class="nav-item nav-link" id="home-menu"
-							href="http:/">Home</a> <a
-							class="nav-item nav-link" id="about-menu" href="/login">Login</a>
-						<a class="nav-item nav-link" id="services-menu"
-							href="/cadastrarColaborador">Cadastrar Colaborador</a> <a
-							class="nav-item nav-link" id="team-menu"
-							href="/timeline/1">Timeline</a> <a
-							class="nav-item nav-link" id="contact-menu" href="/profile">Perfil</a>
-						<a class="nav-item nav-link" id="exit-menu" href="/logout">Sair</a>
+
+					<a class="nav-item nav-link" id="home-menu" href="http:/">Home</a>
+					<a class="nav-item nav-link" id="about-menu" href="/login">Login</a>
+					<a class="nav-item nav-link" id="services-menu" href="/cadastrarColaborador">Cadastrar Colaborador</a>
+					<a class="nav-item nav-link" id="team-menu" href="/timeline">Timeline</a> 
+					<a class="nav-item nav-link" id="contact-menu" href="/profile">Perfil</a>
+					<a class="nav-item nav-link" id="exit-menu" href="/logout">Sair</a>
 					</div>
 				</div>
 				<div class="alert alert-warning" role="alert" th:if="${logadoexce}">
@@ -103,8 +101,7 @@
 						<h5>Idea in Box</h5>
 
 						<p>Tire suas ideais do papel e transforme em projetos</p>
-						<button type="button" class="btn btn-warning">Inscreva-se
-							agora</button>
+						
 
 					</div>
 				</div>
@@ -135,105 +132,104 @@
 				<span class="visually-hidden">Next</span>
 			</button>
 		</div>
-
 		<!--About area-->
 		<div id="about-area">
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
-						<h3 class="main-title">
-							Sobre o Idea in box
-							</h1>
+					<h3 class="main-title">Idea in box</h1>
 					</div>
 					<div class="col-md-6">
 						<img class="img-fluid" src="img/thumb-1920-855715.jpg"
 							alt="Idea in box">
 					</div>
-
 					<div class="col-md-6">
 						<h3 class="about-title">Um projeto para o futuro</h3>
-						<p>Desenvolvido no programa ENTRA21.</p>
-						<p>Criado para falicitar a vida de colaboradores e gestores
-							que prezam pelo bem-estar da empresa.</p>
+						<p>Criado para falicitar a vida de colaboradores e gestores que prezam pelo bem-estar da empresa.</p>
 						<p>Vantagens de implementar o Idea in Box em sua empresa:</p>
 						<ul id="about-list">
-							<li><i class="fas fa-check"></i> Chance de ouvir pontos de
-								vistas diferentes sobre a estrutura da empresa</li>
-							<li><i class="fas fa-check"></i> Estudos comprovam que
-								colaboradores felizes tem produtividade aumentada em até 30%</li>
-							<li><i class="fas fa-check"></i> Incentiva seus
-								colaboradores a expressarem suas idéias</li>
+							<li><i class="fas fa-check"></i> Chance de ouvir pontos de vistas diferentes sobre a estrutura da empresa</li>
+							<li><i class="fas fa-check"></i> Estudos comprovam que colaboradores felizes tem produtividade aumentada em até 30%</li>
+							<li><i class="fas fa-check"></i> Incentiva seus colaboradores a expressarem suas idéias</li>
 							<li><i class="fas fa-check"></i> Alto sigilo das sugestões</li>
 						</ul>
 					</div>
 				</div>
 			</div>
-
 		</div>
-		<!--SERVIÇOS AREA-->
+	<!-- End Area -->	
+<!--SERVIÇOS AREA-->
 		<div class="services-area">
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
-						<h3 class="main-title">
-							Funcionalidades do Sistema
-							</h1>
+						<h3 class="main-title">	Funcionalidades do Sistema</h1>
 					</div>
-					<div class="col-md-4 service-box">
-						<i class="fas fa-lightbulb"></i>
-						<h4>Criar sua sugestão para a empresa</h4>
-						<p>Os colaboradores da empresa ajudam a melhorar a mesma dando
-							sugestões para ela.</p>
+					<div class="col-md-4 service-box"><i class="fas fa-lightbulb"></i>
+					<h4>Criar sua sugestão para a empresa</h4>
+					<p>Os colaboradores da empresa ajudam a melhorar a mesma dando sugestões para ela.</p>
 					</div>
-					<div class="col-md-4 service-box">
-						<i class="fas fa-user-plus"></i>
-						<h4>Registrar colaboradores</h4>
-						<p>Você pode registrar colaboradores facilmente atráves do
-							sistema.</p>
+					<div class="col-md-4 service-box"><i class="fas fa-user-plus"></i>
+					<h4>Registrar colaboradores</h4>
+					<p>Você pode registrar colaboradores facilmente atráves do sistema.</p>
 					</div>
-					<div class="col-md-4 service-box">
-						<i class="fas fa-cogs"></i>
-						<h4>Administrar sugestões</h4>
-						<p>Os administradores podem remodelar sugestões e ter controle
-							sobre elas.</p>
+					<div class="col-md-4 service-box"><i class="fas fa-cogs"></i>
+					<h4>Administrar sugestões</h4>
+					<p>Os administradores podem remodelar sugestões e ter controle sobre elas.</p>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- FILTRO PROJETOS-->
-		<div id="portfolio-area">
+<!-- End Serviços Area -->
+		
+	
+	<!--Start Historia-->
+		<div id="about-area">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12">
-						<h3 class="main-title">Conheça nosso sistema</h3>
+					<div class="col-12">
+					<h3 class="main-title">Como começou</h1>
 					</div>
-					<div class="col-md-12" id="filter-btn-box">
-						<button class="main-btn filter-btn active " id="all-btn">Todos</button>
-						<button class="main-btn filter-btn" id="dev-btn">Desenvolvimento</button>
-						<button class="main-btn filter-btn" id="dsg-btn">Design</button>
-						<button class="main-btn filter-btn" id="seo-btn">SEO</button>
+					
 					</div>
-					<div class="col-md-4 project-box dev">
-						<img src="img/proj1.jpg" class="img-fluid" alt="Projeto 1">
+					<div class="col-md-6">
+						<p>O projeto iniciou-se com o Programa Entra21, não foi fácil termos este "insight", contamos com a ajuda de várias mentes pensantes!</p>
+						<p>Foram várias ideias, até chegarmos neste projeto, que alia o contemporâneo com o atual: a Tecnologia!</p>
+						<p>Queriamos dar ênfase a cultura de integração entre empresas e colaboradores, por causa disso, surgiu a ideia deste sistema que dará uma nova roupagem e aliará na união de conceitos: ideias!</p>
+						<p>Acreditamos que este projeto poderá ser ainda um "case de sucesso", talvez não hoje mais no futuro com um pouco mais de refinação e conhecimento!</p>
+					    <p>Para os novos grupos que irão ter esta mesma experiência que nós tivemos, deixamos um recado:"Sejam persistentes, a caminhada não será fácil, mas se vocês acreditarem no potencial de vocês e do projeto, da ideia em si, tudo dará certo!"</p>
 					</div>
-					<div class="col-md-4 project-box dsg">
-						<img src="img/proj2.jpg" class="img-fluid" alt="Projeto 2">
+					<div class="col-md-6">
+						<img class="img-fluid" id="criatividade" src="img/1-criatividade.jpg" alt="Criatividade">
+				</div>
+			</div>
+		</div>
+	<!-- End Historia -->	
+	<!--Grupo-->
+		<div id="about-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+					<h3 class="main-title">O Grupo</h1>
 					</div>
-					<div class="col-md-4 project-box seo">
-						<img src="img/proj3.jpg" class="img-fluid" alt="Projeto 3">
+					<div class="col-md-6">
+						<img class="img-fluid" id="equipe"src="img/grupo-removebg-preview.png"
+							alt="Grupo">
 					</div>
-					<div class="col-md-4 project-box dev">
-						<img src="img/proj4.jpg" class="img-fluid" alt="Projeto 4">
-					</div>
-					<div class="col-md-4 project-box dsg">
-						<img src="img/proj5.jpg" class="img-fluid" alt="Projeto 5">
-					</div>
-					<div class="col-md-4 project-box seo">
-						<img src="img/proj6.jpg" class="img-fluid" alt="Projeto 6">
+					<div class="col-md-6">
+					<ul class="grupo">
+						<li><a href="https://www.linkedin.com/mwlite/in/davi-saviano-moraes-574797214"><i class="fa fa-linkedin" aria-hidden="true"></i></a>&nbsp;&nbsp;Davi Saviano Moraes</li>
+						<li><a href="https://www.linkedin.com/in/gustavo-guirado-dos-santos-b18796214/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>&nbsp;&nbsp;Gustavo Guirado dos Santos</li>
+						<li><a href="https://www.linkedin.com/in/ligiane-vieira-30a80681/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>&nbsp;&nbsp;Ligiane Vieira</li>
+						<li><a href="https://br.linkedin.com/in/luiz-miguel-poteriko-santiago-5732171a3/en?trk=people-guest_people_search-card"><i class="fa fa-linkedin" aria-hidden="true"></i></a>&nbsp;&nbsp;Luiz Miguel Poteriko Santiago</li>
+						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
+	<!-- End GrupoArea -->	
+	
+		
 	</main>
 	<footer class="rodape">
 	<div id="voltarTopo">
@@ -282,12 +278,8 @@
        </div>  
 	
 	</footer>
-	<script> document.getElementById("ano").innerHTML = new Date().getFullYear();
-</script>
-<script>"$(document).ready(function() {
-	    $('#subir').click(function(){
-		$('html, body').animate({scrollTop:0}, 'slow');
-		return false;});});"></script>
+	<script> document.getElementById("ano").innerHTML = new Date().getFullYear();</script>
+    <script>"$(document).ready(function() {$('#subir').click(function(){$('html, body').animate({scrollTop:0}, 'slow');return false;});});"></script>
 </body>
 
 </html>

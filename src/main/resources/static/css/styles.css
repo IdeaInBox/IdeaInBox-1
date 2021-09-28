@@ -145,3 +145,17 @@ border: 3px solid transparent;
 	margin-top: 8.070%;
 	
 }
+#criatividade{
+	position: relative;
+	left:750px;
+    top:-300px;
+}
+#equipe{
+	position: relative;
+	left:0px;
+    top:-150px;
+}
+.grupo{
+	 list-style: none;
+	 font-size:30x;
+}
