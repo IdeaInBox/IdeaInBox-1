@@ -66,7 +66,21 @@ public class EmailController {
         }
     }
 
+    @RequestMapping(path = "/email-send1", method = RequestMethod.GET)
+    public String sendMail1(@RequestParam("texto") String text) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setText(text);
+        message.setTo("ideainboxapp@gmail.com");
+        message.setFrom("ideainboxapp@gmail.com");
 
+        try {
+            mailSender.send(message);
+            return "redirect:/";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Erro ao enviar email.";
+        }
+    }
 
 //"ideainboxapp@gmail.com"
 }
