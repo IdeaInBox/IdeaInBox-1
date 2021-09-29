@@ -48,14 +48,16 @@ public class SugestaoController {
 		if (session.getAttribute("colaboradorLogado") != null) {
 			Colaborador colaborador = (Colaborador) session.getAttribute("colaboradorLogado");
 			sugestao.setColaborador(colaborador);
+			sugestao.setTesteEnviada(true);
 			colaborador.getSugestoes().add(sugestao);
 			cr.save(colaborador);
 			colaborador.getSugestoes().clear();
 		} else {
 			Gerente gerente = (Gerente) session.getAttribute("gerenteLogado");
 			sugestao.setColaborador(gerente);
+			sugestao.setTesteEnviada(true);
 			gerente.getSugestoes().add(sugestao);
-			cr.save(gerente);
+			gr.save(gerente);
 			gerente.getSugestoes().clear();
 		}
 
@@ -101,7 +103,7 @@ public class SugestaoController {
 		
 		if (session.getAttribute("colaboradorLogado") != null) {
 			Colaborador colaborador = (Colaborador) session.getAttribute("colaboradorLogado");
-			if (!cr.findByAvaliacao(sugestao.getId(), colaborador.getId()).isEmpty()) {
+			if (!cr.findByAvaliacao(sugestao.getId(), colaborador.getId()).isEmpty() && sugestao.isTesteEnviada() == true) {
 				return "redirect:/timeline/1";
 			}
 			colaborador.setTotalSugestoesAvaliadas(colaborador.getTotalSugestoesAvaliadas() + 1);
@@ -118,7 +120,7 @@ public class SugestaoController {
 		
 		if(session.getAttribute("gerenteLogado") != null){
 			Gerente colaborador = (Gerente) session.getAttribute("gerenteLogado");
-			if (!cr.findByAvaliacao(sugestao.getId(), colaborador.getId()).isEmpty()) {
+			if (!gr.findByAvaliacao(sugestao.getId(), colaborador.getId()).isEmpty() && sugestao.isTesteEnviada() == true) {
 				return "redirect:/timeline/1";
 			}
 			colaborador.setTotalSugestoesAvaliadas(colaborador.getTotalSugestoesAvaliadas() + 1);

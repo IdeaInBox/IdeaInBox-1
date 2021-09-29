@@ -79,6 +79,8 @@ public class Sugestao implements Serializable {
 	@ManyToMany(mappedBy = "sugestoesAvaliadas")
 	private List<Colaborador> avaliadores;
 	
+	private boolean testeEnviada;
+	
 	public Sugestao() {
 		
 	}
@@ -186,6 +188,14 @@ public class Sugestao implements Serializable {
 
 	public void setEstudoViabilidade(FileEstudoViabilidade estudoViabilidade) {
 		this.estudoViabilidade = estudoViabilidade;
+	}
+
+	public boolean isTesteEnviada() {
+		return testeEnviada;
+	}
+
+	public void setTesteEnviada(boolean testeEnviada) {
+		this.testeEnviada = testeEnviada;
 	}
 
 	@Override
