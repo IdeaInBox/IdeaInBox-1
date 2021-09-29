@@ -185,4 +185,12 @@ public class SugestaoController {
 
 		return mv;
 	}
+	
+	@RequestMapping("/arquivar")
+	public String arquivar(long id) {
+		Sugestao sugestao = sr.findById(id);
+		sugestao.setStatus(Status_Sugestao.ARQUIVADO);
+		sr.save(sugestao);
+		return "redirect:/topsugestoes";
+	}
 }
