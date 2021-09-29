@@ -29,7 +29,7 @@ public interface SugestaoRepository extends JpaRepository<Sugestao, String>{
 	@Query(value = "SELECT * FROM sugestao WHERE status = 'EM_ANALISE_GERENCIA'", nativeQuery = true)
 	Iterable<Sugestao> findAllInAnaliseG();
 	
-	@Query(value = "SELECT * FROM sugestao where classificacao = (select max(classificacao) from sugestao) AND total_de_avaliacoes >= (SELECT floor(AVG(total_de_avaliacoes)) from sugestao)", nativeQuery = true)
+	@Query(value = "SELECT * FROM sugestao where classificacao = (select max(classificacao) from sugestao) AND total_de_avaliacoes >= (SELECT floor(AVG(total_de_avaliacoes)) from sugestao) and status <> 'ARQUIVADO' and status <> 'TOP_TREND';", nativeQuery = true)
 	Iterable<Sugestao> findTop();
 	
 	Sugestao findById(long id);
