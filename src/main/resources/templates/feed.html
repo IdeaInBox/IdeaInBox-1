@@ -9,7 +9,7 @@
 	<title>Timeline</title>
 
 <!--Fonte-->
-<link rel="stylesheet" href="Roboto/Roboto-Regular.ttf">
+<link rel="stylesheet" href="../Roboto/Roboto-Regular.ttf">
 <!-- Bootstrap-->
 <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 <!-- Nossas configurações -->
@@ -74,12 +74,23 @@
 				<li class="list-group-item"><span th:text="${sugestao.texto}"></span><span class="data"
 						th:text="${sugestao.dataEnvio}"></span>
 					<!-- AVALIAÇÃO -->
+					 <div class="star-rating">
 					<form method="POST"  th:action="${(#mvc.url('SC#avaliarSugestao').arg(0, sugestao.id)).build()}">
-					<span><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-					class="fa fa-star"></i> <i class="fa fa-star"></i></span>
-					<input type="range" class="form-range" name="classificacao" min="1" max="5" id="customRange2">
+					 <div class="rate">
+                 <input type="radio" id="star5" name="classificacao" value="5" />
+              <label for="star5" title="text">5 stars</label>
+              <input type="radio" id="star4" name="classificacao" value="4" />
+              <label for="star4" title="text">4 stars</label>
+              <input type="radio" id="star3" name="classificacao" value="3" />
+              <label for="star3" title="text">3 stars</label>
+              <input type="radio" id="star2" name="classificacao" value="2" />
+              <label for="star2" title="text">2 stars</label>
+              <input type="radio" id="star1" name="classificacao" value="1" />
+              <label for="star1" title="text">1 star</label>
+                </div>
 					<button type="submit" class="btn btn-primary">Avaliar</button>
 					</form>
+					</div>
 				</li>
 			</ul>
 		</div>
@@ -94,5 +105,6 @@
 	</main>
 <script src="../bootstrap/js/bootstrap.bundle.min.js"></script> 
 <script src="../js/scripts.js"></script>  
+
 </body>
 </html>
