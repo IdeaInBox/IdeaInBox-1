@@ -18,6 +18,10 @@ function mostrarOcultarSenha(){
 }
 
 }
+//Tema Dark
+function mudaTema() { 
+	document.body.classList.toggle("dark");
+	} 
 //timeline
 function limitarCaracter() {
   var texto = document.getElementById("texto").value;
