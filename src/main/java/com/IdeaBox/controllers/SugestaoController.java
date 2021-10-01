@@ -109,7 +109,7 @@ public class SugestaoController {
 			colaborador.setTotalSugestoesAvaliadas(colaborador.getTotalSugestoesAvaliadas() + 1);
 			sugestao.setTotalDeAvaliacoes(sugestao.getTotalDeAvaliacoes() + 1);
 			sugestao.setClassificacao(
-					(sugestao.getClassificacao() + classificacao.getClassificacao()) / sugestao.getTotalDeAvaliacoes());
+					(sugestao.getClassificacao() + classificacao.getClassificacao()) / 2);
 			sugestao.getAvaliadores().add(colaborador);
 			colaborador.getSugestoesAvaliadas().add(sugestao);
 			sr.save(sugestao);

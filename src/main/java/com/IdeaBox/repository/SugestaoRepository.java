@@ -16,7 +16,7 @@ import com.IdeaBox.models.usuarios.Administrador;
 import com.IdeaBox.models.usuarios.Colaborador;
 import com.IdeaBox.models.usuarios.Gerente;
 
-public interface SugestaoRepository extends JpaRepository<Sugestao, String>{
+public interface SugestaoRepository extends CrudRepository<Sugestao, String>{
 	
 	Iterable<Sugestao> findByColaborador(Colaborador colaborador);
 	

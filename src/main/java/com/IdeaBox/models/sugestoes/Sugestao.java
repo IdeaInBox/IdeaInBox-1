@@ -76,7 +76,7 @@ public class Sugestao implements Serializable {
 	@Column
 	private ZonedDateTime dataEnvio = ZonedDateTime.now(ZoneId.of("America/Sao_Paulo"));
 	
-	@ManyToMany(mappedBy = "sugestoesAvaliadas")
+	@ManyToMany(mappedBy = "sugestoesAvaliadas", cascade = CascadeType.PERSIST)
 	private List<Colaborador> avaliadores;
 	
 	
