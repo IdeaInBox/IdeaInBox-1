@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,10 +31,12 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.boot.autoconfigure.web.format.DateTimeFormatters;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.IdeaBox.models.usuarios.Colaborador;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 
@@ -74,7 +77,8 @@ public class Sugestao implements Serializable {
 	private FileEstudoViabilidade estudoViabilidade;
 	
 	@Column
-	private ZonedDateTime dataEnvio = ZonedDateTime.now(ZoneId.of("America/Sao_Paulo"));
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	private LocalDate dataEnvio = LocalDate.now();
 	
 	@ManyToMany(mappedBy = "sugestoesAvaliadas", cascade = CascadeType.PERSIST)
 	private List<Colaborador> avaliadores;
@@ -166,7 +170,7 @@ public class Sugestao implements Serializable {
 	
 
 	
-	public ZonedDateTime getDataEnvio() {
+	public LocalDate getDataEnvio() {
 		return dataEnvio;
 	}
 
