@@ -59,22 +59,26 @@
 			<h2>Cadastrar colaborador</h2>
 			<div class="form-group">
 			<label for="nome">Nome</label>
-			 <input type="text"  id="nome" class="form-control" value="" name="nome" placeholder="Nome" size="45" required>
+			 <input type="text"  id="nome" class="form-control" value="" name="nome" placeholder="Nome" size="45" 
+			 pattern="^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$" title="Digite um nome e sobrenome válidos!" required>
 			<small class="form-text text-muted">Nome completo do colaborador</small>
 			</div>
 			<div class="form-group">
 				<label for="cpf">CPF</label>
-				<input type="text" id="cpf" class="form-control" value="" name="cpf" placeholder="12345678910" size="11" required>
+				<input type="text" id="cpf" class="form-control" value="" name="cpf" placeholder="12345678910" size="11" pattern="^\d{3}\d{3}\d{3}\d{2}(?!(\d)\1{11}$)"
+			title="O cpf deve conter apenas números, sem os caracteres e não deve ter todos os números iguais!" onblur="validaCpf()" required >
 				<small class="form-text text-muted">Numérico como no exemplo</small>
 				</div>
 			<div class="form-group">
 				<label for="login">Login</label> 
-				<input type="text" id="login" class="form-control" value="" name="login" placeholder="Login" size="25" required>
+				<input type="text" id="login" class="form-control" value="" name="login" placeholder="Login" size="25" pattern="^[a-zA-Z][a-zA-Z0-9]{1,25}$" title="Seu login poderá ter no máximo 25 caracteres,
+				no minimo 3 caracteres, pode conter letras e números! Não deve conter caracteres especiais e nem espaços entre palavras!" required >
 				<small  class="form-text text-muted">Login que o usuario acessara o sistema</small>
 				</div>
 			<div class="form-group">
 				<label for="senha">Senha</label> 
-				<input type="password" id="senha" class="form-control" value="" name="senha" placeholder="Senha" size="8" required>
+				<input type="password" id="senha" class="form-control" value="" name="senha" placeholder="Senha" size="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" 
+				title="A senha deve conter 8 caracteres, pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial"  required>
 				<small class="form-text text-muted">Senha para acessar o sistema</small>
 				</div>
 				</div>
@@ -82,7 +86,7 @@
 			<div class="col-sm">
 			<div class="form-group2">
 			<label for= "email">Email</label> 
-			<input type="email" id="email" class="form-control" value="" name="email" placeholder="Email do colaborador" required>
+			<input type="email" id="email" class="form-control" value="" name="email" placeholder="Email do colaborador" pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" required >
 			<small class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
 			</div>
 			<div class="form-group2">
@@ -106,7 +110,7 @@
 		<h6>Os dados estão corretos? Confirma o envio do formulário?</h6>
 		</div>
 		<div class="modal-footer">
-		<button type="submit" class="btn btn-secondary">Confirmar</button>
+		<button type="submit" class="btn btn-secondary" >Confirmar</button>
 		<button type="button" class="btn btn-dark" data-bs-dismiss="modal">Sair</button>
 		</div>
 		</div>
@@ -118,6 +122,6 @@
 		</div>
 	</main>
 <script src="bootstrap/js/bootstrap.bundle.min.js"></script> 
-<script src="js/scripts.js"></script>  
+<script src="js/scripts.js"></script>
 </body>
 </html>
