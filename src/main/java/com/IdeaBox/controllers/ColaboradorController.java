@@ -34,18 +34,7 @@ public class ColaboradorController {
 	@Autowired
 	private ServiceUsuario su;
 
-	@GetMapping("/colaboradores")
-	public ModelAndView listaColaborador() {
-		ModelAndView mv = new ModelAndView("colaborador/listaColaboradores");
-		Iterable<Colaborador> colaboradores = cr.findAll();
-		Iterable<Cargo> cargos = crg.findAll();
-		mv.addObject("cargos", cargos);
-		Cargo cargo = new Cargo();
-		mv.addObject("cargoColaborador", cargo);
-		
-		mv.addObject("colaboradores", colaboradores);
-		return mv;
-	}
+
 
 	@RequestMapping("/deletar")
 	public String deletarColaborador(long Id) {

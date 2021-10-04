@@ -241,5 +241,21 @@ public class UsuarioController {
 		return loginGet();
 	}
 	}
+@GetMapping("/colaboradores")
+public ModelAndView listaColaborador(HttpSession session) {
+	if(session.getAttribute("AdmLogado") != null) {
+	ModelAndView mv = new ModelAndView("colaborador/listaColaboradores");
+	Iterable<Colaborador> colaboradores = cr.findAll();
+	Iterable<Cargo> cargos = crg.findAll();
+	mv.addObject("cargos", cargos);
+	Cargo cargo = new Cargo();
+	mv.addObject("cargoColaborador", cargo);
+	
+	mv.addObject("colaboradores", colaboradores);
+	return mv;}
+	else {
+		return loginGet();
+	}
+}
 
 }
