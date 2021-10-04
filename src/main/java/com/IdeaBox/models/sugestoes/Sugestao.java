@@ -73,7 +73,7 @@ public class Sugestao implements Serializable {
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate dataEnvio = LocalDate.now();
 
-	@ManyToMany(mappedBy = "sugestoesAvaliadas", cascade = CascadeType.PERSIST)
+	@ManyToMany(mappedBy = "sugestoesAvaliadas", cascade = CascadeType.REFRESH)
 	private List<Colaborador> avaliadores;
 
 	public Sugestao() {

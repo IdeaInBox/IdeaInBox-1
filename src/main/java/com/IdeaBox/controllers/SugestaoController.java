@@ -42,7 +42,7 @@ public class SugestaoController {
 
 	@Autowired
 	private FileRepository fr;
-
+	
 	@RequestMapping(value = "/enviar", method = RequestMethod.POST)
 	public String form(Sugestao sugestao, HttpSession session) {
 		if (session.getAttribute("colaboradorLogado") != null) {
@@ -103,7 +103,7 @@ public class SugestaoController {
 		
 		if (session.getAttribute("colaboradorLogado") != null) {
 			Colaborador colaborador = (Colaborador) session.getAttribute("colaboradorLogado");
-			if (!cr.findByAvaliacao(sugestao.getId(), colaborador.getId()).isEmpty()) {
+			if (!(cr.findByAvaliacao(sugestao.getId(), colaborador.getId()).isEmpty())) {
 				return "redirect:/timeline/1";
 			}
 			colaborador.setTotalSugestoesAvaliadas(colaborador.getTotalSugestoesAvaliadas() + 1);
@@ -120,7 +120,7 @@ public class SugestaoController {
 		
 		if(session.getAttribute("gerenteLogado") != null){
 			Gerente colaborador = (Gerente) session.getAttribute("gerenteLogado");
-			if (!gr.findByAvaliacao(sugestao.getId(), colaborador.getId()).isEmpty()) {
+			if (!(gr.findByAvaliacao(sugestao.getId(), colaborador.getId()).isEmpty())) {
 				return "redirect:/timeline/1";
 			}
 			colaborador.setTotalSugestoesAvaliadas(colaborador.getTotalSugestoesAvaliadas() + 1);

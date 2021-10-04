@@ -24,7 +24,7 @@ public class Colaborador extends Usuario{
 	protected List <Sugestao> sugestoes;
 	
 
-	@ManyToMany(cascade=CascadeType.PERSIST)
+	@ManyToMany(cascade=CascadeType.REFRESH)
     @JoinTable(name="COLABORADOR_SUGESTOES_AVALIADAS", joinColumns={@JoinColumn(referencedColumnName="ID")}
                                         , inverseJoinColumns={@JoinColumn(referencedColumnName="ID")}) 
 	
