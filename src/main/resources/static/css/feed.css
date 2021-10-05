@@ -110,7 +110,9 @@ ul{
 .form-range{
 	width:125px;
 	heidth:2px;
-	z-index:2}
+	z-index:2
+	
+ }
 input[type="range"]{
   -webkit-appearance:none;
   width:125px;
@@ -120,8 +122,8 @@ input[type="range"]{
 }	
 input[type="range"]::-webkit-slider-thumb{
   -webkit-appearance:none;
-  width:15px;
-  height:15px;
+  width:8px;
+  height:20px;
   border-radius: 100%;
   background: #DB8F02;
   border: 3px solid #F3CA06;
