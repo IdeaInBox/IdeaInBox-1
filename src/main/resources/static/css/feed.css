@@ -1,3 +1,4 @@
+
 body{
     font-family: 'Roboto', sans-serif;
     background-color:#f3f3f3;
@@ -23,7 +24,8 @@ p, li{
     border-radius: 30px;
     padding: 7px;
     color: white;
-    margin-top: 12px;
+    margin-top: 10px;
+    margin-left:30px;
     border: 0px;
     outline: 0;
     font-family: 'Roboto', sans-serif;
@@ -62,9 +64,14 @@ ul{
   text-overflow: ellipsis;}
     
 .fa-star{
-	color: #DB8F02
+	color: #DB8F02;
+	position:relative;
+	top:20px;
+	z-index:1;
+	
 }
-
+	
+}
 .btn-light{
     background-color: #F3CA06;
     color:#ffffff;
@@ -98,6 +105,32 @@ ul{
 }
 .dark .btn-primary:hover{
     background:#000440;}
+ 
+
+.form-range{
+	width:125px;
+	heidth:2px;
+	z-index:2
+	
+ }
+input[type="range"]{
+  -webkit-appearance:none;
+  width:125px;
+  height:2px;
+ 
+ 
+}	
+input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  width:8px;
+  height:20px;
+  border-radius: 100%;
+  background: #DB8F02;
+  border: 3px solid #F3CA06;
+  z-index:3;
+  cursor: pointer;
+}
+
 .pagination{
         left: 10%;
     

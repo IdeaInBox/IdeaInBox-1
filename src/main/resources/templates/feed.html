@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="../css/barra_navegacao.css">
 <link rel="stylesheet" href="../css/feed.css">
 
+
 <script src="https://kit.fontawesome.com/b77074ccd5.js" crossorigin="anonymous"></script>
 </head>
 
@@ -75,8 +76,8 @@
 						th:text="${sugestao.dataEnvio}"></span>
 					<!-- AVALIAÇÃO -->
 					<form method="POST"  th:action="${(#mvc.url('SC#avaliarSugestao').arg(0, sugestao.id)).build()}">
-					<span><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-					class="fa fa-star"></i> <i class="fa fa-star"></i></span>
+					<div><span><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+					class="fa fa-star"></i> <i class="fa fa-star"></i></span></div>
 					<input type="range" class="form-range" name="classificacao" min="1" max="5" id="customRange2">
 					<button type="submit" class="btn btn-primary">Avaliar</button>
 					</form>
