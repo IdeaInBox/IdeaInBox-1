@@ -145,19 +145,30 @@ public class SugestaoController {
 	}
 
 	@GetMapping("/pendentes")
-	public ModelAndView sugestaoPendente() {
-		Iterable<Sugestao> sugestoes = sr.findAllInAnalise();
+	public ModelAndView sugestaoPendente(HttpSession session) {
 		ModelAndView mv = new ModelAndView("sugestoesPendentes");
-		mv.addObject("sugestoes", sugestoes);
-		return mv;
+		if(session.getAttribute("AdmLogado") != null || session.getAttribute("gerenteLogado") != null) {
+			Iterable<Sugestao> sugestoes = sr.findAllInAnalise();
+			mv.addObject("sugestoes", sugestoes);
+			return mv;
+		}
+		else {
+			return UsuarioController.loginGet();
+		}
 	}
 
 	@GetMapping("/topsugestoes")
-	public ModelAndView sugestoesMaisVotadas() {
-		Iterable<Sugestao> sugestoes = sr.findTop();
+	public ModelAndView sugestoesMaisVotadas(HttpSession session) {
 		ModelAndView mv = new ModelAndView("sugestoesMaisVotadas");
-		mv.addObject("sugestoes", sugestoes);
-		return mv;
+		if(session.getAttribute("AdmLogado") != null || session.getAttribute("gerenteLogado") != null) {
+			Iterable<Sugestao> sugestoes = sr.findTop();
+			
+			mv.addObject("sugestoes", sugestoes);
+			return mv;
+		}
+		else {
+			return UsuarioController.loginGet();
+		}
 	}
 
 	@RequestMapping("/moveToAdm")
@@ -169,21 +180,33 @@ public class SugestaoController {
 	}
 
 	@GetMapping("/sugestaoADM")
-	public ModelAndView sugestoesAnaliseAdm() {
-		Iterable<Sugestao> sugestoes = sr.findAllInTopTrend();
+	public ModelAndView sugestoesAnaliseAdm(HttpSession session) {
 		ModelAndView mv = new ModelAndView("sugestaoAdmAnalisar");
-		mv.addObject("sugestoes", sugestoes);
-		return mv;
+		if(session.getAttribute("AdmLogado") != null) {
+			Iterable<Sugestao> sugestoes = sr.findAllInTopTrend();
+			
+			mv.addObject("sugestoes", sugestoes);
+			return mv;
+		}
+		else {
+			return UsuarioController.loginGet();
+		}
 	}
 
 	@GetMapping("/arquivos")
-	public ModelAndView arquivos() {
+	public ModelAndView arquivos(HttpSession session) {
+		
 		ModelAndView mv = new ModelAndView("arquivos");
-		Iterable<FileEstudoViabilidade> list = fr.findAll();
+		if(session.getAttribute("AdmLogado") != null || session.getAttribute("gerenteLogado") != null) {
+			Iterable<FileEstudoViabilidade> list = fr.findAll();
 
-		mv.addObject("files", list);
+			mv.addObject("files", list);
 
-		return mv;
+			return mv;
+		}
+		else {
+			return UsuarioController.loginGet();
+		}
 	}
 	
 	@RequestMapping("/arquivar")

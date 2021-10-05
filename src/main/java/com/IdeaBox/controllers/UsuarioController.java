@@ -41,10 +41,10 @@ public class UsuarioController {
 
 	@Autowired
 	private ServiceUsuario su;
-	
+
 	@Autowired
 	private CargoRepository crg;
-	
+
 	@Autowired
 	ServicePagination sp;
 
@@ -85,7 +85,7 @@ public class UsuarioController {
 		if (colaboradorLogin == null && administradorLogin == null && gerenteLogin == null) {
 			mv.addObject("msg", "Usuario não encontrado tente novamente");
 		}
-		if (gerenteLogin instanceof Gerente ) {
+		if (gerenteLogin instanceof Gerente) {
 			session.setAttribute("gerenteLogado", gerenteLogin);
 			return index(session);
 		} else if (colaboradorLogin != null) {
@@ -101,7 +101,7 @@ public class UsuarioController {
 	}
 
 	@GetMapping("/login")
-	public ModelAndView loginGet() {
+	public static ModelAndView loginGet() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("login");
 		mv.addObject("colaborador", new Colaborador());
@@ -145,13 +145,13 @@ public class UsuarioController {
 			ModelAndView mv = new ModelAndView("colaborador/profileadm");
 			Cargo cargo = administrador.getCargo();
 			mv.addObject("administrador", administrador);
-			mv.addObject("cargo",  cargo);
+			mv.addObject("cargo", cargo);
 			Iterable<Sugestao> topSugestoes = sr.findTop();
 			mv.addObject("sugestoes", topSugestoes);
 			return mv;
 		} else if (session.getAttribute("gerenteLogado") != null) {
 			Gerente gerente = (Gerente) session.getAttribute("gerenteLogado");
-			ModelAndView mv = new ModelAndView("colaborador/profilegerente"); 
+			ModelAndView mv = new ModelAndView("colaborador/profilegerente");
 			mv.addObject("gerente", gerente);
 			Iterable<Sugestao> sugestoes = sr.findAllInAnalise();
 			mv.addObject("sugestoes", sugestoes);
@@ -166,7 +166,7 @@ public class UsuarioController {
 	@GetMapping("/cadastrarColaborador")
 	public ModelAndView form(HttpSession session) {
 		ModelAndView mv = new ModelAndView("colaborador/formColaborador");
-		Iterable<Cargo>cargos = crg.findAllexceptGerente();
+		Iterable<Cargo> cargos = crg.findAllexceptGerente();
 		mv.addObject("cargo", cargos);
 		Colaborador colaborador = new Colaborador();
 		mv.addObject("gerente", colaborador);
@@ -180,7 +180,7 @@ public class UsuarioController {
 	}
 
 	@RequestMapping(value = "/cadastrarColaborador", method = RequestMethod.POST)
-	public String form(Colaborador colaborador,  @RequestParam long cargoId) throws Exception {
+	public String form(Colaborador colaborador, @RequestParam long cargoId) throws Exception {
 		Cargo cargo = crg.findById(cargoId);
 		colaborador.setCargo(cargo);
 		cargo.getColaborador().add(colaborador);
@@ -192,7 +192,7 @@ public class UsuarioController {
 	@GetMapping("/cadastrarGerente")
 	public ModelAndView formGerente(HttpSession session) {
 		ModelAndView mv = new ModelAndView("colaborador/formGerente");
-		Iterable<Cargo>cargos = crg.findAllexceptAdm();
+		Iterable<Cargo> cargos = crg.findAllexceptAdm();
 		mv.addObject("cargo", cargos);
 		Gerente gerente = new Gerente();
 		mv.addObject("gerente", gerente);
@@ -214,48 +214,52 @@ public class UsuarioController {
 		crg.save(cargo);
 		return "redirect:/cadastrarGerente";
 	}
-	
+
 	@GetMapping("/cargos")
-	public ModelAndView formCargos() {
-		ModelAndView mv = new ModelAndView("cargos");
-		return mv;
+	public ModelAndView formCargos(HttpSession session) {
+		if(session.getAttribute("AdmLogado") != null || session.getAttribute("gerenteLogado") != null) {
+			ModelAndView mv = new ModelAndView("cargos");
+			return mv;
+		}
+		else {
+			return loginGet();
+		}
 	}
 
-	
 	@PostMapping("/cargos")
 	public String formCargos(Cargo cargo) {
 		su.salvarCargos(cargo);
 		return "redirect:/cargos";
-		
-	}
-	
 
-@GetMapping("/sugestoes")
+	}
+
+	@GetMapping("/sugestoes")
 	public ModelAndView listaSugestao(HttpSession session) {
-	if(session.getAttribute("AdmLogado") != null) {
-		ModelAndView mv = new ModelAndView("listSugestoes");
-		Iterable<Sugestao> sugestoes = sr.findAll();
-		mv.addObject("sugestoes", sugestoes);
-		return mv;}
-	else {
-		return loginGet();
+		if (session.getAttribute("AdmLogado") != null) {
+			ModelAndView mv = new ModelAndView("listSugestoes");
+			Iterable<Sugestao> sugestoes = sr.findAll();
+			mv.addObject("sugestoes", sugestoes);
+			return mv;
+		} else {
+			return loginGet();
+		}
 	}
+
+	@GetMapping("/colaboradores")
+	public ModelAndView listaColaborador(HttpSession session) {
+		if (session.getAttribute("AdmLogado") != null) {
+			ModelAndView mv = new ModelAndView("colaborador/listaColaboradores");
+			Iterable<Colaborador> colaboradores = cr.findAll();
+			Iterable<Cargo> cargos = crg.findAll();
+			mv.addObject("cargos", cargos);
+			Cargo cargo = new Cargo();
+			mv.addObject("cargoColaborador", cargo);
+
+			mv.addObject("colaboradores", colaboradores);
+			return mv;
+		} else {
+			return loginGet();
+		}
 	}
-@GetMapping("/colaboradores")
-public ModelAndView listaColaborador(HttpSession session) {
-	if(session.getAttribute("AdmLogado") != null) {
-	ModelAndView mv = new ModelAndView("colaborador/listaColaboradores");
-	Iterable<Colaborador> colaboradores = cr.findAll();
-	Iterable<Cargo> cargos = crg.findAll();
-	mv.addObject("cargos", cargos);
-	Cargo cargo = new Cargo();
-	mv.addObject("cargoColaborador", cargo);
-	
-	mv.addObject("colaboradores", colaboradores);
-	return mv;}
-	else {
-		return loginGet();
-	}
-}
 
 }
