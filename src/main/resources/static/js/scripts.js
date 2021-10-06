@@ -38,13 +38,13 @@ function limitarCaracter() {
 function validaCpf() {
   var cpf = document.getElementById("cpf").value;
 
-if(cpf =="1111111111" || cpf=="22222222222" || cpf=="33333333333" || cpf=="44444444444" || cpf=="55555555555" || cpf=="66666666666" || cpf=="77777777777" ||
+if(cpf =="11111111111" || cpf=="22222222222" || cpf=="33333333333" || cpf=="44444444444" || cpf=="55555555555" || cpf=="66666666666" || cpf=="77777777777" ||
  cpf=="88888888888" || cpf=="99999999999"){
-	alert("Cpf não pode conter todos os números iguais")
+	alert("Cpf não pode conter todos os números iguais!")
 	return false;
 }
-if (cpf!=11){
-	alert("Cpf deve conter 11 caracteres")
+if (cpf.length!=11){
+	alert("Cpf deve conter 11 caracteres!")
 	return false;
 }
 
@@ -58,7 +58,7 @@ if (cpf!=11){
 
     if ((Resto == 10) || (Resto == 11))  Resto = 0;
     if (Resto != parseInt(cpf.substring(9, 10)) ){
-    alert ("Cpf inválido") 
+    alert ("Cpf inválido!") 
     return false;
 }
   Soma = 0;
@@ -67,11 +67,11 @@ if (cpf!=11){
 
     if ((Resto == 10) || (Resto == 11))  Resto = 0;
     if (Resto != parseInt(cpf.substring(10, 11) ) ){
-    alert ("Cpf inválido")
+    alert ("Cpf inválido!")
     return false;
   }  
  else{
-	alert("Cpf okay")
+	alert("Cpf conferido!")
 	return true;
 }
 }
