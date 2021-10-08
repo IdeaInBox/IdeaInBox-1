@@ -10,8 +10,10 @@ import org.springframework.context.annotation.ComponentScan;
 
 import com.IdeaBox.models.cargos.Cargo;
 import com.IdeaBox.models.usuarios.Administrador;
+import com.IdeaBox.models.usuarios.Gerente;
 import com.IdeaBox.repository.AdminRepository;
 import com.IdeaBox.repository.CargoRepository;
+import com.IdeaBox.repository.GerenteRepository;
 
 @SpringBootApplication
 @ComponentScan
@@ -22,6 +24,9 @@ public class IdeaboxApplication implements CommandLineRunner {
 	
 	@Autowired
 	AdminRepository ar;
+	
+	@Autowired
+	GerenteRepository gr;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(IdeaboxApplication.class, args);
