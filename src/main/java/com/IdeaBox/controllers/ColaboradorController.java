@@ -42,48 +42,6 @@ public class ColaboradorController {
 		cr.delete(colaborador);
 		return "redirect:/colaboradores";
 	}
-
-	@PostMapping("/editarNome")
-	public String editarColaborador(@RequestParam long id, @RequestParam("nome") String nome) {
-		Colaborador colaborador = cr.findById(id);
-		colaborador.setNome(nome);
-		cr.save(colaborador);
-		return "redirect:/colaboradores";
-	}
-
-	@PostMapping("/editarCpf")
-	public String editarCpf(@RequestParam long id, @RequestParam("cpf") String cpf) {
-		Colaborador colaborador = cr.findById(id);
-		colaborador.setCpf(cpf);
-		cr.save(colaborador);
-		return "redirect:/colaboradores";
-	}
-	
-	@PostMapping("/editarCargo")
-	public String editarCargo(@RequestParam long id, @RequestParam long cargoId) {
-		Cargo cargo1 = crg.findById(cargoId);
-		Colaborador colaborador = cr.findById(id);
-		colaborador.setCargo(cargo1);
-		cr.save(colaborador);
-		crg.save(cargo1);
-		return "redirect:/colaboradores";
-	}
-	
-	@PostMapping("/editarLogin")
-	public String editarLogin(@RequestParam long id, @RequestParam("login") String login) {
-		Colaborador colaborador = cr.findById(id);
-		colaborador.setLogin(login);
-		cr.save(colaborador);
-		return "redirect:/colaboradores";
-	}
-	
-	@PostMapping("/editarEmail")
-	public String editarEmail(@RequestParam long id, @RequestParam("email") String email) {
-		Colaborador colaborador = cr.findById(id);
-		colaborador.setEmail(email);
-		cr.save(colaborador);
-		return "redirect:/colaboradores";
-	}
 	
 	@PostMapping("/editarTudo")
 	public String editarTudo(@RequestParam long id, @RequestParam("nome") String nome,  @RequestParam("cpf") String cpf,
