@@ -65,8 +65,8 @@
       <td><span th:text="${sugestao.texto}"></span></td>
       <td><span th:text="${sugestao.status}"></span></td>
       <td><span th:text = "${sugestao.classificacao}"></span></td>
-      <td><div><span data-bs-toggle="tooltip" data-bs-placement="rigth" title="Enviar para Administrador"><a th:href="${(#mvc.url('SC#moverParaOAdm').arg(0, sugestao.id)).build()}"><i class="fas fa-share"></i></a></span></div>
-	  <div><span data-bs-toggle="tooltip" data-bs-placement="rigth" title="Arquivar Sugestão"><a th:href="${(#mvc.url('SC#arquivar').arg(0, sugestao.id)).build()}"><i class="fas fa-archive"></i></a></div></td>
+      <td><div><button class="enviar" data-bs-toggle="tooltip" data-bs-placement="rigth" title="Enviar para Administrador" onclick="enviarAdm()"><a th:href="${(#mvc.url('SC#moverParaOAdm').arg(0, sugestao.id)).build()}"><i class="fas fa-share"></i></a></button></div>
+	  <div><button class="enviar" data-bs-toggle="tooltip" data-bs-placement="rigth" title="Arquivar Sugestão" onclick="arquivar()"><a th:href="${(#mvc.url('SC#arquivar').arg(0, sugestao.id)).build()}"><i class="fas fa-archive"></i></button></div></td>
    
     </tr>
   </tbody>

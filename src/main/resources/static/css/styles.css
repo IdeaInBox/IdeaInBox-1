@@ -98,7 +98,7 @@ margin-bottom: 50px;
     margin-bottom: 20px;
 }
 
-.service-box:hover > i, .service-box:hover > h4{
+.fa-lightbulb:hover,.fa-user-plus:hover,.fa-cogs:hover , .service-box:hover > h4{
     color:#DB8F02;
    
 }
@@ -152,7 +152,10 @@ border: 3px solid transparent;
 #criatividade{
 	position: relative;
 	left:750px;
-    top:-300px;
+    top:-320px;
+    width:500px;
+    border-radius:20px;
+    
 }
 #equipe{
 	position: relative;

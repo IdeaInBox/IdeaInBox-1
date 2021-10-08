@@ -75,11 +75,16 @@ word-wrap:break-word;
 
 .btn1{
 	 background-color: transparent;
-border: none
+    border: none;
 }
 a{color: #000440;}
 
 .table thead th { 
   background-color: #000440;
   color: white;
+}
+.aprovar, .enviar{
+   background-color: transparent;
+    border: none;
+    border-style: none;	
 }

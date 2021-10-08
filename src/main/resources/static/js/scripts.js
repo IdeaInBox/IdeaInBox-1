@@ -27,11 +27,17 @@ function limitarCaracter() {
   var texto = document.getElementById("texto").value;
 
   if (texto.length > 8 && texto.length < 240) {
-    document.getElementById("botao").disabled = false;
+	document.getElementById("botao").disabled = false;
   } else {
     document.getElementById("botao").disabled = true;
   }
 }
+
+function mensagem(){
+	var botao = document.getElementById("botao").disable =false;
+   	alert("Sua sugestão foi cadastrada!")
+	}
+
 
 //Formulario
 //cpf
@@ -75,4 +81,17 @@ if (cpf.length!=11){
 	return true;
 }
 }
-
+//Pendentes
+function sugestaoAprovada(){
+	alert("Sugestao aprovada para classificação dos colaboradores!")
+}
+//mais votadas
+function enviarAdm(){
+	alert("Enviado para Administrador!")
+}
+function arquivar(){
+	alert("Sugestão arquivada com sucesso!")
+}
+function confirmado(){
+	alert("Sua nota foi cadastrada!")
+}
