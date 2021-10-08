@@ -59,7 +59,23 @@ public class EmailController {
 
         try {
             mailSender.send(message);
-            return "redirect:/login";
+            return "redirect:/pendentes";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Erro ao enviar email.";
+        }
+    }
+    
+    @RequestMapping(path = "/enviarEmail1", method = RequestMethod.GET)
+    public String email1(@RequestParam String email, @RequestParam String text) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setText(text);
+        message.setTo(email);
+        message.setFrom("ideainboxapp@gmail.com");
+
+        try {
+            mailSender.send(message);
+            return "redirect:/sugestaoADM";
         } catch (Exception e) {
             e.printStackTrace();
             return "Erro ao enviar email.";
