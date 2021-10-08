@@ -10,8 +10,10 @@ import org.springframework.context.annotation.ComponentScan;
 
 import com.IdeaBox.models.cargos.Cargo;
 import com.IdeaBox.models.usuarios.Administrador;
+import com.IdeaBox.models.usuarios.Gerente;
 import com.IdeaBox.repository.AdminRepository;
 import com.IdeaBox.repository.CargoRepository;
+import com.IdeaBox.repository.GerenteRepository;
 
 @SpringBootApplication
 @ComponentScan
@@ -22,6 +24,9 @@ public class IdeaboxApplication implements CommandLineRunner {
 	
 	@Autowired
 	AdminRepository ar;
+	
+	@Autowired
+	GerenteRepository gr;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(IdeaboxApplication.class, args);
@@ -34,9 +39,12 @@ public class IdeaboxApplication implements CommandLineRunner {
 		
 		Administrador adm = new Administrador(1, "Administrador", "13254743040", cargo1, "admin", "1234567", "admin@senac.com.br");
 		cargo1.getColaborador().add(adm);
+		Gerente g = new Gerente(2, "Carlos", "53733420098" , cargo2, "carlos", "123", "carlos@gmail.com");
+		cargo2.getColaborador().add(g);
 		
 		this.crg.saveAll(Arrays.asList(cargo1, cargo2));
 		this.ar.saveAll(Arrays.asList(adm));
+		this.gr.saveAll(Arrays.asList(g));
 	}
 
 }
