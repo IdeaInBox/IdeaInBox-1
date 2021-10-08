@@ -87,13 +87,13 @@ public class UsuarioController {
 		}
 		if (gerenteLogin instanceof Gerente) {
 			session.setAttribute("gerenteLogado", gerenteLogin);
-			return index(session);
+			return perfilGet(session);
 		} else if (colaboradorLogin != null) {
 			session.setAttribute("colaboradorLogado", colaboradorLogin);
-			return index(session);
+			return perfilGet(session);
 		} else if (administradorLogin != null) {
 			session.setAttribute("AdmLogado", administradorLogin);
-			return index(session);
+			return perfilGet(session);
 		}
 
 		return mv;
