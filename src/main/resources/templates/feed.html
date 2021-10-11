@@ -17,43 +17,38 @@
 <link rel="stylesheet" href="../css/feed.css">
 <!-- Fontawesome -->
 <link  rel="stylesheet" href="../fontawesome/css/all.min.css" >
-
-
 </head>
 
 <body>
 	<header>
-		<div class="container" id="nav-container">
-			<nav class="navbar navbar-expand-lg fixed-top">
-				<a href="#" class="navbar-brand"> <img id="logo"
-				src="../img/MicrosoftTeams-image-removebg-preview-Branco.png" alt="IdeaBox"></a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" ata-target="#navbar-links"
-				aria-controls="navbar-links" aria-expanded="false" aria-label="Toogle navigation">
-				<span class="navbar-toggler-icon"></span></button>
-				<div class="collapse navbar-collapse justify-content-end" id="navbar-links">
+	  <div class="container" id="nav-container">
+		<nav class="navbar navbar-expand-lg fixed-top">
+		  <a href="#" class="navbar-brand"> <img id="logo" src="../img/MicrosoftTeams-image-removebg-preview-Branco.png" alt="IdeaBox"></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" ata-target="#navbar-links"
+			aria-controls="navbar-links" aria-expanded="false" aria-label="Toogle navigation">
+			<span class="navbar-toggler-icon"></span></button>
+			  <div class="collapse navbar-collapse justify-content-end" id="navbar-links">
 				<div class="navbar-nav">
-				<a class="nav-item nav-link" id="home-menu" href="/">Home</a>
-				<a class="nav-item nav-link" id="about-menu" href="/login">Login</a>
-				<a class="nav-item nav-link" id="team-menu" href="/timeline/1">Timeline</a> <a class="nav-item nav-link" id="contact-menu" href="/profile">Perfil</a>
-				<a class="nav-item nav-link" id="exit-menu" href="/logout">Sair</a>
+				  <a class="nav-item nav-link" id="home-menu" href="/">Home</a>
+				  <a class="nav-item nav-link" id="about-menu" href="/login">Login</a>
+				  <a class="nav-item nav-link" id="team-menu" href="/timeline/1">Timeline</a> <a class="nav-item nav-link" id="contact-menu" href="/profile">Perfil</a>
+				  <a class="nav-item nav-link" id="exit-menu" href="/logout">Sair</a>
 				</div>
 				<div class="tema">
-				<button class="btn btn-light" onclick="mudaTema()"><i class="fas fa-moon"></i></button>
+				  <button class="btn btn-light" onclick="mudaTema()"><i class="fas fa-moon"></i></button>
 				</div>
-				</div>
-			</nav>
-		</div>
-	</header>
-<main>
+			</div>
+		</nav>
+	  </div>
+  </header>
+  <main>
 	<form method="post" action="/enviar">
-
-		<div class="container">
-			<div class="mb-3">
-				<label for="texto" class="form-label"></label>
-				<div class="mb-3">
-					<textarea class="form-control" id="texto" name="texto" rows="3" maxlength="240"
-						placeholder="Digite sua sugestão" oninput="limitarCaracter()"></textarea>
-				</div>
+	   <div class="container">
+		<div class="mb-3">
+			<label for="texto" class="form-label"></label>
+			 <div class="mb-3">
+			   <textarea class="form-control" id="texto" name="texto" rows="3" maxlength="240" placeholder="Digite sua sugestão" oninput="limitarCaracter()"></textarea>
+			</div>
 				<select class="form-select" aria-label="Default select example" name="categoria">
 					<option selected>Categoria</option>
 					<option>ALIMENTAÇAO</option>
@@ -68,32 +63,29 @@
 			<button type="submit" class="btn btn-primary" id="botao" disabled=true onclick="mensagem()">Enviar</button>
 		</div>
 	</form>
-
-	<!-- Area de sugestoes -->
+<!-- Area de sugestoes -->
 	<div class="container">
-		<div th:each="sugestao : ${sugestoes}">
-			<ul class="list-group">
-				<li class="list-group-item"><span th:text="${sugestao.texto}"></span><span class="data"
-						th:text="${sugestao.dataEnvio}"></span>
-					<!-- AVALIAÇÃO -->
-					<form method="POST"  th:action="${(#mvc.url('SC#avaliarSugestao').arg(0, sugestao.id)).build()}">
-					<div><span><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-					class="fa fa-star"></i> <i class="fa fa-star"></i></span></div>
-					<input type="range" class="form-range" name="classificacao" min="1" max="5" id="customRange2">
-					<button type="submit" class="btn btn-primary" onclick="confirmado()">Avaliar</button>
-					</form>
-				</li>
-			</ul>
-		</div>
+	  <div th:each="sugestao : ${sugestoes}">
+		<ul class="list-group">
+		  <li class="list-group-item"><span th:text="${sugestao.texto}"></span><span class="data" th:text="${sugestao.dataEnvio}"></span>
+<!-- AVALIAÇÃO -->
+			<form method="POST"  th:action="${(#mvc.url('SC#avaliarSugestao').arg(0, sugestao.id)).build()}">
+		      <div><span><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+		       <i class="fa fa-star"></i> <i class="fa fa-star"></i></span></div>
+				<input type="range" class="form-range" name="classificacao" min="1" max="5" id="customRange2">
+				 <button type="submit" class="btn btn-primary" onclick="confirmado()">Avaliar</button>
+			 </form>
+		  </li>
+	    </ul>
+	  </div>
 	</div>
 	<div th:if = "${totalPages > 1}">
-		<ul class="pagination justify-content-center d-inline-block" th:each="i: ${#numbers.sequence(1, totalPages)}" id="horizontal-list">
-			   <li class="page-item"><a class="page-link" th:if="${currentPage != i}" th:href="@{'/timeline/' + ${i}}">[[${i}]] </a></li>
-			   <li class="page-item"><span class="page-link" th:unless="${currentPage != i}">[[${i}]]</span></li>	
+	   <ul class="pagination justify-content-center d-inline-block" th:each="i: ${#numbers.sequence(1, totalPages)}" id="horizontal-list">
+		 <li class="page-item"><a class="page-link" th:if="${currentPage != i}" th:href="@{'/timeline/' + ${i}}">[[${i}]] </a></li>
+		 <li class="page-item"><span class="page-link" th:unless="${currentPage != i}">[[${i}]]</span></li>	
 	   </ul>
-	   
-   </div>
-	</main>
+	</div>
+</main>
 <script src="../bootstrap/js/bootstrap.bundle.min.js"></script> 
 <script defer src="../fontawesome/js/all.js"></script>
 <script src="../js/scripts.js"></script>  

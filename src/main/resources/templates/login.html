@@ -14,63 +14,60 @@
 <!--Configurações nossas -->
 <link rel="stylesheet" href="css/barra_navegacao.css">
 <link rel="stylesheet" href="css/login.css">
-
  <!-- lib de icons -->
 <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
  
 </head>
-<body>
+ <body>
   
         <header>
         
            <div class="container" id="nav-container">
                <nav class="navbar navbar-expand-lg fixed-top">
                 <a href="#" class="navbar-brand">
-                    <img id="logo" src="img/MicrosoftTeams-image-removebg-preview-Branco.png" alt="IdeaBox">
-                </a>
+                <img id="logo" src="img/MicrosoftTeams-image-removebg-preview-Branco.png" alt="IdeaBox"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links" 
                 aria-controls="navbar-links" aria-expanded="false" aria-label="Toogle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
+                <span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbar-links">
-                    <div class="navbar-nav">
-                      <a class="nav-item nav-link" id="home-menu" href="/">Home</a>
+                   <div class="navbar-nav">
+                   
+                    <a class="nav-item nav-link" id="home-menu" href="/">Home</a>
                     <a class="nav-item nav-link" id="about-menu" href="/login">Login</a>
-                     <a class="nav-item nav-link" id="contact-menu" href="/profile">Perfil</a>
-                     <a class="nav-item nav-link" id="exit-menu" href="/logout">Sair</a>
+                    <a class="nav-item nav-link" id="contact-menu" href="/profile">Perfil</a>
+                    <a class="nav-item nav-link" id="exit-menu" href="/logout">Sair</a>
                     </div>
                 </div>
                </nav>
            </div>
         </header>
-<main>
-<div class="container">
-    <div class="row">
-      <div class="col">
-       
-       <div class="alert alert-danger" role="alert" th:if="${msg}">
-       <strong th:text="${msg}"></strong>
-       </div>
-       
-      </div>
-      <div class="col">
-        <form class="form-1" method="post" action="/login" th:object="${colaborador}">
-            <div class="card">
-                <div class="card-top">
-                  <img class="imglogin" src="img/criatividade-removebg-preview.png">
-                  <h2 class="titulo">Usuario</h2>
-                  <p>Faça login para continuar</p>
-                </div>
+
+  <main>
+
+        <div class="container">
+        <div class="row">
+        <div class="col">
+        <div class="alert alert-danger" role="alert" th:if="${msg}"><strong th:text="${msg}"></strong>
+        </div>
+        </div>
+          <div class="col">
+          <form class="form-1" method="post" action="/login" th:object="${colaborador}">
+          <div class="card">
+            <div class="card-top">
+            <img class="imglogin" src="img/criatividade-removebg-preview.png" alt="">
+             <h2 class="titulo">Usuario</h2>
+             <p>Faça login para continuar</p>
+             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Login</label>
               <input type="text" id= "email" class="form-control" th:field="*{login}" placeholder="Digite seu login">
-              <div  class="form-text"></div>
+             <div  class="form-text"></div>
             </div>
-            <div class="mb-3">
+               <div class="mb-3">
               <label for="password" class="form-label">Password</label>
               <input type="password" id="password"  class="form-control"  th:field="*{senha}" placeholder="Digite sua senha" size="8" required>
-               <button type="button" class ="lnr lnr-eye" onClick = "mostrarOcultarSenha()"></button>
-              </div>
+              <button type="button" class ="lnr lnr-eye" onClick = "mostrarOcultarSenha()"></button>
+               </div>
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">Lembrar-me</label>
@@ -79,15 +76,15 @@
             <button type="button" class="btn btn-secundary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Esqueceu a senha? Click Aqui!</button>
             </div>
           </form>
-      </div>
-      <div class="col">
-     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Redefinir senha</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+       </div>
+         <div class="col">
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+           <div class="modal-content">
+           <div class="modal-header">
+           <h5 class="modal-title" id="exampleModalLabel">Redefinir senha</h5>
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
       <div class="modal-body">
         <form action="/emailsenha">
           <div class="mb-3">
@@ -95,21 +92,22 @@
             <label for="recipient-name" class="col-form-label">E-mail:</label>
             <input type="text" class="form-control" id="recipient-name" name="email">
           </div>
-          
+          </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Sair</button>
-        <button type="submit" class="btn btn-secondary">Enviar</button>
-        </form>
+         <div class="modal-footer">
+         <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Sair</button>
+         <button type="submit" class="btn btn-secondary">Enviar</button>
+         </div>
       </div>
     </div>
-  </div>
-</div>
+   </div>
      </div>
     </div>
      </div>
    </main>
+   
 <script src="bootstrap/js/bootstrap.bundle.min.js"></script> 
 <script src="js/scripts.js"></script>
- </body> 
+
+</body> 
 </html>
