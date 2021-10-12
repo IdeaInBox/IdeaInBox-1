@@ -3,6 +3,7 @@ package com.IdeaBox.util;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.format.DateTimeFormatter;
 
 public class Util {
 
@@ -14,4 +15,8 @@ public class Util {
 		return hash.toString(16);
 		
 	}
+	public static DateTimeFormatter formatarData() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+		return 	formatter;	}
 }

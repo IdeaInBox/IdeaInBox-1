@@ -36,6 +36,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.IdeaBox.models.usuarios.Colaborador;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import ch.qos.logback.classic.pattern.Util;
+
 @Entity
 public class Sugestao implements Serializable {
 	/**
@@ -68,11 +70,13 @@ public class Sugestao implements Serializable {
 	@OneToOne(cascade = CascadeType.PERSIST, orphanRemoval = true)
 	@JoinColumn(name = "estudo_viabilidade_id")
 	private FileEstudoViabilidade estudoViabilidade;
-
+	
+	
 	@Column
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
-	private LocalDate dataEnvio = LocalDate.now();
+	@DateTimeFormat(fallbackPatterns ="dd.MM.yyyy")
+	private String dataEnvio = LocalDate.now().format(com.IdeaBox.util.Util.formatarData());
 
+	
 	@ManyToMany(mappedBy = "sugestoesAvaliadas", cascade = CascadeType.REFRESH)
 	private List<Colaborador> avaliadores;
 
@@ -147,7 +151,7 @@ public class Sugestao implements Serializable {
 		this.id = id;
 	}
 
-	public LocalDate getDataEnvio() {
+	public String getDataEnvio() {
 		return dataEnvio;
 	}
 
@@ -173,5 +177,7 @@ public class Sugestao implements Serializable {
 				+ classificacao + ", status=" + status + ", categoria=" + categoria + ", totalDeAvaliacoes="
 				+ totalDeAvaliacoes + ", dataEnvio=" + dataEnvio + "]";
 	}
+	
+
 
 }
