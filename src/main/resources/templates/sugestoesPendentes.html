@@ -101,18 +101,19 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
            </div>
            <div class="modal-body">
-             <form action="/enviarEmail">
+             <form action="/enviarEmail1">
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Para: </label>
                 <input type="text" class="form-control" id="recipient-name" th:value="${sugestao.colaborador.email}" name="email">
                 <label for="recipient-name" class="col-form-label">Feedback: </label>
                 <input type="text" class="form-control" id="recipient-name"  name="text">
               </div>
-            </form>
+            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Sair</button>
             <button type="submit" class="btn btn-secondary">Enviar</button>
+            </form>
           </div>
        </div>
       </div>
