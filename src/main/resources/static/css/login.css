@@ -11,36 +11,51 @@ body{
 }
 
 .container{
-    margin-top: 10%;
+    margin-top: 11%;
+    
 }
 
 p, li{
     color: #444;
     font-size: 14px;
+    padding:0;
+}
+h3{
+	font-size: 15px;
+    font-weight: 500;
+    color:#000440;
+}
+h5{ font-size: 18px;
+    font-weight: 700;
+    color:#000440;
 }
 
-
 .form-1 .form-control{
-    width: 350px;
+    width: 100%;
+    
    
 }
 .form-1 h2{
     color:#ffae00;
-    font-size:23px;
+    font-size:24px;
 }
 .form-1 label{
-    padding: 2px;
+   align-items:center;
+    padding-bottom:0;
+    font-size:14px;
+    width:100%;
+   
 }
 .card{
     
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 2.5px rgba(0, 0, 0, 0.5);
     background-color: #F3CA06;
-    padding: 8px;
-    border-radius: 25px;
-    padding-bottom: 20px;
+     border-radius: 25px;
+    padding:10px;
 }
 .card-top{
     text-align: center;
+    height:150px;
 }
 .card-top h2{
     color: rgb(255, 255, 255);
@@ -57,7 +72,7 @@ p, li{
 .lnr-eye {
     position: absolute;
     bottom: 165px;
-    right: 25px;
+    right: 30px;
     width: 30px;
     cursor: pointer;
     background-color:transparent;
@@ -66,23 +81,25 @@ p, li{
     }
 .imglogin{
     
-    width: 120px;
+    width: 115px;
    
 }
 .titulo{
-    font-size: 20pt;
+    font-size: 18pt;
 }
 
 .btn-primary{
     background-color:#000440;
     width: 100%;
     border-radius: 25px;
-    padding: 5px;
+    padding: 8px;
     color: white;
-    margin-top: 5px;
+    margin-top: 2px;
     border: 0px;
     outline: 0;
     font-family: 'Roboto', sans-serif;
+    font-size:14px;
+    align-items:center;
     
 
 }
@@ -93,13 +110,8 @@ p, li{
 
 .btn-secondary{
 	background-color:#000440;
-}
-h3{
-	font-size: 14px;
-    font-weight: 500;
-    color:#000440;
-}
-h5{ font-size: 12px;
-    font-weight: 700;
-     color:#000440;
-}
+	 outline: 0;
+	 border: 0px;
+}	
+	
+

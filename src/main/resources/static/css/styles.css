@@ -21,10 +21,12 @@ p, li{
 
 .carousel-item h5{
     font-size: 50pt;
+    text-shadow:2.5px 2.3px #000440;
 }
 .carousel-item p{
     font-size: 20pt;
     color: white;
+    text-shadow:2.5px 2.3px #000440;
 }
 .carousel-item button{
   color: white;
@@ -43,6 +45,12 @@ p, li{
 .carousel-indicators .active{
     background-color: #F3CA06;
   }
+h6{
+	font-size: 20pt;
+	font-weight: 500;
+	text-shadow:2.5px 2.3px #000440;
+	
+}
 
   /*About */
   .about-area{
@@ -79,7 +87,7 @@ p, li{
 /*SERVI�OS*/
 .service-box{
 text-align: center;
-margin-bottom: 50px;
+margin-bottom: 40px;
 }
 
 .fa-lightbulb,.fa-user-plus,.fa-cogs, .service-box h4{
@@ -94,8 +102,9 @@ margin-bottom: 50px;
 }
 
 .service-box h4{
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align:center;
 }
 
 .fa-lightbulb:hover,.fa-user-plus:hover,.fa-cogs:hover , .service-box:hover > h4{
@@ -103,7 +112,7 @@ margin-bottom: 50px;
    
 }
 .fa-lightbulb,.fa-user-plus,.fa-cogs{
-	 font-size: 36px;
+	 font-size: 34px;
 }
 /*PORTFLOIO */
 
@@ -150,11 +159,11 @@ border: 3px solid transparent;
 	
 }
 #criatividade{
-	position: relative;
-	left:750px;
-    top:-320px;
-    width:500px;
-    border-radius:20px;
+	width:390px;
+	position:relative;
+	top:20px;
+	
+    
     
 }
 #equipe{
@@ -170,7 +179,11 @@ border: 3px solid transparent;
 	width:500px;
 	border-radius:20px;
 	position:relative;
-	bottom:15px;
+	top:8px;
 	box-shadow:10px #F3CA06;
 	padding:1.5px;
 	}
+.texto{
+	text-align:justify;
+	font-size:14px;
+}

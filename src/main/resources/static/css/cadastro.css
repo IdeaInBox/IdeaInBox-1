@@ -2,7 +2,7 @@
 
 body{
     font-family: 'Roboto', sans-serif;
-    background: url("../img/grupotransp.png") no-repeat 75% 450px;
+    background: url("../img/grupotransp.png") no-repeat 95% 450px;
     background-color:#f3f3f3;
 }
 .row{
@@ -10,7 +10,7 @@ body{
 }
 
 .container{
-    padding: 70px 0;
+    padding: 45px 0;
 }
 
 p, li{
