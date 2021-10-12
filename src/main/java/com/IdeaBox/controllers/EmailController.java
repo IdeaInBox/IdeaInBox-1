@@ -51,22 +51,6 @@ public class EmailController {
         }
     }
     
-    @RequestMapping(path = "/enviarEmail", method = RequestMethod.GET)
-    public String email(@RequestParam String email, @RequestParam String text) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setText(text);
-        message.setTo(email);
-        message.setFrom("ideainboxapp@gmail.com");
-
-        try {
-            mailSender.send(message);
-            return "redirect:/pendentes";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "Erro ao enviar email.";
-        }
-    }
-    
     @RequestMapping(path = "/enviarEmail1", method = RequestMethod.GET)
     public String email1(@RequestParam String email, @RequestParam String text, HttpSession session) {
         SimpleMailMessage message = new SimpleMailMessage();
