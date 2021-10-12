@@ -21,21 +21,23 @@ p, li{
 
 
 .form-1 .form-control{
-    width: 400px;
+    width: 350px;
+   
 }
 .form-1 h2{
     color:#ffae00;
+    font-size:23px;
 }
 .form-1 label{
-    padding: 5px;
+    padding: 2px;
 }
 .card{
     
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
     background-color: #F3CA06;
-    padding: 20px;
+    padding: 8px;
     border-radius: 25px;
-    padding-bottom: 13%;
+    padding-bottom: 20px;
 }
 .card-top{
     text-align: center;
@@ -49,12 +51,12 @@ p, li{
     
 }
 .card-group{
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     
 }
 .lnr-eye {
     position: absolute;
-    bottom: 230px;
+    bottom: 165px;
     right: 25px;
     width: 30px;
     cursor: pointer;
@@ -64,20 +66,20 @@ p, li{
     }
 .imglogin{
     
-    width: 200px;
+    width: 120px;
    
 }
 .titulo{
-    font-size: 25pt;
+    font-size: 20pt;
 }
 
 .btn-primary{
     background-color:#000440;
     width: 100%;
-    border-radius: 30px;
-    padding: 13px;
+    border-radius: 25px;
+    padding: 5px;
     color: white;
-    margin-top: 12px;
+    margin-top: 5px;
     border: 0px;
     outline: 0;
     font-family: 'Roboto', sans-serif;
@@ -93,11 +95,11 @@ p, li{
 	background-color:#000440;
 }
 h3{
-	font-size: 16px;
+	font-size: 14px;
     font-weight: 500;
     color:#000440;
 }
-h5{
+h5{ font-size: 12px;
     font-weight: 700;
      color:#000440;
 }

@@ -5,25 +5,31 @@ body{
 }
 
 .container{
-   margin-top: 60px;
-   width:90%;
+   margin-top: 86px;
+   width:95%;
 }
-h1{
-    bottom: -1%;
-    font-size: 25px;
+h5{
+	margin-top:3px;
+    font-size: 23px;
     background-color: #000440;
-    color: #fff;
-    height: 50px;
+    color:white;
     width: 100%;
-    padding: 8px;
-    position: absolute;
+    padding: 5px;
+  
     
 }
+.container-fluid{
+	padding-right:0;
+    padding-left:0;
+}
 .btn-secondary{background-color:#000440;}
+
 fieldset{
     box-sizing: border-box;
     z-index: 1;
+   
 }
+
 .fa-check{color: #05F00D;}
 .fa-times{color: #F03C11;}
 .fa-envelope{color: #000440;}
@@ -34,9 +40,11 @@ fieldset{
 .fa-archive{color: #883DF5;}
 
 table {
-width:500px;
+width:100 wp;
 table-layout:fixed;
-margin-top: 1.5%;
+position:relative;
+top:-8px;
+
 }
 
 
@@ -80,8 +88,8 @@ word-wrap:break-word;
 a{color: #000440;}
 
 .table thead th { 
-  background-color: #000440;
-  color: white;
+  background-color:#C5CCC2;
+  color:#000440;
 }
 .aprovar, .enviar{
    background-color: transparent;

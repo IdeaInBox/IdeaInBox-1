@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
 	<title>Timeline</title>
 
 <!--Fonte-->
@@ -23,7 +23,7 @@
 	<header>
 	  <div class="container" id="nav-container">
 		<nav class="navbar navbar-expand-lg fixed-top">
-		<div><img id="logo" src="img/MicrosoftTeams-image-removebg-preview-Branco.png" alt="IdeaBox"></div>
+		<div><img id="logo" src="../img/MicrosoftTeams-image-removebg-preview-Branco.png" alt="IdeaBox"></div>
 		  <a href="#" class="navbar-brand"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" ata-target="#navbar-links"
 			aria-controls="navbar-links" aria-expanded="false" aria-label="Toogle navigation">
@@ -43,10 +43,11 @@
 	  </div>
   </header>
   <main>
+ <h5>Dê sua sugestão e dê sua nota nas sugestões abaixo!</h5>
 	<form method="post" action="/enviar">
 	   <div class="container">
-		<div class="mb-3">
-			<label for="texto" class="form-label"></label>
+	   	<div class="mb-3">
+		 <label for="texto" class="form-label"></label>
 			 <div class="mb-3">
 			   <textarea class="form-control" id="texto" name="texto" rows="3" maxlength="240" placeholder="Digite sua sugestão" oninput="limitarCaracter()"></textarea>
 			</div>
@@ -71,7 +72,7 @@
 		  <li class="list-group-item"><span th:text="${sugestao.texto}"></span><span class="data" th:text="${sugestao.dataEnvio}"></span>
 <!-- AVALIAÇÃO -->
 			<form method="POST"  th:action="${(#mvc.url('SC#avaliarSugestao').arg(0, sugestao.id)).build()}">
-		      <div><span><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+		      <div data-bs-toggle="tooltip" data-bs-placement="bottom" title="Posicione embaixo da estrela para dar sua nota"><span><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
 		       <i class="fa fa-star"></i> <i class="fa fa-star"></i></span></div>
 				<input type="range" class="form-range" name="classificacao" min="1" max="5" id="customRange2">
 				 <button type="submit" class="btn btn-primary" onclick="confirmado()">Avaliar</button>

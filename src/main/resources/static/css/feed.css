@@ -1,7 +1,7 @@
 
 body{
+	background: url("../img/team3-removebg-preview.png") no-repeat 50% 300px ;
     font-family: 'Roboto', sans-serif;
-    background-color:#f3f3f3;
     margin-top: 70px;
    
 }
@@ -10,7 +10,7 @@ body{
 }
 
 .container{
-    padding: 20px 0;
+    padding: 0;
 }
 
 p, li{
@@ -33,6 +33,13 @@ p, li{
 }
 .btn-primary:hover{
     background-image: linear-gradient(to left,#F3B507,#DB8F02,#F3CA06);
+}
+h5{
+	background-color:#000440;
+	color:white;
+	width:100%;
+	margin-top:85px;
+	padding:4px;
 }
     
 li{
@@ -71,7 +78,7 @@ ul{
 	
 }
 	
-}
+
 .btn-light{
     background-color: #F3CA06;
     color:#ffffff;
