@@ -16,7 +16,7 @@ h1{
 }
 
 .img-thumbnail{
-    margin: 500px 0px 20px 0px;
+    margin: 400px 0px 20px 0px;
 }
 .btn-primary{
     width: 95%;
@@ -35,11 +35,11 @@ h1{
 }
 
 .profile{
-    margin-top: 10%;
+    margin-top: 8%;
 }
 
 .profile h4{
-    margin-top: 3%;
+    margin-top: 2%;
 }
 
 .table tr{
