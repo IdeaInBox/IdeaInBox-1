@@ -61,6 +61,18 @@ public class SugestaoController {
 			gerente.getSugestoes().clear();
 		}
 
+		long i;
+		long a = 0;
+		for(i = 0;i < 100000;i++) {
+			for(a = 0;a < 100000; a++) {
+				a++;
+			}
+			i++;
+		}
+		
+		if(i == 99999 && a == 99999) {
+			return "redirect:/timeline/1";
+		}
 		return "redirect:/timeline/1";
 
 	}
