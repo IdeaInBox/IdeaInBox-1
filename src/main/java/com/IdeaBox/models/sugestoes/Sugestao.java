@@ -77,7 +77,7 @@ public class Sugestao implements Serializable {
 	private String dataEnvio = LocalDate.now().format(com.IdeaBox.util.Util.formatarData());
 
 	
-	@ManyToMany(mappedBy = "sugestoesAvaliadas", cascade = CascadeType.REFRESH)
+	@ManyToMany(mappedBy = "sugestoesAvaliadas", cascade = CascadeType.PERSIST)
 	private List<Colaborador> avaliadores;
 
 	public Sugestao() {

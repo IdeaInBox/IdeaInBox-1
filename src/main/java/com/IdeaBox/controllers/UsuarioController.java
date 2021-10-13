@@ -53,7 +53,7 @@ public class UsuarioController {
 		if (session.getAttribute("colaboradorLogado") != null || session.getAttribute("gerenteLogado") != null) {
 			int pageSize = 5;
 			ModelAndView mv = new ModelAndView("feed");
-			Page<Sugestao> page = sp.findPaginated(pageNumber, pageSize);
+			Page<Sugestao> page = sp.findPaginated(pageNumber, pageSize, session);
 			List<Sugestao> sugestoes = page.getContent();
 			mv.addObject("currentPage", pageNumber);
 			mv.addObject("totalPages", page.getTotalPages());

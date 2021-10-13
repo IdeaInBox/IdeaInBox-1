@@ -20,8 +20,8 @@ public interface SugestaoRepository extends CrudRepository<Sugestao, String>{
 	
 	Iterable<Sugestao> findByColaborador(Colaborador colaborador);
 	
-	@Query(value = "SELECT * FROM sugestao WHERE status != 'EM_ANALISE_RH' and status <>'REPROVADO_PELO_RH' ", nativeQuery = true)
-	Page<Sugestao> findAllByStatus(Pageable pageable);
+	@Query(value = "SELECT * FROM sugestao WHERE status != 'EM_ANALISE_RH' and status <>'REPROVADO_PELO_RH' and colaborador_id  in (select avaliadores_id from colaborador_sugestoes_avaliadas where avaliadores_id = :avaliadores_id)", nativeQuery = true)
+	Page<Sugestao> findAllByStatus(Pageable pageable, long avaliadores_id);
 
 	@Query(value = "SELECT * FROM sugestao WHERE status = 'EM_ANALISE_RH'", nativeQuery = true)
 	Iterable<Sugestao> findAllInAnalise();
