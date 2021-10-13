@@ -77,7 +77,28 @@ ul{
 	z-index:1;
 	
 }
-	
+#alerSugestaoCadastrada{
+	position:relative;
+	left:700px;
+	width:30%;
+	margin-top: 75px;
+	text-align:center;}
+.btn-close{
+	position: relative;
+	left:50px;
+}
+.fa-exclamation-triangle{
+	font-size:25px;
+	position: relative;
+	right:50px;
+}	
+.fa-check-circle{
+	font-size:25px;
+	position: relative;
+	right:50px;
+}
+.hide{
+ display:none;}  	
 
 .btn-light{
     background-color: #F3CA06;
