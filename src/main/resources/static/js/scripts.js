@@ -85,12 +85,12 @@ if (cpf.length!=11){
 }
 //Pendentes
 function sugestaoAprovada(){
-	document.getElementById('alertSugestaoAprovada').classList.remove('hide')
+	alert("Sugestao aprovada para classificação dos colaboradores!")
 }
 //mais votadas
 function enviarAdm(){
-	document.getElementById('alertEnviadoAdm').classList.remove('hide')
+	alert("Enviado para Administrador!")
 }
 function arquivar(){
-	document.getElementById('alertArquivar').classList.remove('hide')
+	alert("Sugestão arquivada!")
 }
