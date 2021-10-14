@@ -37,7 +37,7 @@ function mensagem(){
    document.getElementById('alerSugestaoCadastrada').classList.remove('hide')
 	}
 function confirmado(){
-	document.getElementById('alertNota').classList.remove('hide')
+	alert("Sua nota foi cadastrada")
 }
 
 //Formulario

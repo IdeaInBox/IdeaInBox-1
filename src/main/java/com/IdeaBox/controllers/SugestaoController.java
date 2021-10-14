@@ -96,6 +96,7 @@ public class SugestaoController {
 			sr.save(sugestao);
 			cr.save(colaborador);
 			colaborador.getSugestoesAvaliadas().clear();
+			
 
 		}
 		
@@ -114,6 +115,7 @@ public class SugestaoController {
 			gr.save(colaborador);
 			colaborador.getSugestoesAvaliadas().clear();
 		}
+		
 		return "redirect:/timeline/1";
 	}
 
