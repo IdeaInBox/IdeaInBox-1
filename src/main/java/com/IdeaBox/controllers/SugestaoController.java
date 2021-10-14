@@ -43,39 +43,7 @@ public class SugestaoController {
 	@Autowired
 	private FileRepository fr;
 	
-	@RequestMapping(value = "/enviar", method = RequestMethod.POST)
-	public String form(Sugestao sugestao, HttpSession session) {
-		if (session.getAttribute("colaboradorLogado") != null) {
-			Colaborador colaborador = (Colaborador) session.getAttribute("colaboradorLogado");
-			sugestao.setColaborador(colaborador);
-			
-			colaborador.getSugestoes().add(sugestao);
-			cr.save(colaborador);
-			colaborador.getSugestoes().clear();
-		} else {
-			Gerente gerente = (Gerente) session.getAttribute("gerenteLogado");
-			sugestao.setColaborador(gerente);
-			
-			gerente.getSugestoes().add(sugestao);
-			gr.save(gerente);
-			gerente.getSugestoes().clear();
-		}
 
-		long i;
-		long a = 0;
-		for(i = 0;i < 100000;i++) {
-			for(a = 0;a < 100000; a++) {
-				a++;
-			}
-			i++;
-		}
-		
-		if(i == 99999 && a == 99999) {
-			return "redirect:/timeline/1";
-		}
-		return "redirect:/timeline/1";
-
-	}
 
 	@RequestMapping("/deletarSugestao")
 	public String deletarSugestao(long Id) {

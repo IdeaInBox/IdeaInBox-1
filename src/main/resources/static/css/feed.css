@@ -82,7 +82,8 @@ ul{
 	left:700px;
 	width:30%;
 	margin-top: 75px;
-	text-align:center;}
+	text-align:center;
+	background-color: rgb(197, 249, 185);}
 .btn-close{
 	position: relative;
 	left:50px;
