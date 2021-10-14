@@ -97,11 +97,11 @@
              <label for="id"></label>
              <input type="hidden" th:value="*{sugestao.id}" class="form-control" name="id" id="id" >
              <label for="texto" class="form-label">Nova sugestão</label>
-             <input type="texto" class="form-control" id="texto" name="texto">
+             <input type="texto" th:value="*{sugestao.texto}" class="form-control" id="texto" name="texto">
            </div>
+           <label >Categoria</label>
            <select class="form-select" aria-label="Default select example" name="categoria">
-					<option selected>Categoria</option>
-					<option>ALIMENTAÇAO</option>
+					<option selected>ALIMENTAÇAO</option>
 					<option>INFORMATICA</option>
 					<option>INFRAESTRUTURA</option>
 					<option>SEGURANÇA</option>

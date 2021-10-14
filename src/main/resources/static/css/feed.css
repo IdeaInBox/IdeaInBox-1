@@ -77,6 +77,12 @@ ul{
 	z-index:1;
 	
 }
+
+.categoria{
+	position: relative;
+	left: 78%;
+}
+
 #alerSugestaoCadastrada{
 	position:relative;
 	left:700px;
