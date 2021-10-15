@@ -44,6 +44,17 @@ color: #F21DBF;
 
 .fa-folder-open{color:#F3CA06;}
 .fa-envelope{color:#000440;position: relative;left: -13px;}
+.fa-archive{
+	color:#FA6109;
+	position: relative;
+	left: -3px;
+}
+.enviar{
+	background-color: transparent;
+    border: none;
+    border-style: none;	
+}
+
 .col-1{
     width:15%;
 }
@@ -75,4 +86,4 @@ th{
    background: #1c1c1c;
    border-style: none;
    }
-      
+     
