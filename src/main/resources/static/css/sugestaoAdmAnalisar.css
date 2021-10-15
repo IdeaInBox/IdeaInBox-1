@@ -42,7 +42,8 @@ h5{
 color: #F21DBF;
 }
 
-.fa-folder-open{color:#F3CA06;}
+.fa-folder-open{color:#F3CA06;
+position: relative;left: -13px;}
 .fa-envelope{color:#000440;position: relative;left: -13px;}
 .fa-archive{
 	color:#FA6109;
@@ -86,4 +87,6 @@ th{
    background: #1c1c1c;
    border-style: none;
    }
+   h3{
+   text-align: center;}
      

@@ -45,6 +45,7 @@
 	</div>
 </header>
 <main>
+
        <h5>Sugestões a analisar para possível implementação</h5>
 	     <div class="container-fluid">
            <fieldset>
@@ -59,11 +60,26 @@
              </thead>
              <tbody>
                <tr th:each="sugestao : ${sugestoes}">
+               <div class="modal fade"  id="modalArquivo" th:id="*{'arquivoModal' + {sugestao.id}}" tabindex="-1" aria-labelledby="arquivoLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+               <div class="modal-header">
+                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <h3>PERIGO<i class="fas fa-exclamation-triangle"></i></h3>
+               <div class="modal-body"><p>Ao clicar em confirmar você estara sujeito a fazer um download de fonte desconhecida, caso não tenha nenhum arquivo para tal sugestão o sistema ira lhe redirecionar para uma  tela branca com erro, retorne uma pagina em seu navegador para continuar</p></div>
+               <div class="modal-footer">
+               <a th:href="${(#mvc.url('FC#verAquivoSugestao').arg(0, sugestao.id)).build()}"><button type="button" class="btn btn-danger" >Confirmar<i class="fas fa-exclamation-triangle"></i></button></a>
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sair</button>
+              </div>
+           </div>
+         </div>
+       </div>
                  <td ><span th:text="${sugestao.colaborador.nome}"></span>
                  <td><span th:text="${sugestao.colaborador.cargo.nome}" ></span></td>
                  <td><span th:text="${sugestao.dataEnvio}"></span></td>
                  <td><div class="icons"><span class="sugestao"  data-bs-toggle="tooltip" data-bs-placement="rigth" title="Sugestão"><a href="#"><i class="far fa-comment" data-bs-toggle="modal" th:attr="data-bs-target='#sugestao' +*{sugestao.id}"></i></a></span>
-               <span class="analise "  data-bs-toggle="tooltip" data-bs-placement="rigth" title="Estudo de viabilidade"><a th:href="${(#mvc.url('FC#verAquivoSugestao').arg(0, sugestao.id)).build()}"><i class="fas fa-folder-open" ></i></a></span>
+               <button type="button" class="btn btn-secundary "  data-bs-toggle="modal" th:attr="data-bs-target='#arquivoModal' +*{sugestao.id}" ><i class="fas fa-folder-open"  data-bs-toggle="tooltip" data-bs-placement="rigth" title="Arquivar Sugestão"></i></button>
                 <button type="button" class="btn btn-secundary" data-bs-toggle="modal" th:attr="data-bs-target='#exampleModal' +*{sugestao.id}"><i class="far fa-envelope"  data-bs-toggle="tooltip" data-bs-placement="rigth" title="FeedBack para Gerente"></i></button>
                 <div><button class="enviar" data-bs-toggle="tooltip" data-bs-placement="rigth" title="Arquivar Sugestão" onclick="arquivar()"><a th:href="${(#mvc.url('SC#arquivarADM').arg(0, sugestao.id)).build()}"><i class="fas fa-archive"></i></button></div></div>
                </td> 
@@ -104,9 +120,11 @@
             <div class="modal-footer">
              <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Sair</button>
              <button type="submit" class="btn btn-secondary">Enviar</button>
+             
              </form>
             </div>
            </div>
+           
          </div>
        </div>
 <!--End Modal Email-->
@@ -115,6 +133,9 @@
        </table>
       </fieldset>
     </div>
+    <!-- Start Modal Sugestão-->
+          
+<!--End Modal Sugestão-->
   </main>
 <script src="bootstrap/js/bootstrap.bundle.min.js"></script> 
 <script defer src="fontawesome/js/all.js"></script>
