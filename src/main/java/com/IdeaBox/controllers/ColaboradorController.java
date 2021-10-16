@@ -44,13 +44,12 @@ public class ColaboradorController {
 	}
 	
 	@PostMapping("/editarTudo")
-	public String editarTudo(@RequestParam long id, @RequestParam("nome") String nome,  @RequestParam("cpf") String cpf,
+	public String editarTudo(@RequestParam long id, @RequestParam("nome") String nome, 
 			@RequestParam long cargoId, @RequestParam("login") String login, @RequestParam("email") String email) {
 		
 		Cargo cargo1 = crg.findById(cargoId);
 		Colaborador colaborador = cr.findById(id);
 		colaborador.setNome(nome);
-		colaborador.setCpf(cpf);
 		colaborador.setCargo(cargo1);
 		colaborador.setLogin(login);
 		colaborador.setEmail(email);

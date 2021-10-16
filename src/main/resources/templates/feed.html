@@ -44,16 +44,19 @@
   </header>
   <main>
  <h5>Dê sua sugestão e dê sua nota nas sugestões abaixo!</h5>
-	<form method="post" action="/enviar">
+ <div class="alert alert-sucess"  id="alerSugestaoCadastrada" role="alert" th:if="${msg}" ><strong th:text="${msg}"><i class="fas fa-check-circle"></i></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> </div>
+ 		<form method="post" action="/timeline/1">
 	   <div class="container">
+	   
 	   	<div class="mb-3">
 		 <label for="texto" class="form-label"></label>
 			 <div class="mb-3">
 			   <textarea class="form-control" id="texto" name="texto" rows="3" maxlength="240" placeholder="Digite sua sugestão" oninput="limitarCaracter()"></textarea>
 			</div>
-				<select class="form-select" aria-label="Default select example" name="categoria">
-					<option selected>Categoria</option>
-					<option>ALIMENTAÇAO</option>
+				 <label class="categoria">Categoria</label>
+           <select class="form-select" aria-label="Default select example" name="categoria">
+					<option selected>ALIMENTAÇAO</option>
 					<option>INFORMATICA</option>
 					<option>INFRAESTRUTURA</option>
 					<option>SEGURANÇA</option>

@@ -25,6 +25,7 @@ import com.IdeaBox.models.usuarios.Colaborador;
 import com.IdeaBox.models.usuarios.Gerente;
 import com.IdeaBox.repository.CargoRepository;
 import com.IdeaBox.repository.ColaboradorRepository;
+import com.IdeaBox.repository.GerenteRepository;
 import com.IdeaBox.repository.SugestaoRepository;
 import com.IdeaBox.service.ServicePagination;
 import com.IdeaBox.service.ServiceUsuario;
@@ -37,6 +38,9 @@ public class UsuarioController {
 	private ColaboradorRepository cr;
 
 	@Autowired
+	private GerenteRepository gr;
+	
+	@Autowired
 	private SugestaoRepository sr;
 
 	@Autowired
@@ -46,10 +50,10 @@ public class UsuarioController {
 	private CargoRepository crg;
 
 	@Autowired
-	ServicePagination sp;
+	private  ServicePagination sp;
 
 	@GetMapping("/timeline/{pageNumber}")
-	public ModelAndView feed(HttpSession session, @PathVariable(value = "pageNumber") int pageNumber) {
+	public   ModelAndView feed(HttpSession session, @PathVariable(value = "pageNumber") int pageNumber) {
 		if (session.getAttribute("colaboradorLogado") != null || session.getAttribute("gerenteLogado") != null) {
 			int pageSize = 5;
 			ModelAndView mv = new ModelAndView("feed");
@@ -63,6 +67,28 @@ public class UsuarioController {
 		} else {
 			return loginGet();
 		}
+	}
+	
+	@RequestMapping(value = "/timeline/1", method = RequestMethod.POST)
+	public ModelAndView form(Sugestao sugestao, HttpSession session) {
+		ModelAndView mv = feed(session, 1);
+		if (session.getAttribute("colaboradorLogado") != null) {
+			Colaborador colaborador = (Colaborador) session.getAttribute("colaboradorLogado");
+			sugestao.setColaborador(colaborador);
+			
+			colaborador.getSugestoes().add(sugestao);
+			cr.save(colaborador);
+			colaborador.getSugestoes().clear();
+		} else {
+			Gerente gerente = (Gerente) session.getAttribute("gerenteLogado");
+			sugestao.setColaborador(gerente);
+			
+			gerente.getSugestoes().add(sugestao);
+			gr.save(gerente);
+			gerente.getSugestoes().clear();
+		}
+		mv.addObject("msg", "Sugestão enviada com sucesso.");
+		return mv;
 	}
 
 	@GetMapping("/erroLogin")

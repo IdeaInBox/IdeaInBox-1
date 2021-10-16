@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.IdeaBox.dto.ClassificacaoRequest;
+import com.IdeaBox.models.sugestoes.Categoria;
 import com.IdeaBox.models.sugestoes.FileEstudoViabilidade;
 import com.IdeaBox.models.sugestoes.Status_Sugestao;
 import com.IdeaBox.models.sugestoes.Sugestao;
@@ -43,27 +44,7 @@ public class SugestaoController {
 	@Autowired
 	private FileRepository fr;
 	
-	@RequestMapping(value = "/enviar", method = RequestMethod.POST)
-	public String form(Sugestao sugestao, HttpSession session) {
-		if (session.getAttribute("colaboradorLogado") != null) {
-			Colaborador colaborador = (Colaborador) session.getAttribute("colaboradorLogado");
-			sugestao.setColaborador(colaborador);
-			
-			colaborador.getSugestoes().add(sugestao);
-			cr.save(colaborador);
-			colaborador.getSugestoes().clear();
-		} else {
-			Gerente gerente = (Gerente) session.getAttribute("gerenteLogado");
-			sugestao.setColaborador(gerente);
-			
-			gerente.getSugestoes().add(sugestao);
-			gr.save(gerente);
-			gerente.getSugestoes().clear();
-		}
 
-		return "redirect:/timeline/1";
-
-	}
 
 	@RequestMapping("/deletarSugestao")
 	public String deletarSugestao(long Id) {
@@ -115,6 +96,7 @@ public class SugestaoController {
 			sr.save(sugestao);
 			cr.save(colaborador);
 			colaborador.getSugestoesAvaliadas().clear();
+			
 
 		}
 		
@@ -133,13 +115,15 @@ public class SugestaoController {
 			gr.save(colaborador);
 			colaborador.getSugestoesAvaliadas().clear();
 		}
+		
 		return "redirect:/timeline/1";
 	}
 
 	@PostMapping("/editar")
-	public String editarSugestao(@RequestParam long id, @RequestParam("texto") String texto) {
+	public String editarSugestao(@RequestParam long id, @RequestParam("texto") String texto,@RequestParam ("categoria") Categoria categoria ) {
 		Sugestao sugestao = sr.findById(id);
 		sugestao.setTexto(texto);
+		sugestao.setCategoria(categoria);
 		sr.save(sugestao);
 		return "redirect:/profile";
 	}
@@ -215,5 +199,12 @@ public class SugestaoController {
 		sugestao.setStatus(Status_Sugestao.ARQUIVADO);
 		sr.save(sugestao);
 		return "redirect:/topsugestoes";
+	}
+	@RequestMapping("/arquivaradm")
+	public String arquivarADM(long id) {
+		Sugestao sugestao = sr.findById(id);
+		sugestao.setStatus(Status_Sugestao.ARQUIVADO);
+		sr.save(sugestao);
+		return "redirect:/sugestaoADM";
 	}
 }

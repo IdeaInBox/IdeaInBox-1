@@ -102,8 +102,6 @@
                     <input type="hidden" th:value="*{colaborador.id}" class="form-control" name="id" id="id">
                     <label for="nome" class="form-label">Mudar nome</label>
                     <input type="text" class="form-control" id="nome" name="nome"  th:value="*{colaborador.nome}">
-                    <label for="cpf" class="form-label">CPF</label>
-                    <input type="text" class="form-control" id="cpf" name="cpf"  th:value="*{colaborador.cpf}">
                     <label for="cargo" class="form-label">Cargo</label>
                    <select class="form-select" name="cargoId">                 
                      <option th:each="cargo : ${cargos}" th:value="*{cargo.id}" th:text="${cargo.nome}"></option>

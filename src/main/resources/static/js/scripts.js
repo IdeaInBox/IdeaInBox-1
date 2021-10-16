@@ -32,12 +32,13 @@ function limitarCaracter() {
     document.getElementById("botao").disabled = true;
   }
 }
-
 function mensagem(){
-	var botao = document.getElementById("botao").disable =false;
-   	alert("Sua sugestão foi cadastrada!")
+	
+   document.getElementById('alerSugestaoCadastrada').classList.remove('hide')
 	}
-
+function confirmado(){
+	alert("Sua nota foi cadastrada")
+}
 
 //Formulario
 //cpf
@@ -46,11 +47,12 @@ function validaCpf() {
 
 if(cpf =="11111111111" || cpf=="22222222222" || cpf=="33333333333" || cpf=="44444444444" || cpf=="55555555555" || cpf=="66666666666" || cpf=="77777777777" ||
  cpf=="88888888888" || cpf=="99999999999"){
-	alert("Cpf não pode conter todos os números iguais!")
+	document.getElementById('alertCpf4').classList.remove('hide')
 	return false;
 }
 if (cpf.length!=11){
-	alert("Cpf deve conter 11 caracteres!")
+	document.getElementById('alertCpf').classList.remove('hide')
+
 	return false;
 }
 
@@ -64,7 +66,7 @@ if (cpf.length!=11){
 
     if ((Resto == 10) || (Resto == 11))  Resto = 0;
     if (Resto != parseInt(cpf.substring(9, 10)) ){
-    alert ("Cpf inválido!") 
+   document.getElementById('alertCpf2').classList.remove('hide')
     return false;
 }
   Soma = 0;
@@ -73,11 +75,11 @@ if (cpf.length!=11){
 
     if ((Resto == 10) || (Resto == 11))  Resto = 0;
     if (Resto != parseInt(cpf.substring(10, 11) ) ){
-    alert ("Cpf inválido!")
+   document.getElementById('alertCpf2').classList.remove('hide')
     return false;
   }  
  else{
-	alert("Cpf conferido!")
+	document.getElementById('alertCpf3').classList.remove('hide')
 	return true;
 }
 }
@@ -90,8 +92,5 @@ function enviarAdm(){
 	alert("Enviado para Administrador!")
 }
 function arquivar(){
-	alert("Sugestão arquivada com sucesso!")
-}
-function confirmado(){
-	alert("Sua nota foi cadastrada!")
+	alert("Sugestão arquivada!")
 }

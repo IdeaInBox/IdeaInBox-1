@@ -1,6 +1,7 @@
 package com.IdeaBox.controllers;
 
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -50,24 +51,8 @@ public class EmailController {
         }
     }
     
-    @RequestMapping(path = "/enviarEmail", method = RequestMethod.GET)
-    public String email(@RequestParam String email, @RequestParam String text) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setText(text);
-        message.setTo(email);
-        message.setFrom("ideainboxapp@gmail.com");
-
-        try {
-            mailSender.send(message);
-            return "redirect:/pendentes";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "Erro ao enviar email.";
-        }
-    }
-    
     @RequestMapping(path = "/enviarEmail1", method = RequestMethod.GET)
-    public String email1(@RequestParam String email, @RequestParam String text) {
+    public String email1(@RequestParam String email, @RequestParam String text, HttpSession session) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setText(text);
         message.setTo(email);
@@ -75,6 +60,9 @@ public class EmailController {
 
         try {
             mailSender.send(message);
+            if(session.getAttribute("gerenteLogado") != null) {
+            	return "redirect:/pendentes";
+            }
             return "redirect:/sugestaoADM";
         } catch (Exception e) {
             e.printStackTrace();

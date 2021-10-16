@@ -46,7 +46,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br">
   <main>
      <h5>Sugestões pendentes para análise</h5>
 	   <div class="container-fluid">
-        <fieldset>
+	    <fieldset>
          <table class="table table-info table-striped">
           <thead>
            <tr>
@@ -73,11 +73,12 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br">
                 <label for="formFile" class="form-label"></label>
                 <input class="form-control" type="file" id="formFile" name="file">
                </div>
-             </form>
+             
            </div>
           <div class="modal-footer">
            <button type="submit" class="btn btn-secondary">Confirmar</button>
            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
+           </form>
          </div>
        </div>
      </div>
@@ -101,18 +102,19 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
            </div>
            <div class="modal-body">
-             <form action="/enviarEmail">
+             <form action="/enviarEmail1">
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Para: </label>
                 <input type="text" class="form-control" id="recipient-name" th:value="${sugestao.colaborador.email}" name="email">
                 <label for="recipient-name" class="col-form-label">Feedback: </label>
                 <input type="text" class="form-control" id="recipient-name"  name="text">
               </div>
-            </form>
+            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Sair</button>
             <button type="submit" class="btn btn-secondary">Enviar</button>
+            </form>
           </div>
        </div>
       </div>
@@ -135,6 +137,16 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="pt-br">
               <label for="exampleInputPassword1" class="form-label">Nova sugestão</label>
               <input type="texto" class="form-control" id="texto" name="texto">
             </div>
+            <select class="form-select" aria-label="Default select example" name="categoria">
+					<option selected>Categoria</option>
+					<option>ALIMENTAÇAO</option>
+					<option>INFORMATICA</option>
+					<option>INFRAESTRUTURA</option>
+					<option>SEGURANÇA</option>
+					<option>SISTEMAS</option>
+					<option>TRANSPORTE</option>
+					<option>OUTROS</option>
+				</select>
            <div class="modal-footer">
             <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
             <button type="submit" class="btn btn-outline-success">Aceitar</button>
