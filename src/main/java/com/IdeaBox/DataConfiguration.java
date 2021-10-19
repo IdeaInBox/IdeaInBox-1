@@ -19,8 +19,6 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 @Configuration
 public class DataConfiguration {
 	
-	private static final String dateFormat = "dd-MM-yyyy";
-    private static final String dateTimeFormat = "dd-MM-yyyy HH:mm";
 	
 	@Bean
     public DataSource dataSource(){
